@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: votemosbien_production
-  username: votemosbien
-  password: <%= ENV['VOTEMOSBIEN_DATABASE_PASSWORD'] %>
+  username: ccastillo
+  password: <%= Rails.application.credentials.dig(:postgres, :password) %>
