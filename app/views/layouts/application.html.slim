@@ -1,0 +1,66 @@
+doctype html
+html
+  head
+    title
+      | Votemosbien
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    link rel="preconnect" href="https://fonts.gstatic.com/"
+    link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"
+    = stylesheet_link_tag "application" 
+    = javascript_packs_with_chunks_tag 'application', 'data-turbo-track': 'reload'
+    = stylesheet_packs_with_chunks_tag "application", "data-turbo-track": "reload", media: 'all'
+  body.flex.flex-col.min-h-screen.text-gray-800.leading-relaxed
+    header
+      .container.mx-auto.p-4.flex.items-center.lg:px-8
+        = link_to root_path, class:"w-4/12 flex items-center" do
+          .border-r.border-gray-800.pr-2.mr-2
+            = inline_svg_tag "atomo.svg", width: 50, height: 50
+          .
+            p.text-2xl.title Votemos Bien
+            p.text-xs Import & Export
+
+        .user.w-8/12.flex.justify-end
+          - if user_signed_in?
+            = link_to edit_user_path(current_user),
+              class: "inline-block btn btn--secondary mr-1 #{controller_name == 'users' ? "active" : nil}" do
+              = inline_svg_tag "user.svg"
+            = button_to user_session_path(current_user),
+              method: :delete,
+              data: { confirm: "Cerraré la sesión. ¿Seguro?" },
+              class: "btn btn--secondary" do 
+              = inline_svg_tag "log-out.svg"
+          - else
+            = link_to new_user_session_path,
+              class: "btn inline-block btn--primary" do
+              .flex.items-center.justify-center
+                .= inline_svg_tag "user.svg"
+                . Ingresar
+    nav.bg-yellow-700.flex
+      .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
+        .mr-4
+          a href="#" Un Link
+        .mr-4
+          a href="#" Otro link
+        - if user_signed_in? 
+          - if current_user.admin?
+            .mr-4 Admin:
+            .mr-4 = link_to "Preguntas y Opciones", questions_path, class: controller_name == 'question' ? "active" : nil
+            .mr-4 = link_to "Usuarios", users_path, class: controller_name == 'users' ? "active" : nil
+          .ml-auto
+            span.mr-1 👋  
+            span<> Hola 
+            span.font-bold = link_to current_user, current_user
+    main.flex-grow.bg-gray-50
+      = render "shared/flashes"
+      .container.mx-auto.p-4.lg:px-8
+        = yield
+    footer.flex-grow-0.bg-black
+      .container.text-white.mx-auto.p-4.flex.items-center.lg:px-8
+        .w-8/12 
+          p
+            span<> Votemos bien
+
+        .w-4/12.text-xs.text-right.text-gray-700
+          a href="https://www.flaticon.es/autores/iconixar" target="_blank" title="iconixar" Iconixar 

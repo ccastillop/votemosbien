@@ -1,0 +1,25 @@
+p Estimado(a) Sr(a) #{@note.destination}
+
+p 
+  | La orden #{link_to @note.order.code, @note.order} pasó al estado: 
+  strong #{@note.order.status_i18n}
+
+fieldset style="border: 1px solid gray; margin: 16px 0"
+  legend Detalle de la nota:
+  = render "notes/note", note: @note
+
+fieldset style="border: 1px solid gray; margin: 16px 0"
+  legend Orden #{link_to @note.order.code, order_url(@note.order)}:  
+  = render @note.order
+
+fieldset style="border: 1px solid gray; margin: 16px 0"
+  legend Detalle de la orden #{@note.order.code}
+  = render "carts/cart", cart: @note.order
+
+p 
+  | Atentamente, 
+  br
+  | Cuántica
+
+
+

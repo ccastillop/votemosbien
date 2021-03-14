@@ -15,3 +15,5 @@ import "controllers"
 
 import "stylesheets/application"
 import "stylesheets/custom"
+require("trix")
+require("@rails/actiontext")

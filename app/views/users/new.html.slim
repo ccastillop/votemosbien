@@ -1,5 +1,44 @@
-h1 New user
+h2.title.my-6.text-center= t(".sign_up")
+.text-center data-turbo="false"
+  = button_to "/auth/google_oauth2/", class: "btn btn--google btn--lg inline-block" do
+    .flex.items-center.justify-center
+      .= inline_svg_tag "google.svg", class: "block w-6 fill-current text-white mr-2"
+      . Regístrate con Google
+.text-center data-turbo="false"
+  = button_to "/auth/facebook/", class: "btn btn--facebook btn--lg inline-block" do
+    .flex.items-center.justify-center
+      .= inline_svg_tag "facebook.svg"
+      . Regístrate con Facebook
 
-== render 'form'
+.flex.items-center.flex-col
 
-= link_to 'Back', users_path
+  .max-w-md.w-full
+
+    .text-center.mb-6.mt-2
+      h4.regular.inline-block.bg-white.px-4 o también
+      .border-gray-600.border.w-full.-mt-3
+
+    h3.font-bold.text-lg.mb-4.text-center Regístrate con tu correo electrónico
+
+    = form_with model: @user, class: "form" do |f|
+      = render "shared/form_errors", object: @user
+
+      .input
+        = f.label :email
+        = f.text_field :email, class: "w-full", data: { cy: 'email' }
+      .input
+        = f.label :password
+        = f.password_field :password, class: "w-full", data: { cy: 'password' }
+      .input
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: "w-full", data: { cy: 'password-confirmation' }
+
+      .form-actions
+        = f.submit t(".sign_up"),
+        class:"btn btn--primary w-full",
+        data: { disable_with: 'Enviando...' }
+
+      .flex.justify-between.my-6
+        = link_to t('.sign_in'), new_user_session_path, class:"blue"
+        = link_to t(".forgot_your_password"),
+          new_user_recover_password_path

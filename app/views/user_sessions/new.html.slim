@@ -1,0 +1,49 @@
+
+h2.title.my-6.text-center= t(".sign_in")
+
+.text-center data-turbo="false"
+  = button_to "/auth/google_oauth2/", class: "btn btn--google btn--lg inline-block" do
+    .flex.items-center.justify-center
+      .= inline_svg_tag "google.svg", class: "block w-6 fill-current text-white mr-2"
+      . Continua con Google
+.text-center data-turbo="false"
+  = button_to "/auth/facebook/", class: "btn btn--facebook btn--lg inline-block" do
+    .flex.items-center.justify-center
+      .= inline_svg_tag "facebook.svg"
+      . Continuar con Facebook
+
+.flex.items-center.flex-col
+
+  .max-w-md.w-full
+
+    .text-center.mb-6.mt-2
+      h4.regular.inline-block.bg-white.px-4 o también
+      .border-gray-600.border.w-full.-mt-3
+
+    = form_with model: @user_session, class: "form" do |f|
+      = render "shared/form_errors", object: @user_session
+      .input
+        = f.label :email
+        = f.email_field :email,
+          autofocus: true,
+          class: "w-full",
+          placeholder: "elon@spacex.com"
+
+      .input
+        = f.label :password
+        = f.password_field :password,
+          autofocus: true,
+          class: "w-full",
+          placeholder: "",
+          autocomplete: "current-password"
+
+      .form-actions
+        = f.submit t(".sign_in"),
+          class:"btn btn--primary btn--md w-full",
+          data: { disable_with: 'Enviando...' }
+
+
+    .flex.justify-between.my-6
+      = link_to t(".forgot_your_password"),
+        new_user_recover_password_path
+      = link_to t(".sign_up"), new_user_path

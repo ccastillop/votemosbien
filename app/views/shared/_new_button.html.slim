@@ -1,0 +1,4 @@
+- if policy(klass).new?
+  = link_to [:new, klass.to_s.downcase], class: "flex items-center btn btn--primary" do
+    = inline_svg_tag "plus.svg"
+    | Nuevo

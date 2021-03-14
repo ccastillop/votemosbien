@@ -1,29 +1,26 @@
-h1 Listing users
+.flex.items-center.mb-8
+  h1.title Usuarios (#{@pagy.count})
+  .ml-auto = new_button User
 
-table
-  thead
-    tr
-      th Name
-      th Email
-      th Password digest
-      th Recover token
-      th Email confirmed at
-      th
-      th
-      th
-
-  tbody
-    - @users.each do |user|
+.overflow-x-auto
+  table.table
+    thead
       tr
-        td = user.name
-        td = user.email
-        td = user.password_digest
-        td = user.recover_token
-        td = user.email_confirmed_at
-        td = link_to 'Show', user
-        td = link_to 'Edit', edit_user_path(user)
-        td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+        th email
+        th Nombre
+        th Apellidos
+        th 
+    tbody
+      - @users.each do |user|
+        tr
+          td= user.email
+          td= user.first_name
+          td= user.last_name
+          td
+            .flex
+              - if user.admin?
+                .mr-4= inline_svg_tag "user-check.svg"
+              .= edit_buttons user
 
-br
+== pagy_nav(@pagy) if @pagy.count > 1
 
-= link_to 'New User', new_user_path

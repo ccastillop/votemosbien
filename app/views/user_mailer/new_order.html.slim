@@ -1,0 +1,20 @@
+p Estimado(a) Sr(a) #{@order.user}
+
+p 
+  | La orden #{link_to @order.code, @order} ha sido creado. 
+
+fieldset style="border: 1px solid gray; margin: 16px 0"
+  legend Orden #{link_to @order.code, order_url(@order)}:  
+  = render @order
+
+fieldset style="border: 1px solid gray; margin: 16px 0"
+  legend Detalle de la orden #{@order.code}
+  = render "carts/cart", cart: @order
+
+p 
+  | Atentamente, 
+  br
+  | Cuántica
+
+
+

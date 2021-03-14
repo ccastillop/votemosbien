@@ -1,0 +1,25 @@
+.flex.items-center.flex-col
+
+  .max-w-md.w-full
+
+    h2.title = t(".change_your_password")
+    = form_with model: @user_new_password, url: user_recover_password_path(@user),
+      method: :put, class: "form"  do |f|
+
+      = render "shared/form_errors", object: @user_new_password
+
+      = hidden_field_tag :token, params[:token]
+
+      .input
+        = label_tag t(".new_password")
+        = f.password_field :password, autofocus: true, required: false,
+          autocomplete: "new-password", class: "w-full"
+        .text-sm.text-right.mt-1 = "Mínimo 8 caracteres"
+      
+      .input
+        = label_tag t(".confirm_new_password")
+        = f.password_field :password_confirmation, autofocus: true, required: false,
+          autocomplete: "new-password", class: "w-full"
+
+      .form-actions
+        = f.button t(".change_my_password"), class:"btn btn--primary btn--md w-full"

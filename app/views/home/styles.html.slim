@@ -1,0 +1,527 @@
+
+header role="banner" 
+  h1.title.mb-2 Ejemplo de estilos, componentes, etc
+  p.mb-4 
+    | This is a test page filled with common HTML elements 
+    | to be used to provide visual feedback whilst 
+    | building CSS systems and frameworks.
+
+nav.mb-4 role="navigation" 
+  ul
+    li
+      a href="#flashes"  Flashes
+    li
+      a href="#forms"  Form elements
+      ul.pl-4
+        li
+          a href="#forms__input"  Input fields
+        li
+          a href="#forms__select"  Select menus
+        li
+          a href="#forms__checkbox"  Checkboxes
+        li
+          a href="#forms__radio"  Radio buttons
+        li
+          a href="#forms__textareas"  Textareas
+        li
+          a href="#forms__html5"  HTML5 inputs
+        li
+          a href="#forms__action"  Action buttons
+    li
+      a href="#text"  Text
+      ul.pl-4
+        li
+          a href="#text__headings"  Headings
+        li
+          a href="#text__paragraphs"  Paragraphs
+        li
+          a href="#text__blockquotes"  Blockquotes
+        li
+          a href="#text__lists"  Lists
+        li
+          a href="#text__hr"  Horizontal rules
+        li
+          a href="#text__tables"  Tabular data
+        li
+          a href="#text__code"  Code
+        li
+          a href="#text__inline"  Inline elements
+        li
+          a href="#text__comments"  HTML Comments
+    li
+      a href="#embedded"  Embedded content
+      ul.pl-4
+        li
+          a href="#embedded__images"  Images
+        li
+          a href="#embedded__audio"  Audio
+        li
+          a href="#embedded__video"  Video
+        li
+          a href="#embedded__canvas"  Canvas
+        li
+          a href="#embedded__meter"  Meter
+        li
+          a href="#embedded__progress"  Progress
+        li
+          a href="#embedded__svg"  Inline SVG
+        li
+          a href="#embedded__iframe"  IFrames
+
+main.mb-8 role="main" 
+
+  section.flashes#flashes 
+    header
+      h1.title.mb-2 Flashes
+    = render "shared/flashes", flash: %w(alert success error).map{ |m| [m, "#{m} message message"]  }
+
+  section.form-inputs#forms
+    header
+      h1.title.mb-2 Form elements
+    form.form
+      fieldset#forms__input
+        legend Input fields
+        div.mb-2.input
+          label for="input__text"  Text Input
+          input#input__text placeholder=("Text Input") type="text" /
+        div.mb-2.input
+          label for="input__password"  Password
+          input#input__password placeholder=("Type your Password") type="password" /
+        div.mb-2.input
+          label for="input__webaddress"  Web Address
+          input#input__webaddress placeholder="https://yoursite.com" type="url" /
+        div.mb-2.input
+          label for="input__emailaddress"  Email Address
+          input#input__emailaddress placeholder="name@email.com" type="email" /
+        div.mb-2.input
+          label for="input__phone"  Phone Number
+          input#input__phone placeholder=("(999) 999-9999") type="tel" /
+        div.mb-2.input
+          label for="input__search"  Search
+          input#input__search placeholder=("Enter Search Term") type="search" /
+        div.mb-2.input
+          label for="input__text2"  Number Input
+          input#input__text2 placeholder=("Enter a Number") type="number" /
+        div.mb-2.input.field_with_errors
+          label for="input__text3"  Error
+          input#input__text3.is-error placeholder=("Text Input") type="text" /
+          div.error Error description
+        div.mb-2.input
+          label.valid for="input__text4"  Valid
+          input#input__text4.is-valid placeholder=("Text Input") type="text" /
+      div.mb-2.input
+        a href="#top"  [Top]
+      fieldset#forms__select
+        legend Select menus
+        p.mb-2
+          label for="select"  Select
+          select#select
+            optgroup.mb-2 label=("Option Group") 
+              option Option One
+              option Option Two
+              option Option Three
+      p.mb-2
+        a href="#top"  [Top]
+      fieldset#forms__checkbox
+        legend Checkboxes
+        ul.list.list--bare
+          li
+            label for="checkbox1" 
+              input#checkbox1 checked="checked" name="checkbox" type="checkbox" /
+              | Choice A
+          li
+            label for="checkbox2" 
+              input#checkbox2 name="checkbox" type="checkbox" /
+              | Choice B
+          li
+            label for="checkbox3" 
+              input#checkbox3 name="checkbox" type="checkbox" /
+              | Choice C
+      p.mb-2
+        a href="#top"  [Top]
+      fieldset#forms__radio
+        legend Radio buttons
+        ul.list.list--bare
+          li
+            label for="radio1" 
+              input#radio1.radio checked="checked" name="radio" type="radio" /
+              | Option 1
+          li
+            label for="radio2" 
+              input#radio2.radio name="radio" type="radio" /
+              | Option 2
+          li
+            label for="radio3" 
+              input#radio3.radio name="radio" type="radio" /
+              | Option 3
+      p.mb-2
+        a href="#top"  [Top]
+      fieldset#forms__textareas
+        legend Textareas
+        p.mb-2
+          label for="textarea"  Textarea
+          textarea#textarea cols="48" placeholder=("Enter your message here") rows="8" 
+      p.mb-2
+        a href="#top"  [Top]
+      fieldset#forms__html5
+        legend HTML5 inputs
+        p.mb-2
+          label for="ic"  Color input
+          input#ic type="color" value="#000000" /
+        p.mb-2
+          label for="in"  Number input
+          input#in max="10" min="0" type="number" value="5" /
+        p.mb-2
+          label for="ir"  Range input
+          input#ir type="range" value="10" /
+        p.mb-2
+          label for="idd"  Date input
+          input#idd type="date" value="1970-01-01" /
+        p.mb-2
+          label for="idm"  Month input
+          input#idm type="month" value="1970-01" /
+        p.mb-2
+          label for="idw"  Week input
+          input#idw type="week" value="1970-W01" /
+        p.mb-2
+          label for="idt"  Datetime input
+          input#idt type="datetime" value="1970-01-01T00:00:00Z" /
+        p.mb-2
+          label for="idtl"  Datetime-local input
+          input#idtl type="datetime-local" value="1970-01-01T00:00" /
+      p.mb-2
+        a href="#top"  [Top]
+      fieldset#forms__action
+        legend Action buttons
+        p.mb-2
+          button.block.mb-2.btn.btn--md.btn--primary type="submit"  &lt;button type=submit&gt;
+          button.block.mb-2.btn.btn--md.btn--secondary type="button"  &lt;button type=button&gt;
+          button.block.mb-2.btn.btn--md.btn--terciary type="reset"  &lt;button type=reset&gt;
+          button.block.mb-2.btn.btn--md.btn--quaternary disabled="" type="button"  &lt;button disabled&gt;
+      p.mb-2
+        a href="#top"  [Top]
+
+  section#text
+    header
+      h1.title.mb-2 Text
+    article.mb-8#text__headings
+      header
+        h1.title.mb-2 Headings
+      div
+        h1.title.mb-2 Heading 1
+        h2.title.mb-2 Heading 2
+        h3.font-bold.text-lg.mb-2 Heading 3
+        h4.regular.mb-2 Heading 4
+        h5.text-sm.mb-2 Heading 5
+        h6.title.mb-2 Heading 6
+      header
+        h1.title.mb-2 Long Headings
+      div
+        h1.title.mb-2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed eum ipsa unde aliquid ex, dolor, officia maiores facere corrupti reiciendis vel quos eligendi iure exercitationem facilis atque, numquam rem quaerat?
+        h2.title.mb-2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero cum tempora suscipit magnam numquam ducimus debitis enim sint repellendus praesentium? Laboriosam quae ullam consectetur atque voluptatem repellat, recusandae aperiam est?
+        h3.font-bold.text-lg.mb-2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis error tempore, excepturi ut provident labore sequi quasi sit cupiditate incidunt autem laboriosam accusamus fugit hic dicta asperiores magnam numquam ducimus!
+        h4.regular.mb-2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsum molestias dicta expedita quasi omnis temporibus consectetur aut architecto quibusdam, corporis dolorem rerum repellat iusto, nobis totam fugit! Sint, eum!
+        h5.text-sm.mb-2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae dolorum magni quam. Rem iste cum expedita quos beatae dolore, tenetur iusto qui aut fugit autem repudiandae animi praesentium corporis nostrum?
+        h6.title.mb-2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos aliquam numquam tempora nisi, veniam ipsam debitis ab! Explicabo dolorem nobis in aliquam mollitia fugit odio? Laborum sequi vitae natus!
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__paragraphs
+      header
+        h1.title.mb-2 Paragraphs
+      div
+        p.mb-2 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__blockquotes
+      header
+        h1.title.mb-2 Blockquotes
+      div
+        blockquote
+          p.mb-2 A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.
+          p.mb-2 It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom.
+          cite
+            a href="#!"  Said no one, ever.
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__lists
+      header
+        h1.title.mb-2 Lists
+      div
+        h3.title.mb-2 Definition list
+        dl.mb-2
+          dt Definition List Title
+          dd This is a definition list division.
+        h3.title.mb-2 Ordered List
+        ol.list-decimal.list-inside.mb-2
+          li List Item 1
+          li Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, repellendus! Vero facere consequatur provident. Vel accusamus nesciunt odit esse dignissimos neque, doloribus voluptates nam debitis numquam sequi, praesentium, enim nihil?
+          li List Item 3
+        h3.title.mb-2 Unordered List
+        ul.list-disc.list-inside.mb-2
+          li List Item 1
+          li Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, labore a corporis molestias alias suscipit iusto aspernatur quis esse non unde modi sint sit aliquid ducimus? Blanditiis pariatur nihil ut.
+          li List Item 3
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__hr
+      header
+        h1.title.mb-2 Horizontal rules
+      div
+        hr/
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__tables
+      header
+        h1.title.mb-2 Tabular data
+      table.table
+        caption Table Caption
+        thead
+          tr
+            th Table Heading 1
+            th Table Heading 2
+            th Table Heading 3
+            th Table Heading 4
+            th Table Heading 5
+        tfoot
+          tr
+            th Table Footer 1
+            th Table Footer 2
+            th Table Footer 3
+            th Table Footer 4
+            th Table Footer 5
+        tbody
+          tr
+            td Table Cell 1
+            td Table Cell 2
+            td Table Cell 3
+            td Table Cell 4
+            td Table Cell 5
+          tr
+            td Table Cell 1
+            td Table Cell 2
+            td Table Cell 3
+            td Table Cell 4
+            td Table Cell 5
+          tr
+            td Table Cell 1
+            td Table Cell 2
+            td Table Cell 3
+            td Table Cell 4
+            td Table Cell 5
+          tr
+            td Table Cell 1
+            td Table Cell 2
+            td Table Cell 3
+            td Table Cell 4
+            td Table Cell 5
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__code
+      header
+        h1.title.mb-2 Code
+      div
+        p.mb-2
+          strong Keyboard input:
+          kbd Cmd
+        p.mb-2
+          strong Inline code:
+          code &lt;div&gt;code&lt;/div&gt;
+        p.mb-2
+          strong Sample output:
+          samp.mb-2 This is sample output from a computer program.
+        h2.title.mb-2 Pre-formatted text
+        pre
+          | P R E F O R M A T T E D T E X T
+            ! " # $ % &amp; ' ( ) * + , - . /
+            | 0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
+            | @ A B C D E F G H I J K L M N O
+            | P Q R S T U V W X Y Z [ \ ] ^ _
+            | ` a b c d e f g h i j k l m n o
+            | p.mb-2 q r s t u v w x y z { | } ~
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__inline
+      header
+        h1.title.mb-2 Inline elements
+      div
+        p.mb-2
+          a href="#!" > This is a text link
+          |.
+        p.mb-2
+          strong Strong is used to indicate strong importance.
+        p.mb-2
+          em This text has added emphasis.
+        p.mb-2
+          | The
+          b<> b element
+          | is stylistically different text from normal text, without any special importance.
+        p.mb-2
+          | The
+          i<> i element
+          | is text that is offset from the normal text.
+        p.mb-2
+          | The
+          u<> u element
+          | is text with an unarticulated, though explicitly rendered, non-textual annotation.
+        p.mb-2
+          del<> This text is deleted
+          | and
+          ins<> This text is inserted
+        p.mb-2
+          s> This text has a strikethrough
+          |.
+        p.mb-2
+          | Superscript
+          sup> ®
+          |.
+        p.mb-2
+          | Subscript for things like H
+          sub> 2
+          | O.
+        p.mb-2
+          small This small text is small for for fine print, etc.
+        p.mb-2
+          | Abbreviation:
+          abbr<> title=("HyperText Markup.mb-2 Language")  HTML
+        p.mb-2
+          q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q"  This text is a short inline quotation.
+        p.mb-2
+          cite This is a citation.
+        p.mb-2
+          | The
+          dfn<> dfn element
+          | indicates a definition.
+        p.mb-2
+          | The
+          mark<> mark element
+          | indicates a highlight.
+        p.mb-2
+          | The
+          var<> variable element
+          | such as
+          var<> x
+          | \=
+          var<> y
+        p.mb-2
+          | The time element:
+          time<> datetime="2013-04-06T12:32+00:00"  2 weeks ago
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#text__comments
+      header
+        h1.title.mb-2 HTML Comments
+      div
+        p.mb-2
+          | There is comment here:
+          /! This comment should not be displayed
+        p.mb-2 There is a comment spanning multiple tags and lines below here.
+        /!
+          | <p><a href="#!">This is a text link. But it should not be displayed in a comment</a>.</p.mb-2
+          | <p><strong>Strong is used to indicate strong importance. But, it should not be displayed in a comment</strong></p.mb-2
+          | <p><em>This text has added emphasis. But, it should not be displayed in a comment</em></p.mb-2
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+  section#embedded
+    header
+      h1.title.mb-2 Embedded content
+    article.mb-8#embedded__images
+      header
+        h2.title.mb-2 Images
+      div
+        h3
+          | No
+          code<> &lt;figure&gt;
+          | element
+        p.mb-2
+          img alt=("Image alt text") src="https://placekitten.com/480/480" /
+        h3
+          | Wrapped in a
+          code<> &lt;figure&gt;
+          | element, no
+          code<> &lt;figcaption&gt;
+        figure
+          img alt=("Image alt text") src="https://placekitten.com/420/420" /
+        h3
+          | Wrapped in a
+          code<> &lt;figure&gt;
+          | element, with a
+          code<> &lt;figcaption&gt;
+        figure
+          img alt=("Image alt text") src="https://placekitten.com/420/420" /
+          figcaption Here is a caption for this image.
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#embedded__audio
+      header
+        h2.title.mb-2 Audio
+      div
+        audio controls=""  audio
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#embedded__video
+      header
+        h2.title.mb-2 Video
+      div
+        video controls=""  video
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#embedded__canvas
+      header
+        h2.title.mb-2 Canvas
+      div
+        canvas canvas
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#embedded__meter
+      header
+        h2.title.mb-2 Meter
+      div
+        meter max="10" min="0" value="2"  2 out of 10
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#embedded__progress
+      header
+        h2.title.mb-2 Progress
+      div
+        progress progress
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#embedded__svg
+      header
+        h2.title.mb-2 Inline SVG
+      div
+        svg height="100px" width="100px" 
+          circle cx="100" cy="100" fill="#1fa3ec" r="100" 
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+    article.mb-8#embedded__iframe
+      header
+        h2.title.mb-2 IFrame
+      div
+        iframe height="300" src="index.html" 
+      footer
+        p.mb-2
+          a href="#top"  [Top]
+
+footer role="contentinfo" 
+  p.mb-2
+    | Made by
+    a href="https://twitter.com/cbracco"  @cbracco
+    | Code on
+    a href="https://github.com/cbracco/html5-test-page"  GitHub

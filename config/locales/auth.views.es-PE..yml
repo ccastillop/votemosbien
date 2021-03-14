@@ -1,0 +1,170 @@
+es-PE:
+  activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: Confirmación enviada a
+        confirmation_token: Código de confirmación
+        confirmed_at: Confirmado en
+        created_at: Creado en
+        current_password: Contraseña actual
+        current_sign_in_at: Fecha del ingreso actual
+        current_sign_in_ip: IP del ingreso actual
+        email: Email
+        failed_attempts: Intentos fallidos
+        last_sign_in_at: Fecha del último ingreso
+        last_sign_in_ip: IP del último inicio
+        locked_at: Fecha de bloqueo
+        password: Contraseña
+        password_confirmation: Confirmación de la contraseña
+        remember_created_at: Fecha de 'Recordarme'
+        remember_me: Recordarme
+        reset_password_sent_at: Fecha de envío de código para contraseña
+        reset_password_token: Código para restablecer contraseña
+        sign_in_count: Cantidad de ingresos
+        unconfirmed_email: Email no confirmado
+        unlock_token: Código de desbloqueo
+        updated_at: Actualizado en
+    models:
+      user:
+        one: Usuario
+        other: Usuarios
+
+  users:
+    destroyed: "¡Adiós! Tu usuario ha sido cancelada correctamente. Esperamos verte pronto."
+    edit:
+      are_you_sure: "¿Estás seguro?"
+      cancel_my_account: Anular mi usuario
+      currently_waiting_confirmation_for_email: "Actualmente esperando la confirmacion de: %{email} "
+      leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea cambiarla
+      title: Mi usuario
+      unhappy: "¿No estás conforme?"
+      update: Actualizar
+      we_need_your_current_password_to_confirm_your_changes: necesitamos su contraseña actual para confirmar los cambios
+    new:
+      sign_up: Crear cuenta
+      sign_in: Ingresar
+      forgot_your_password: Olvidé mi contraseña
+
+    signed_up: Bienvenido. Tu usuario fue creada.
+    signed_up_but_inactive: Tu usuario ha sido creada correctamente. Sin embargo, no hemos podido iniciar la sesión porque tu usuario aún no está activada.
+    signed_up_but_locked: Tu usuario ha sido creada correctamente. Sin embargo, no hemos podido iniciar la sesión porque que tu usuario está bloqueada.
+    signed_up_but_unconfirmed: Se ha enviado un mensaje con un enlace de confirmación a tu correo electrónico. Abre el enlace para activar tu usuario.
+    update_needs_confirmation: Has actualizado tu usuario correctamente, pero es necesario confirmar tu nuevo correo electrónico. Por favor, comprueba tu correo y sigue el enlace de confirmación para finalizar la comprobación del nuevo correo electrónico.
+    updated: Tu usuario se ha actualizado.
+    updated_but_not_signed_in: Su usuario se ha actualizado correctamente, pero como se cambió su contraseña, debe iniciar sesión nuevamente
+
+  user_sessions:
+    new:
+      sign_in: Ingresar
+      sign_up: Crear cuenta
+      forgot_your_password: Olvidé mi contraseña
+
+  user_recover_passwords:
+    new:
+      sign_in: Ingresar
+      sign_up: Crear cuenta
+      forgot_your_password: Olvidé mi contraseña
+      forgot_your_password: "Crea una nueva contraseña"
+      send_me_reset_password_instructions: Enviar enlace de correo
+    send_instructions: Recibirás un correo con instrucciones sobre cómo restablecer tu contraseña en unos pocos minutos.
+    edit:
+      change_my_password: Aceptar
+      change_your_password: Crea tu nueva contraseña en Cuántica
+      confirm_new_password: Repetir nueva contraseña
+      new_password: Nueva contraseña
+
+  user_mailer:
+    confirmation_instructions:
+      action: Termina de crear tu cuenta
+      # greeting: "¡Bienvenido %{recipient}!"
+      # instruction: Termina de crear tu cuenta en Cuántica
+      instruction_2: Crea tu cuenta en Cuántica
+      instruction_3: Toca el botón inferior para continuar.
+      instruction_4: "Si no has solicitado este correo, no tienes de qué preocuparte: sólo ignóralo."
+      instruction_love: Trabajamos con amor ©2020 Cuántica
+      subject: Confirma tu correo electrónico en Cuántica
+    email_changed:
+      greeting: "¡Hola %{recipient}! "
+      message: Estamos contactando contigo para notificarte que tu email ha sido cambiado a %{email}.
+      subject: Email cambiado
+    password_change:
+      greeting: Hola %{recipient}!
+      message: Le estamos contactando para notificarle que su contraseña ha sido cambiada.
+      subject: Contraseña cambiada
+    reset_password_instructions:
+      action: Crear nueva contraseña
+      greeting: "¡Hola %{recipient}!"
+      instruction: Confirma tu nueva contraseña
+      instruction_2: Crea tu nueva contraseña en Cuántica
+      instruction_3: Toca el botón inferior para continuar
+      instruction_4: "Si no has solicitado este correo, no tienes de qué preocuparte: sólo ignóralo."
+      instruction_love: Trabajamos con amor ©2020 Cuántica
+      subject: Instrucciones para recuperación de contraseña
+    unlock_instructions:
+      action: Desbloquear mi usuario
+      greeting: "¡Hola %{recipient}!"
+      instruction: "Haga click en el siguiente enlace para desbloquear su usuario:"
+      message: Su usuario ha sido bloqueada debido a una cantidad excesiva de intentos infructuosos para ingresar.
+      subject: Instrucciones para desbloquear
+
+  devise:
+    confirmations:
+      confirmed: Tu usuario ha sido confirmada satisfactoriamente.
+      new:
+        resend_confirmation_instructions: Reenviar instrucciones de confirmación
+      send_instructions: Vas a recibir un correo con instrucciones sobre cómo confirmar tu usuario en unos minutos.
+      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, en unos minutos recibirás un correo con instrucciones sobre cómo confirmar tu usuario.
+    failure:
+      already_authenticated: Ya has iniciado sesión.
+      inactive: Tu usuario aún no ha sido activada.
+      invalid: "%{authentication_keys} o contraseña inválidos."
+      last_attempt: Tienes un intento más antes de que tu usuario sea bloqueada.
+      locked: Tu usuario está bloqueada.
+      not_found_in_database: "%{authentication_keys} o contraseña inválidos."
+      timeout: Tu sesión expiró. Por favor, inicia sesión nuevamente para continuar.
+      unauthenticated: Tienes que iniciar sesión o registrarte para poder continuar.
+      unconfirmed: Tienes que confirmar tu usuario para poder continuar.
+
+    passwords:
+      no_token: No puedes acceder a esta página si no es a través de un enlace para restablecer tu contraseña. Si has llegado hasta aquí desde el email para restablecer tu contraseña, por favor asegúrate de que la URL introducida está completa.
+      send_instructions: Recibirás un correo con instrucciones sobre cómo restablecer tu contraseña en unos pocos minutos.
+      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, recibirás un correo con instrucciones sobre cómo restablecer tu contraseña en tu bandeja de entrada.
+      updated: Se ha cambiado tu contraseña. Ya iniciaste sesión.
+      updated_not_active: Tu contraseña fue cambiada.
+    sessions:
+      already_signed_out: Sesión finalizada.
+      new:
+        welcome: Bienvenido/a
+        sign_in: Ingresar
+        sign_up: Crear cuenta
+        forgot_your_password: Olvidé mi contraseña
+      signed_in: Sesión iniciada.
+      signed_out: Sesión finalizada.
+    shared:
+      links:
+        back: Atrás
+        didn_t_receive_confirmation_instructions: "¿No ha recibido las instrucciones de confirmación?"
+        didn_t_receive_unlock_instructions: "¿No ha recibido instrucciones para desbloquear?"
+        forgot_your_password: "¿Ha olvidado su contraseña?"
+        sign_in: Iniciar sesión
+        sign_in_with_provider: Iniciar sesión con %{provider}
+        sign_up: Crear cuenta
+      minimum_password_length:
+        one: "(%{count} caractere como mínimo)"
+        other: "(%{count} caracteres como mínimo)"
+    unlocks:
+      new:
+        resend_unlock_instructions: Reenviar instrucciones para desbloquear
+      send_instructions: Vas a recibir instrucciones para desbloquear tu usuario en unos pocos minutos.
+      send_paranoid_instructions: Si tu usuario existe, vas a recibir instrucciones para desbloquear tu usuario en unos pocos minutos.
+      unlocked: Tu usuario ha sido desbloqueada. Ya puedes iniciar sesión.
+  errors:
+    messages:
+      already_confirmed: ya ha sido confirmado, por favor intenta iniciar sesión
+      confirmation_period_expired: necesita confirmarse dentro de %{period}, por favor solicita una nueva
+      expired: ha expirado, por favor solicita una nueva
+      not_found: no se ha encontrado
+      not_locked: no estaba bloqueada
+      not_saved:
+        one: "Ocurrió un error al tratar de guardar %{resource}:"
+        other: "Ocurrieron %{count} errores al tratar de guardar %{resource}:"

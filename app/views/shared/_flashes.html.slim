@@ -1,0 +1,9 @@
+- flash.each do |msg_type, message|
+  .shadow-md.flash.flex.justify-between.items-center.mx-4.z-10.md:w-full.md:mx-auto.md:max-w-xl.mt-1(
+    class="#{alert_class_for(msg_type)}"
+    role="alert"
+    data-controller="showhide"
+    data-showhide-target="element")
+    span = message
+    button.btn-cancel.ml-2 class="lg:ml-8" data-action="click->showhide#toggle"
+      = inline_svg_tag "x.svg"

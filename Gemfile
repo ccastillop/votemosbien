@@ -42,6 +42,20 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  ## added gems start here ##
+  gem 'capistrano', require: false
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-collection'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-install'
+  gem 'capistrano-logrotate'
+  gem 'capistrano-backburner'
+  gem 'capistrano-ssh-doctor', git: 'https://github.com/capistrano-plugins/capistrano-ssh-doctor.git' # https://gist.github.com/bruno-/9808201
+  gem 'letter_opener_web', '~> 1.0'
+  gem 'yard'
+  gem 'solargraph'
 end
 
 group :test do

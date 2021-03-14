@@ -1,0 +1,18 @@
+.max-w-xs.mx-auto.bg-white.w-full.flex.flex-col
+  .mx-6.mb-4.min-h-full
+    br/
+    br/
+    .mt-6.mb-8
+      = inline_svg_tag "atomo.svg", width: 50, height: 50
+      span.logo--Cuántica Cuántica
+    / p.title.mt-6 = t('.greeting', recipient: @user.email)
+    / p.title.mt-6 = t('.instruction')
+    h2.title = t('.instruction_2')
+    p.title.my-6.text-center  = t('.instruction_3')
+    .w-full
+      = link_to t('.action'),
+        user_confirmation_url(@user, token: @user.recover_token),
+        class: "btn btn--primary btn--md mb-4 w-full"
+    p.title.my-6 = t('.instruction_4')
+    br/
+    p.title = t('.instruction_love')

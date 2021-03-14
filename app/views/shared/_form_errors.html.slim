@@ -1,0 +1,17 @@
+- short ||= false
+- if object.errors.any?
+  .flash.flex.error role="alert" data-controller="showhide" data-showhide-target="element"
+    .message.flex-grow
+      - unless short
+        | Por favor revisar:
+        ul
+          - object.errors.full_messages.each do |msg|
+            li= msg
+
+      - else
+        | Por favor, revisa los campos señalados.
+
+        = object.errors[:base].to_sentence if object.errors[:base].present?
+
+    button.btn-cancel data-action="click->showhide#toggle" type="button"
+      = inline_svg_tag "x.svg"

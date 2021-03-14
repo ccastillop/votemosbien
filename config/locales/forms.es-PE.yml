@@ -1,0 +1,17 @@
+es-PE:
+  attributes:
+    phone: Teléfono celular
+    password: Contraseña
+    password_confirmation: Confirmar contraseña
+    name: Nombre
+    last_name: Apellido
+    description: Descripción
+    remember_me: "Recordarme"
+    email: E-mail
+    company: "El nombre de tu empresa"
+    user: Usuario
+    gender: Género
+    income: Ingresos mensuales del hogar
+    studies: Estudios concluidos
+    ubigeo: Distrito
+    birth_date: Fecha de nacimiento

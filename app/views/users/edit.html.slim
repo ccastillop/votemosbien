@@ -1,8 +1,77 @@
-h1 Editing user
+h2.title.mb-6.text-center= t(".title", resource: @user.model_name.human)
 
-== render 'form'
+.flex.items-center.flex-col
 
-=> link_to 'Show', @user
-'|
-=< link_to 'Back', users_path
+  .max-w-md.w-full
 
+    = form_with model: @user, class:"form" do |f|
+      = render "shared/form_errors", object: @user
+      .input
+        = f.label :email
+        = f.email_field :email,
+          autofocus: true,
+          autocomplete: "email",
+          class: "w-full"
+        
+      fieldset 
+        legend Cambiar contraseña
+        .input
+          = f.label :password
+          = f.password_field :password,
+            autofocus: true,
+            required: false,
+            autocomplete: "new-password",
+              class: "w-full"
+          .text-sm.text-right.mt-1 = t(".leave_blank_if_you_don_t_want_to_change_it").capitalize
+        .input
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation,
+            required: false,
+            autocomplete: "new-password",
+            class: "w-full"
+
+      fieldset 
+        legend Datos personales
+        .input
+          = f.label :first_name
+          = f.text_field :first_name,
+            class: "w-full"
+        .input
+          = f.label :last_name
+          = f.text_field :last_name,
+            class: "w-full"
+        .input
+          = f.label :country_code
+          = f.country_select :country_code,
+            { priority_countries: ["PE", "US"] },
+            { class: "w-full" }
+        .input
+          = f.label :phone
+          = f.phone_field :phone,
+            class: "w-full"
+
+      fieldset 
+        legend Datos de la empresa
+        p En caso necesite una factura. 
+        .input
+          = f.label :company_name
+          = f.text_field :company_name,
+            class: "w-full"
+        .input
+          = f.label :company_tax_id
+          = f.text_field :company_tax_id,
+            class: "w-full"
+
+      .form-actions
+        = f.button t(".update") ,
+          class:"btn btn--primary btn--md w-full"
+
+
+    h3.font-bold.text-lg.mt-10= t(".cancel_my_account")
+
+    p.mb-4
+      = t(".unhappy") 
+      span<>= link_to t(".cancel_my_account"),
+        user_path(@user),
+        data: { confirm: t(".are_you_sure") },
+        method: :delete

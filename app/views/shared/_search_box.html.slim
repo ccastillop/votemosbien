@@ -1,0 +1,5 @@
+= form_tag object, class: "", method: :get do
+  .search.relative.mr-6.my-4.w-full
+    = text_field_tag :words, params[:words], placeholder: "Buscar", class:"rounded-lg border border-gray-400 placeholder-gray-700 py-2 pl-2 pr-1 w-full"
+    .absolute.top-0.right-0.mt-2.mr-1
+      = inline_svg_tag "search.svg", class:"stroke-current text-gray-600 hover:text-gray-800"

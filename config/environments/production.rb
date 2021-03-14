@@ -117,4 +117,15 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  ## added config ##
+  config.action_mailer.default_url_options = { host: 'votemosbien.com', port: 80 }
+  config.active_storage.service = :local
+  config.action_mailer.delivery_method = :ses
+  config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: '[VBerror] ',
+    sender_address: "VB<robot@votemosbien.com>",
+    exception_recipients: %w{ ccastillop+vb@gmail.com }
+  }
+  config.active_job.queue_adapter = :backburner
 end

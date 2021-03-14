@@ -1,0 +1,9 @@
+
+- if policy(object).can_modify?
+  .flex
+    .mr-1= link_to [:edit, object] do
+      = inline_svg_tag "edit.svg"
+    = button_to object,
+      method: :delete,
+      data: { confirm:"¿Segur@?" }  do
+      = inline_svg_tag "trash.svg", class: "text-red-800"
