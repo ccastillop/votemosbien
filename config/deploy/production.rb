@@ -15,10 +15,10 @@ set :server_name, "votemosbien.com"
 #set :nginx_redirect_ssl_certificate, "/etc/letsencrypt/live/#{fetch(:nginx_redirect_server_names)}/fullchain.pem"
 #set :nginx_redirect_ssl_certificate_key, "/etc/letsencrypt/live/#{fetch(:nginx_redirect_server_names)}/privkey.pem"
 
-# set :nginx_use_ssl, true
-# set :nginx_ssl_certificate, "/etc/letsencrypt/live/#{fetch(:server_name)}/fullchain.pem"
-# set :nginx_ssl_certificate_key, "/etc/letsencrypt/live/#{fetch(:server_name)}/privkey.pem"
-# set :nginx_ssl_include_cerbot, true
+set :nginx_use_ssl, true
+set :nginx_ssl_certificate, "/etc/letsencrypt/live/#{fetch(:server_name)}/fullchain.pem"
+set :nginx_ssl_certificate_key, "/etc/letsencrypt/live/#{fetch(:server_name)}/privkey.pem"
+set :nginx_ssl_include_cerbot, true
  
 server "#{fetch(:server_name)}",
   user: "#{fetch(:deploy_user)}",
