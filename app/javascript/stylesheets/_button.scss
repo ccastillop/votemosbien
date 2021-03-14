@@ -1,0 +1,62 @@
+//buttons
+.btn {
+  @apply cursor-pointer shadow rounded p-2 font-bold;
+  // @apply flex items-center justify-center;
+  @extend .title;
+
+  &--facebook {
+    @apply text-white bg-blue-800;
+    &:hover,
+    &:disabled,
+    &:active,
+    &.active {
+      @apply bg-blue-600;
+    }
+  }
+
+  &--google {
+    @apply text-white bg-red-800;
+    &:hover,
+    &:disabled,
+    &:active,
+    &.active {
+      @apply text-white bg-red-600;
+    }
+  }
+
+  &--primary {
+    @apply bg-gray-800 text-white;
+    &:hover,
+    &:disabled,
+    &:active,
+    &.active {
+      @apply bg-gray-600;
+    }
+  }
+
+  &--secondary {
+    @apply bg-gray-300 text-black font-bold;
+    &:hover,
+    &:disabled,
+    &:active,
+    &.active {
+      @apply bg-gray-400 text-white font-bold;
+    }
+  }
+
+  &--sm {
+    @apply p-1;
+  }
+
+  &--lg {
+    @apply text-xl p-2 mb-6;
+  }
+
+  &--xl {
+    @apply text-xl p-4 mb-8;
+  }
+
+  &--center {
+    @apply max-w-xl mx-auto text-center block;
+  }
+}

@@ -1,0 +1,37 @@
+@import "./base";
+@import "./flash";
+@import "./form";
+@import "./button";
+@import "./table";
+@import "./carrousel";
+
+@import "./actiontext.scss";
+
+@import "./direct_uploads";
+
+main {
+  a {
+    @apply text-blue-800;
+
+    &:hover,
+    &:active,
+    &.active {
+      @apply underline;
+    }
+
+    &.no-blue {
+      @apply text-gray-800;
+    }
+  }
+}
+
+nav {
+  a {
+
+    &:hover,
+    &:active,
+    &.active {
+      @apply underline;
+    }
+  }
+}

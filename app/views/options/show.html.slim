@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Question:
+  = @option.question
+p
+  strong Name:
+  = @option.name
+p
+  strong Description:
+  = @option.description
+p
+  strong Value x:
+  = @option.value_x
+p
+  strong Value y:
+  = @option.value_y
+
+=> link_to 'Edit', edit_option_path(@option)
+'|
+=< link_to 'Back', options_path

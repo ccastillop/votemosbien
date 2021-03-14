@@ -1,0 +1,32 @@
+.title {
+  font-family: "Lato", sans-serif;
+  @apply font-bold leading-tight;
+}
+
+h1.title {
+  @apply text-4xl;
+}
+
+h2.title {
+  @apply text-3xl;
+}
+
+h3.title {
+  @apply text-2xl;
+}
+
+h4.title {
+  @apply text-xl;
+}
+
+h5.title {
+  @apply text-sm;
+}
+
+h6.title {
+  @apply text-xs;
+}
+
+hr {
+  @apply border-gray-400;
+}

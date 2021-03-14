@@ -1,0 +1,158 @@
+.form {
+
+  .input,
+  .field,
+  .form-group {
+    @apply mb-4;
+  }
+  .form-actions {
+    @apply mt-8;
+  }
+
+  fieldset {
+    @apply border border-gray-700 p-4 my-6 rounded;
+
+    legend {
+      @apply px-2 font-bold;
+    }
+  }
+
+  .checkbox,
+  .radio {
+    input {
+      @apply inline-block;
+    }
+
+    label {
+      @apply inline-block font-normal mr-1;
+    }
+  }
+
+  label {
+    @apply block pb-2 font-normal;
+    font-family: "Lato",
+      sans-serif !important;
+    font-size: 13.28px;
+    line-height: 16px;
+
+    abbr {
+      @apply hidden;
+    }
+
+    &.no-padding {
+      padding-bottom: 0 !important;
+    }
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  input[type="password"],
+  textarea,
+  .input_like {
+    @apply font-normal text-base appearance-none border-2 border-black py-2 px-3 bg-white rounded;
+    font-family: "Lato",
+      sans-serif !important;
+    line-height: 19px;
+
+    &:disabled,
+    &.disabled {
+      @apply bg-gray-100;
+      @apply shadow-none;
+    }
+    &:focus {
+      @apply border-blue-800 outline-none;
+      caret-color: #2f80ed;
+    }
+  }
+
+  textarea {
+    @apply w-full;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply mr-2;
+  }
+
+  select {
+    @apply font-normal text-base appearance-none bg-white border-2 border-black pl-2 pr-4 py-2 rounded;
+    font-family: "Lato",
+      sans-serif !important;
+    line-height: 19px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 14 7"><g><g><path d="M0 0l7 7 7-7z"/></g></g></svg>') no-repeat;
+    background-size: 10px;
+    background-position: calc(100% - 6px) center;
+
+    &:disabled {
+      @apply bg-white shadow-none border-gray-300 text-gray-300;
+    }
+
+  }
+
+  .field_with_errors,
+  .has-danger,
+  .error {
+    input,
+    select,
+    textarea {
+      @apply border-red-800;
+    }
+    label,
+    .error,
+    .form-control-feedback {
+      @apply text-red-800 text-sm italic;
+    }
+  }
+
+  .hint {
+    @apply text-gray-800 text-sm text-right;
+  }
+
+  .radio-button {
+    span {
+      background: #fff;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      border: 3px solid #222222;
+      border-radius: 100%;
+      position: absolute;
+      top: -1px;
+    }
+
+    input {
+      @apply opacity-0 w-4/5 h-full cursor-pointer absolute;
+    }
+
+    input:checked+label::after {
+      background: #222222;
+      transform: scale(1.5);
+    }
+
+    label {
+      &::after {
+        position: absolute;
+        border-radius: 100%;
+        width: 10px;
+        height: 10px;
+        content: "";
+        display: block;
+        top: 6px;
+        left: 7px;
+        transform: scale(0);
+        transition: transform 0.2s;
+      }
+    }
+  }
+
+  .radio-wrapper {
+    @apply flex flex-row mb-2 relative;
+  }
+
+}
