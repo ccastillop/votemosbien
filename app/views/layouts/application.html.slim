@@ -16,10 +16,10 @@ html
       .container.mx-auto.p-4.flex.items-center.lg:px-8
         = link_to root_path, class:"w-4/12 flex items-center" do
           .border-r.border-gray-800.pr-2.mr-2
-            = inline_svg_tag "atomo.svg", width: 50, height: 50
+            = inline_svg_tag "vote.svg", width: 50, height: 50
           .
-            p.text-2xl.title Votemos Bien
-            p.text-xs Import & Export
+            p.text-2xl.title Votemos bien
+            p.text-xs Un slogan : 
 
         .user.w-8/12.flex.justify-end
           - if user_signed_in?
@@ -37,7 +37,7 @@ html
               .flex.items-center.justify-center
                 .= inline_svg_tag "user.svg"
                 . Ingresar
-    nav.bg-yellow-700.flex
+    nav.bg-green-700.flex
       .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
         .mr-4
           a href="#" Un Link
@@ -63,4 +63,7 @@ html
             span<> Votemos bien
 
         .w-4/12.text-xs.text-right.text-gray-700
-          a href="https://www.flaticon.es/autores/iconixar" target="_blank" title="iconixar" Iconixar 
+          | Icons made by 
+          a href="https://www.freepik.com/" title="Freepik" Freepik
+          | from 
+          a href="https://www.flaticon.com/" title="Flaticon" www.flaticon.com
