@@ -18,8 +18,8 @@ html
           .border-r.border-gray-800.pr-2.mr-2
             = inline_svg_tag "vote.svg", width: 50, height: 50
           .
-            p.text-2xl.title Votemos bien
-            p.text-xs Un slogan : 
+            p.title Votemos
+            p.text-2xl.title bien 🇵🇪
 
         .user.w-8/12.flex.justify-end
           - if user_signed_in?
@@ -37,7 +37,7 @@ html
               .flex.items-center.justify-center
                 .= inline_svg_tag "user.svg"
                 . Ingresar
-    nav.bg-green-700.flex
+    nav.bg-red-600.flex
       .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
         .mr-4
           a href="#" Un Link
