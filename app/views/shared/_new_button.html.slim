@@ -1,4 +1,5 @@
-- if policy(klass).new?
-  = link_to [:new, klass.to_s.downcase], class: "flex items-center btn btn--primary" do
+- url = klass.is_a?(Array) ? [klass.first, klass.last.to_s.downcase] : klass.to_s.downcase
+- if policy(klass.is_a?(Array) ? klass.last : klass).new?
+  = link_to [:new, *url], class: "flex items-center btn btn--primary" do
     = inline_svg_tag "plus.svg"
     | Nuevo

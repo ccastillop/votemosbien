@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :options
-  resources :questions
+  resources :questions do
+    resources :options, shallow: true
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #https://hackernoon.com/building-a-simple-session-based-authentication-using-ruby-on-rails-9tah3y4j
   resources :users

@@ -1,9 +1,11 @@
 class OptionsController < ApplicationController
+  before_action :set_question
   before_action :set_option, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
 
   # GET /options or /options.json
   def index
-    @options = Option.all
+    @options = @question.options.all
   end
 
   # GET /options/1 or /options/1.json
@@ -12,7 +14,8 @@ class OptionsController < ApplicationController
 
   # GET /options/new
   def new
-    @option = Option.new
+    @option = @question.options.new
+    authorize(@option)
   end
 
   # GET /options/1/edit
@@ -21,12 +24,12 @@ class OptionsController < ApplicationController
 
   # POST /options or /options.json
   def create
-    @option = Option.new(option_params)
-
+    @option = @question.options.new(option_params)
+    authorize(@option)
     respond_to do |format|
       if @option.save
-        format.html { redirect_to @option, notice: "Option was successfully created." }
-        format.json { render :show, status: :created, location: @option }
+        format.html { redirect_to question_options_url(@option.question), notice: "Option was successfully created." }
+        format.json { render :show, status: :created, location: question_options_url(@option.question) }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @option.errors, status: :unprocessable_entity }
@@ -38,8 +41,8 @@ class OptionsController < ApplicationController
   def update
     respond_to do |format|
       if @option.update(option_params)
-        format.html { redirect_to @option, notice: "Option was successfully updated." }
-        format.json { render :show, status: :ok, location: @option }
+        format.html { redirect_to question_options_url(@option.question), notice: "Option was successfully updated." }
+        format.json { render :show, status: :ok, location: question_options_url(@option.question) }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @option.errors, status: :unprocessable_entity }
@@ -51,19 +54,24 @@ class OptionsController < ApplicationController
   def destroy
     @option.destroy
     respond_to do |format|
-      format.html { redirect_to options_url, notice: "Option was successfully destroyed." }
+      format.html { redirect_to question_options_url(@option.question), notice: "Option was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_question
+      @question = Question.find_by(id: params[:question_id])
+    end
+    
     def set_option
       @option = Option.find(params[:id])
+      authorize(@option)
     end
 
     # Only allow a list of trusted parameters through.
     def option_params
-      params.require(:option).permit(:question_id, :name, :description, :value_x, :value_y)
+      params.require(:option).permit(:name, :description, :value_x, :value_y)
     end
 end

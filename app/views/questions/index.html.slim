@@ -1,23 +1,22 @@
-h1 Listing questions
+.flex.items-center.mb-8
+  h1.title Preguntas (#{@questions.count})
+  .ml-auto = new_button Question
 
-table
-  thead
-    tr
-      th Name
-      th Description
-      th
-      th
-      th
-
-  tbody
-    - @questions.each do |question|
+.overflow-x-auto
+  table.table
+    thead
       tr
-        td = question.name
-        td = question.description
-        td = link_to 'Show', question
-        td = link_to 'Edit', edit_question_path(question)
-        td = link_to 'Destroy', question, data: { confirm: 'Are you sure?' }, method: :delete
+        th Nombre
+        th Descripción
+        th Opciones
+        th
 
-br
-
-= link_to 'New Question', new_question_path
+    tbody
+      - @questions.each do |question|
+        tr
+          td = question.name
+          td = question.description
+          td
+            = link_to question_options_path(question) do
+              | Opciones (#{question.options.count})
+          td = edit_buttons question

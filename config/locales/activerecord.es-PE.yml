@@ -24,12 +24,8 @@ es-PE:
     models:
       person: Persona
       user: Usuario
-      address: Dirección
-      product: Producto
-      brand: Marca
-      category: Categoría
-      order: Orden
-
+      question: Pregunta
+      option: Opción
     attributes:
       user:
         first_name: Nombre

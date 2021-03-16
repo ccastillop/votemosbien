@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sesion_id: MyString
+  user: one
+  option: one
+  question: one
+  value_x: MyString
+  value_y: MyString
+
+two:
+  sesion_id: MyString
+  user: two
+  option: two
+  question: two
+  value_x: MyString
+  value_y: MyString

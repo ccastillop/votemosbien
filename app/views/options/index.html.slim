@@ -1,29 +1,22 @@
-h1 Listing options
+.flex.items-center.mb-8
+  h1.title Opciones para #{@question} (#{@question.options.count})
+  .ml-auto = new_button [@question, Option]
 
-table
-  thead
-    tr
-      th Question
-      th Name
-      th Description
-      th Value x
-      th Value y
-      th
-      th
-      th
-
-  tbody
-    - @options.each do |option|
+.overflow-x-auto
+  table.table
+    thead
       tr
-        td = option.question
-        td = option.name
-        td = option.description
-        td = option.value_x
-        td = option.value_y
-        td = link_to 'Show', option
-        td = link_to 'Edit', edit_option_path(option)
-        td = link_to 'Destroy', option, data: { confirm: 'Are you sure?' }, method: :delete
+        th Name
+        th Description
+        th Value x
+        th Value y
+        th
 
-br
-
-= link_to 'New Option', new_option_path
+    tbody
+      - @options.each do |option|
+        tr
+          td = option.name
+          td = option.description
+          td = option.value_x
+          td = option.value_y
+          td = edit_buttons option
