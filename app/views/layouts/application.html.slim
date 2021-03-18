@@ -26,7 +26,7 @@ html
     nav.bg-green-700.flex
       .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
         .mr-4
-          a href="#" Ubícate
+          = link_to "Ubícate", answer_path, class: controller_name == 'answers' ? "active" : nil
         .mr-4
           a href="#" Ubícalos
         - if user_signed_in? 
@@ -46,9 +46,9 @@ html
       .container.text-white.mx-auto.p-4.flex.items-center.lg:px-8
         .w-8/12.text-xs.text-gray-700
           | Icons made by 
-          a href="https://www.freepik.com/" title="Freepik" Freepik
+          a href="https://www.freepik.com/" title="Freepik" target="_blank" Freepik
           | from 
-          a href="https://www.flaticon.com/" title="Flaticon" www.flaticon.com
+          a href="https://www.flaticon.com/" title="Flaticon" target="_blank" www.flaticon.com
 
         .ml-auto.flex.items-center
           - if user_signed_in?

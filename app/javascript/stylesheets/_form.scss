@@ -29,12 +29,8 @@
   }
 
   label {
-    @apply block pb-2 font-normal;
-    font-family: "Lato",
-      sans-serif !important;
-    font-size: 13.28px;
-    line-height: 16px;
-
+    @apply block pb-2 font-normal leading-5;
+    font-family: "Lato", sans-serif !important;
     abbr {
       @apply hidden;
     }
@@ -104,7 +100,10 @@
     label,
     .error,
     .form-control-feedback {
-      @apply text-red-800 text-sm italic;
+      @apply text-red-800 italic;
+      .field_with_errors {
+        @apply inline;
+      }
     }
   }
 

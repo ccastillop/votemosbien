@@ -10,8 +10,11 @@ Rails.application.routes.draw do
 
   resources :user_recover_passwords, only: %i(new create edit update)
   resources :user_confirmations, only: %i(new create show)
+  
+  resource :answer, except: :new
+  
   get "/:page", to: "home#show", as: :home
-  root 'home#index'
+  root 'answers#show'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
 end

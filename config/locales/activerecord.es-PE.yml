@@ -26,12 +26,19 @@ es-PE:
       user: Usuario
       question: Pregunta
       option: Opción
+      answer: Respuesta
+      answer_line: Línea
     attributes:
       user:
         first_name: Nombre
         country_code: País (celular)
         company_name: Razón social
         company_tax_id: RUC
+      answer:
+        answer_lines:
+          option: Opción
+      answer_line:
+        option: Opción
       address:
         line1: Dirección
         line2: Dirección (referencia)

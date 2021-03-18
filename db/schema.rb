@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_023717) do
+ActiveRecord::Schema.define(version: 2021_03_17_235546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,18 +53,25 @@ ActiveRecord::Schema.define(version: 2021_03_15_023717) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "answers", force: :cascade do |t|
-    t.string "sesion_id"
-    t.bigint "user_id"
+  create_table "answer_lines", force: :cascade do |t|
+    t.bigint "answer_id", null: false
     t.bigint "option_id", null: false
     t.bigint "question_id", null: false
     t.integer "value_x"
     t.integer "value_y"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["option_id"], name: "index_answers_on_option_id"
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["sesion_id"], name: "index_answers_on_sesion_id"
+    t.index ["answer_id"], name: "index_answer_lines_on_answer_id"
+    t.index ["option_id"], name: "index_answer_lines_on_option_id"
+    t.index ["question_id"], name: "index_answer_lines_on_question_id"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.string "session_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_answers_on_session_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -110,8 +117,9 @@ ActiveRecord::Schema.define(version: 2021_03_15_023717) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "answers", "options"
-  add_foreign_key "answers", "questions"
+  add_foreign_key "answer_lines", "answers"
+  add_foreign_key "answer_lines", "options"
+  add_foreign_key "answer_lines", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "options", "questions"

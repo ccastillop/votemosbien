@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :option
-  belongs_to :question
+  has_many :answer_lines, dependent: :destroy
+  accepts_nested_attributes_for :answer_lines
 end

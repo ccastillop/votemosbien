@@ -17,3 +17,5 @@ import "stylesheets/application"
 import "stylesheets/custom"
 require("trix")
 require("@rails/actiontext")
+
+import '../src/submit_on_click_or_input.js'

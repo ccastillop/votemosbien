@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  answer: one
+  option: one
+  question: one
+  value_x: 1
+  value_y: 1
+
+two:
+  answer: two
+  option: two
+  question: two
+  value_x: 1
+  value_y: 1
