@@ -5,7 +5,6 @@ p.mb-4
   | Las 10 primeras son asuntos sociales. Las 10 últimas son asuntos económicos.
 
 = form_with model: @answer, url: answer_path, class: "form" do |f|
-  = render "shared/form_errors", object: @answer
   - Question.all.each do |question|
     - answer_line = @answer.answer_lines.select{ |al| al.question_id == question.id }.first || @answer.answer_lines.build(question_id: question.id)
     = f.fields_for :answer_lines,
