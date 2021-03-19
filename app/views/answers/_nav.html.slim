@@ -1,17 +1,16 @@
 .flex.items-center
-  .mr-3
+  .
     - if answer.completed?
       = link_to answer_path,
         class: "btn btn--primary btn--sm inline-block flex items-center" do
           .mr-1= inline_svg_tag "check-circle.svg"
-          = "Ver resultados"
+          = "Ver resultado"
     - else
       . class="btn--terciary btn--sm inline-block flex items-center"
-        .mr-1= inline_svg_tag "edit.svg"
         = "Van #{answer.answered_count}/#{Question.count}" 
 
-  .
-    - if @answer.answer_lines.any?
+  - if @answer.answer_lines.any?
+    .ml-3
       = button_to answer_path,
         method: :delete,
         data: { confirm: "Borraré todas las respuestas. ¿Segur@?",
@@ -19,6 +18,3 @@
         class: "block btn btn--secondary btn--sm flex items-center" do 
         .mr-1= inline_svg_tag "trash.svg"
         span Borrar
-        
-
-
