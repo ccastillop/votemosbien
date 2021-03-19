@@ -2,7 +2,7 @@
   - answer_line = answer.answer_lines.select{ |al| al.question_id == question.id }.first || answer.answer_lines.build(question_id: question.id)
   = f.fields_for :answer_lines, answer_line do |ff|
     .field
-      p.title.mb-2
+      h5.title.mb-2
         = question
         = tag.span("✅ ", class: "ml-1") if ff.object.option.present?
 
