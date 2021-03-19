@@ -1,10 +1,13 @@
-= form_with model: answer, url: answer_path(question_id: question.id), class: "form" do |f|
+= form_with model: answer, url: answer_path(question_id: question.id), class: "form mb-6" do |f|
   - answer_line = answer.answer_lines.select{ |al| al.question_id == question.id }.first || answer.answer_lines.build(question_id: question.id)
   = f.fields_for :answer_lines, answer_line do |ff|
-    .field
-      h5.title.mb-2
-        = question
-        = tag.span("✅ ", class: "ml-1") if ff.object.option.present?
+    .field.border-b-2.border-gray-600.pb-6
+      .mb-4
+        p.title.mb-1
+          = question
+          = tag.span("✅ ", class: "ml-1") if ff.object.option.present?
+
+        = simple_format question.description
 
       - question.options.each do |option|
         = ff.label :option_id, value: option.id do 
