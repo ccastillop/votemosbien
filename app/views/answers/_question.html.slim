@@ -2,10 +2,10 @@
   - answer_line = answer.answer_lines.select{ |al| al.question_id == question.id }.first || answer.answer_lines.build(question_id: question.id)
   = f.fields_for :answer_lines, answer_line do |ff|
     .field.border-b-2.border-gray-600.pb-6
-      .mb-4
+      .mb-4.sticky.top-11.bg-white.p-1.shadow
         p.title.mb-1
+          = tag.span("✅ ", class: "mr-1") if ff.object.option.present?
           = question
-          = tag.span("✅ ", class: "ml-1") if ff.object.option.present?
 
         = simple_format question.description
 
