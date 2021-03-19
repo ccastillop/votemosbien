@@ -4,8 +4,7 @@ class Answer < ApplicationRecord
   accepts_nested_attributes_for :answer_lines
 
   def completed?
-    answer_lines.size == Question.count &&
-      answer_lines.all?(&:valid?)
+    pending_count == 0
   end
 
   def value_x
@@ -14,5 +13,13 @@ class Answer < ApplicationRecord
 
   def value_y
     answer_lines.sum{ |l| l.value_y || 0 }
+  end
+
+  def answered_count
+    AnswerLine.where(answer_id: id).count
+  end
+
+  def pending_count
+    Question.count - answered_count
   end
 end

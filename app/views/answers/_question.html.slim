@@ -4,7 +4,7 @@
     .field
       p.title.mb-2
         = question
-        = tag.span("✅ ", class: "ml-1") if ff.object.valid?
+        = tag.span("✅ ", class: "ml-1") if ff.object.option.present?
 
       - question.options.each do |option|
         = ff.label :option_id, value: option.id do 

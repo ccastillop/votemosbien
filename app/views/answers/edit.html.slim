@@ -2,7 +2,7 @@
   .
     h1.title Preguntas
 
-  = turbo_frame_tag "top_nav", class: "ml-auto" do
+  = turbo_frame_tag "top_nav", target: "_top", class: "ml-auto" do
     = render "nav", answer: @answer 
 
 p.mb-4 

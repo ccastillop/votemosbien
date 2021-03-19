@@ -1,27 +1,21 @@
 .flex.items-center
   .mr-3
-    | X
-    = answer.value_x
-    | Y
-    = answer.value_y
-
-  .mr-3
-    = link_to answer_path,
-      class: "btn btn--primary btn--sm inline-block flex items-center",
-      "data-turbo-frame"=>"_top" do
-      - unless answer.completed?
+    - if answer.completed?
+      = link_to answer_path,
+        class: "btn btn--primary btn--sm inline-block flex items-center" do
+          .mr-1= inline_svg_tag "check-circle.svg"
+          = "Ver resultados"
+    - else
+      . class="btn--terciary btn--sm inline-block flex items-center"
         .mr-1= inline_svg_tag "edit.svg"
-        = "Falta contestar" 
-      - else
-        .mr-1= inline_svg_tag "check-circle.svg"
-        = "Ver resultados"
+        = "Van #{answer.answered_count}/#{Question.count}" 
 
   .
     - if @answer.answer_lines.any?
       = button_to answer_path,
         method: :delete,
         data: { confirm: "Borraré todas las respuestas. ¿Segur@?",
-          "turbo-frame"=>"_top" },
+          disable_with: 'borrando...' },
         class: "block btn btn--secondary btn--sm flex items-center" do 
         .mr-1= inline_svg_tag "trash.svg"
         span Borrar
