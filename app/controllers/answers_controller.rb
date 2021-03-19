@@ -16,6 +16,10 @@ class AnswersController < ApplicationController
       if @answer.update(answer_params)
         format.html { redirect_to answer_url, notice: "Tus respuestas han sido actualizadas" }
         format.json { render :show, status: :ok, location: @answer }
+        format.turbo_stream do
+          @question = Question.find params[:question_id]
+          render 'update'
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
@@ -47,6 +51,6 @@ class AnswersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def answer_params
-      params.require(:answer).permit(answer_lines_attributes: [:question_id, :option_id])
+      params.require(:answer).permit(answer_lines_attributes: [:question_id, :option_id, :id])
     end
 end

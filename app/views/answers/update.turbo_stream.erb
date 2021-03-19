@@ -1,0 +1,6 @@
+<%= turbo_stream.update dom_id(@question) do %>
+  <%= render "question", question: @question, answer: @answer %>
+<% end %>
+<%= turbo_stream.update 'top_nav' do %>
+  <%= render "nav", answer: @answer %>
+<% end %>

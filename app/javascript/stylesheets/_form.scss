@@ -100,7 +100,7 @@
     label,
     .error,
     .form-control-feedback {
-      @apply text-red-800 italic;
+      @apply text-red-900;
       .field_with_errors {
         @apply inline;
       }

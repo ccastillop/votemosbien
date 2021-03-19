@@ -14,14 +14,14 @@ html
   body.flex.flex-col.min-h-screen.text-gray-800.leading-relaxed
     header
       .container.mx-auto.px-4.py-2.flex.items-center.lg:px-8
-        = link_to root_path, class:"w-4/12 flex items-center" do
+        = link_to root_path, class:"w-6/12 flex items-center" do
           .border-r.border-gray-800.pr-2.mr-2
             = inline_svg_tag "vote.svg", width: 50, height: 50
           .
             p.title Votemos
             p.text-2xl.title bien 🇵🇪
 
-        .user.w-8/12.flex.justify-end
+        .w-6/12.flex.justify-end
 
     nav.bg-green-700.flex
       .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
@@ -30,14 +30,16 @@ html
         .mr-4
           a href="#" Ubícalos
         - if user_signed_in? 
-          - if current_user.admin?
-            .mr-4 Admin:
-            .mr-4 = link_to "Preguntas", questions_path, class: controller_name == 'question' ? "active" : nil
-            .mr-4 = link_to "Usuarios", users_path, class: controller_name == 'users' ? "active" : nil
           .ml-auto
             span.mr-1 👋  
             span<> Hola 
             span.font-bold = link_to current_user, current_user
+    - if user_signed_in? && current_user.admin?
+      nav.bg-blue-700.flex
+        .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
+          .mr-4 Admin:
+          .mr-4 = link_to "Preguntas", questions_path, class: controller_name == 'question' ? "active" : nil
+          .mr-4 = link_to "Usuarios", users_path, class: controller_name == 'users' ? "active" : nil
     main.flex-grow.bg-gray-50
       = render "shared/flashes"
       .container.mx-auto.p-4.lg:px-8

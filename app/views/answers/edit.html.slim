@@ -1,29 +1,16 @@
-h1.title.mb-4 Preguntas
+.mb-4.p-1.flex.items-center.sticky.top-0.bg-white.shadow
+  .
+    h1.title Preguntas
+
+  = turbo_frame_tag "top_nav", class: "ml-auto" do
+    = render "nav", answer: @answer 
 
 p.mb-4 
-  | Por favor, responda a las #{Question.count} preguntas. 
-  | Las 10 primeras son asuntos sociales. Las 10 últimas son asuntos económicos.
+  | Contesta estas #{Question.count} breves preguntas. 
+  | Te tomará aproximadamente 5 minutos. 
 
-= form_with model: @answer, url: answer_path, class: "form" do |f|
-  - Question.all.each do |question|
-    - answer_line = @answer.answer_lines.select{ |al| al.question_id == question.id }.first || @answer.answer_lines.build(question_id: question.id)
-    = f.fields_for :answer_lines,
-      answer_line do |ff|
-      .field
-        p.title.mb-2= question
-        - question.options.each do |option|
-          = ff.label :option_id, value: option.id do 
-            = ff.radio_button :option_id, option.id, class: "js-submit-on-click"
-            = ff.hidden_field :question_id
-            = option.name
-  .actions
-    = f.submit class: "btn btn--primary", "data-disable-with" => "Guardando..."
+- Question.all.each do |question|
+  = turbo_frame_tag question do 
+    = render "question", answer: @answer, question: question
 
-- if @answer.answer_lines.any?
-  .my-6
-    = button_to answer_path,
-      method: :delete,
-      data: { confirm: "Borraré todas las respuestas. ¿Segur@?" },
-      class: "block btn btn--secondary btn--sm flex items-center" do 
-      = inline_svg_tag "trash.svg"
-      span Borrar
+
