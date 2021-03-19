@@ -4,3 +4,6 @@
 <%= turbo_stream.update 'top_nav' do %>
   <%= render "nav", answer: @answer %>
 <% end %>
+<%= turbo_stream.update 'bottom_nav' do %>
+  <%= render "nav", answer: @answer %>
+<% end %>

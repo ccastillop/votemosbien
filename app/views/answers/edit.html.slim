@@ -13,3 +13,6 @@ p.mb-6.italic
     = render "question", answer: @answer, question: question
 
 
+.mb-4.py-1.flex.items-center.sticky.top-0.p-1.bg-gray-100.shadow.z-10
+  = turbo_frame_tag "bottom_nav", target: "_top", class: "ml-auto" do
+    = render "nav", answer: @answer 

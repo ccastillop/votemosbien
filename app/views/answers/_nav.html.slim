@@ -7,7 +7,8 @@
           = "Ver resultado"
     - else
       . class="btn--terciary btn--sm inline-block flex items-center"
-        = "Van #{answer.answered_count}/#{Question.count}" 
+        .sm.mr-2= "#{answer.answered_count}/#{Question.count}"
+        meter max="#{Question.count}" value="#{answer.answered_count}"
 
   - if @answer.answer_lines.any?
     .ml-3
