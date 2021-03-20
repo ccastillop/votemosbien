@@ -2,8 +2,9 @@
   - answer_line = answer.answer_lines.select{ |al| al.question_id == question.id }.first || answer.answer_lines.build(question_id: question.id)
   = f.fields_for :answer_lines, answer_line do |ff|
     .field.border-b-2.border-gray-600.pb-6
-      .mb-4
-        p.title.text-lg.flex.items-inline
+      .mb-3
+        p.title.text-lg.mb-1.flex.items-inline
+          = "#{question.id}: "
           = question
           = inline_svg_tag "check.svg", class: "ml-1 text-green-800" if ff.object.option.present?
 
