@@ -1,0 +1,20 @@
+.graph {
+	width: 100%;
+	overflow: hidden;
+
+  .grid {
+    stroke: #ccc;
+    stroke-dasharray: 0;
+    stroke-width: 1;
+  }
+
+  .label {
+    font-size: 6px;
+    fill: black;
+  }
+
+  .data {
+    fill: red;
+    stroke-width: 1;
+  }
+}

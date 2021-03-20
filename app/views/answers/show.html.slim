@@ -5,3 +5,5 @@ h1.title.mb-4.flex.items-center
 p.mb-4 Conoce tu posición política para poder decidir mejor. 
 
 .mb-4= link_to "Contesta #{Question.count} preguntas", edit_answer_path, class: "btn btn--primary"
+
+= render "shared/graph", x: @answer.value_x * 5, y: @answer.value_y * 5
