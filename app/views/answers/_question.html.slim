@@ -1,11 +1,11 @@
-= form_with model: answer, url: answer_path(question_id: question.id), class: "form mb-12" do |f|
+= form_with model: answer, url: answer_path(question_id: question.id), class: "form mb-6" do |f|
   - answer_line = answer.answer_lines.select{ |al| al.question_id == question.id }.first || answer.answer_lines.build(question_id: question.id)
   = f.fields_for :answer_lines, answer_line do |ff|
     .field.border-b-2.border-gray-600.pb-6
-      .mb-6.sticky.top-10.bg-white.p-1.shadow
-        p.title.mb-1.text-lg
-          = tag.span("✅ ", class: "mr-1") if ff.object.option.present?
+      .mb-4
+        p.title.text-lg.flex.items-inline
           = question
+          = inline_svg_tag "check.svg", class: "ml-1 text-green-800" if ff.object.option.present?
 
         .text-lg= simple_format question.description
 
@@ -13,5 +13,5 @@
         = ff.label :option_id, value: option.id do 
           = ff.radio_button :option_id, option.id, class: "js-submit-on-click"
           = ff.hidden_field :question_id
-          span.text-lg class="#{ff.object.option == option ? "font-bold" : ""}"
+          span.text-lg class="#{ff.object.option == option ? "underline" : ""}"
             = option.name
