@@ -13,4 +13,5 @@
         = ff.label :option_id, value: option.id do 
           = ff.radio_button :option_id, option.id, class: "js-submit-on-click"
           = ff.hidden_field :question_id
-          span.text-lg= option.name
+          span.text-lg class="#{ff.object.option == option ? "font-bold" : ""}"
+            = option.name

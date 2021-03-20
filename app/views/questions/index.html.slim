@@ -12,7 +12,7 @@
         th
 
     tbody
-      - @questions.each do |question|
+      - @questions.order(:id).each do |question|
         tr
           td = question.name
           td = question.description
