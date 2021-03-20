@@ -1,0 +1,10 @@
+= form_for @election, class: "form" do |f|
+  = render "shared/form_errors", object: @election
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :due_date
+    = f.text_field :due_date
+  .actions = f.submit

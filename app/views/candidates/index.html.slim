@@ -1,0 +1,35 @@
+.flex.items-center.mb-8
+  h1.title Candidatos (#{@pagy.count})
+  .ml-auto = new_button Candidate
+
+== pagy_nav(@pagy)
+.overflow-x-auto
+  table.table
+    thead
+      tr
+        th Dni
+        th Names
+        th Father surname
+        th Mother surname
+        th Number
+        th Region
+        th Party
+        th Status
+        th Election
+        th
+
+    tbody
+      - @candidates.each do |candidate|
+        tr
+          td = candidate.dni
+          td = candidate.names
+          td = candidate.father_surname
+          td = candidate.mother_surname
+          td = candidate.number
+          td = candidate.region
+          td = candidate.party
+          td = candidate.status
+          td = candidate.election
+          td = edit_buttons candidate
+
+== pagy_nav(@pagy)

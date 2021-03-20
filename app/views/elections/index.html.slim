@@ -1,0 +1,18 @@
+.flex.items-center.mb-8
+  h1.title Elecciones (#{@elections.count})
+  .ml-auto = new_button Election
+
+.overflow-x-auto
+  table.table
+    thead
+      tr
+        th Name
+        th Candidatos
+        th
+
+    tbody
+      - @elections.each do |election|
+        tr
+          td = election.name
+          td = link_to election.candidates.count, candidates_path(election_id: election.id)
+          td = edit_buttons election

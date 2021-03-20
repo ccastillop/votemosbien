@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dni: MyString
+  names: MyString
+  father_surname: MyString
+  mother_surname: MyString
+  number: MyString
+  region: one
+  party: one
+  status: MyString
+  election: one
+
+two:
+  dni: MyString
+  names: MyString
+  father_surname: MyString
+  mother_surname: MyString
+  number: MyString
+  region: two
+  party: two
+  status: MyString
+  election: two

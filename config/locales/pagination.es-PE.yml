@@ -1,20 +1,15 @@
 es-PE:
   pagy:
-
     item_name:
       one: "ítem"
       other: "ítems"
-
     nav:
       prev: "&lsaquo;&nbsp;Anterior"
       next: "Siguiente&nbsp;&rsaquo;"
       gap: "&hellip;"
-
     info:
       no_items: "Sin resultados"
       single_page: "Mostrando %{count} %{item_name}"
       multiple_pages: "Mostrando %{item_name} %{from}-%{to} de %{count} en total"
-
     combo_nav_js: "Página %{page_input} de %{pages}"
-
     items_selector_js: "Mostrar %{items_input} %{item_name} por página"

@@ -1,0 +1,33 @@
+p#notice = notice
+
+p
+  strong Dni:
+  = @candidate.dni
+p
+  strong Names:
+  = @candidate.names
+p
+  strong Father surname:
+  = @candidate.father_surname
+p
+  strong Mother surname:
+  = @candidate.mother_surname
+p
+  strong Number:
+  = @candidate.number
+p
+  strong Region:
+  = @candidate.region
+p
+  strong Party:
+  = @candidate.party
+p
+  strong Status:
+  = @candidate.status
+p
+  strong Election:
+  = @candidate.election
+
+=> link_to 'Edit', edit_candidate_path(@candidate)
+'|
+=< link_to 'Back', candidates_path

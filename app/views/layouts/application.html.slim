@@ -37,8 +37,11 @@ html
     - if user_signed_in? && current_user.admin?
       nav.bg-blue-700.flex
         .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
-          .mr-4 Admin:
           .mr-4 = link_to "Preguntas", questions_path, class: controller_name == 'question' ? "active" : nil
+          .mr-4 = link_to "Candidatos", candidates_path, class: controller_name == 'candidates' ? "active" : nil
+          .mr-4 = link_to "Partidos", parties_path, class: controller_name == 'parties' ? "active" : nil
+          .mr-4 = link_to "Regiones", regions_path, class: controller_name == 'regions' ? "active" : nil
+          .mr-4 = link_to "Cargos", elections_path, class: controller_name == 'elections' ? "active" : nil
           .mr-4 = link_to "Usuarios", users_path, class: controller_name == 'users' ? "active" : nil
     main.flex-grow.bg-gray-50
       = render "shared/flashes"

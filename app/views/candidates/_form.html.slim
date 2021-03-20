@@ -1,0 +1,31 @@
+= form_for @candidate, class: "form" do |f|
+  = render "shared/form_errors", object: @candidate
+
+  .field
+    = f.label :dni
+    = f.text_field :dni
+  .field
+    = f.label :names
+    = f.text_field :names
+  .field
+    = f.label :father_surname
+    = f.text_field :father_surname
+  .field
+    = f.label :mother_surname
+    = f.text_field :mother_surname
+  .field
+    = f.label :number
+    = f.text_field :number
+  .field
+    = f.label :region
+    = f.text_field :region
+  .field
+    = f.label :party
+    = f.text_field :party
+  .field
+    = f.label :status
+    = f.text_field :status
+  .field
+    = f.label :election
+    = f.text_field :election
+  .actions = f.submit

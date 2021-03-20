@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :candidates
+  resources :regions
+  resources :elections
+  resources :parties
   resources :questions do
     resources :options, shallow: true
   end

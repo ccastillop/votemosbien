@@ -1,0 +1,7 @@
+= form_for @party, class: "form" do |f|
+  = render "shared/form_errors", object: @party
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions = f.submit

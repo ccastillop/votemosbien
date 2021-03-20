@@ -29,3 +29,24 @@ File.open( Rails.root.join('db', 'data', 'preguntas.txt') , "r").each_slice(5).w
   end
   puts " "
 end
+
+puts "populating parties, elections and candidates"
+require 'csv'    
+csv_text = File.read(Rails.root.join('db', 'data', 'candidatos.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  print "c"
+  row = row.to_h.transform_values{|v| v.split(" ").map(&:capitalize).join(" ") rescue nil }
+  election = Election.find_or_create_by name: row.delete("election")
+  region = Region.find_or_create_by name: row.delete("region") rescue nil
+  party = Party.find_or_create_by name: row.delete("party")
+  dni = "%08d" % row.delete("dni")
+  attributes = {
+    party: party,
+    region: region,
+    election: election,
+    dni: dni
+  }.merge(row)
+  candidate = Candidate.create! attributes
+end
+puts "Fin"

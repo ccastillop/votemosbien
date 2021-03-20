@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_235546) do
+ActiveRecord::Schema.define(version: 2021_03_20_204531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,30 @@ ActiveRecord::Schema.define(version: 2021_03_17_235546) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "candidates", force: :cascade do |t|
+    t.string "dni"
+    t.string "names"
+    t.string "father_surname"
+    t.string "mother_surname"
+    t.string "number"
+    t.bigint "region_id"
+    t.bigint "party_id", null: false
+    t.string "status"
+    t.bigint "election_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["election_id"], name: "index_candidates_on_election_id"
+    t.index ["party_id"], name: "index_candidates_on_party_id"
+    t.index ["region_id"], name: "index_candidates_on_region_id"
+  end
+
+  create_table "elections", force: :cascade do |t|
+    t.string "name"
+    t.string "due_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "identities", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "provider"
@@ -95,9 +119,21 @@ ActiveRecord::Schema.define(version: 2021_03_17_235546) do
     t.index ["question_id"], name: "index_options_on_question_id"
   end
 
+  create_table "parties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -121,6 +157,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_235546) do
   add_foreign_key "answer_lines", "options"
   add_foreign_key "answer_lines", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "candidates", "elections"
+  add_foreign_key "candidates", "parties"
+  add_foreign_key "candidates", "regions"
   add_foreign_key "identities", "users"
   add_foreign_key "options", "questions"
 end

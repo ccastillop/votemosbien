@@ -1,0 +1,18 @@
+.flex.items-center.mb-8
+  h1.title Partidos (#{@parties.count})
+  .ml-auto = new_button Party
+
+.overflow-x-auto
+  table.table
+    thead
+      tr
+        th Nombre
+        th Candidatos
+        th
+
+    tbody
+      - @parties.each do |party|
+        tr
+          td = party.name
+          td = link_to party.candidates.count, candidates_path(party_id: party.id)
+          td = edit_buttons party

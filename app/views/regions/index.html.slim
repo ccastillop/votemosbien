@@ -1,0 +1,18 @@
+.flex.items-center.mb-8
+  h1.title Regiones (#{@regions.count})
+  .ml-auto = new_button Region
+
+.overflow-x-auto
+  table.table
+    thead
+      tr
+        th Nombre
+        th Candidatos
+        th
+
+    tbody
+      - @regions.each do |region|
+        tr
+          td = region.name
+          td = link_to region.candidates.count, candidates_path(region_id: region.id)
+          td = edit_buttons region
