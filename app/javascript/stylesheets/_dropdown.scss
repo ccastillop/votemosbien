@@ -1,0 +1,17 @@
+ul.dropdown{
+  @apply border border-gray-600 shadow-md absolute z-30 bg-white w-full mt-1;
+  li{
+    @apply py-2 border-b border-gray-400 text-gray-800;
+    &:hover,
+    &.active
+    {
+      @apply bg-gray-300;
+    }
+    a {
+      @apply px-3 block;
+    }
+  }
+  &:last-child{
+    @apply border-none;
+  }
+}

@@ -1,0 +1,5 @@
+- if user_signed_in? && current_user.admin?
+  nav.bg-blue-700.flex
+    .container.mx-auto.px-4.py-1.flex.items-center.text-white.lg:px-8
+      .mr-4 = link_to "Preguntas", questions_path, class: controller_name == 'question' ? "active" : nil
+      .mr-4 = link_to "Usuarios", users_path, class: controller_name == 'users' ? "active" : nil

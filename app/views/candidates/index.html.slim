@@ -24,7 +24,7 @@
     .mr-2
       = f.select :election_ids,
         Election.order(:name).map{|r| [r.name, r.id] },
-        {include_blank: "Puestos"},
+        {include_blank: "Candidaturas"},
         {multiple: true , class: "js-choice w-full" }
     .
       button.btn.btn--primary.flex.items-center
@@ -47,7 +47,7 @@
           th Región
           th Partido
           th Estado
-          th Puesto
+          th Candidatura
           th
 
       tbody

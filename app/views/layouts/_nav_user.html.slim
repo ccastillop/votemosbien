@@ -1,0 +1,23 @@
+nav.bg-green-700.flex
+  .container.mx-auto.px-4.py-1.flex.items-center.text-white.lg:px-8
+    .mr-4 = link_to "Ubícate", answer_path, class: controller_name == 'answers' ? "active" : nil
+
+    .relative.w-32 data-controller="showhide"
+      .cursor-pointer data-action="click->showhide#toggle click@window->gallery#hide"
+        | Ubícalos
+        span data-showhide-target="element"
+          = inline_svg_tag "chevron-down.svg", class: "inline fill-current text-white"
+        span.hidden data-showhide-target="element"
+          = inline_svg_tag "chevron-up.svg", class: "inline fill-current text-white"
+      div.hidden data-showhide-target="element"
+        ul.dropdown
+          li = link_to "Candidatos", candidates_path, class: "#{controller_name == 'candidates' ? "active" : nil}"
+          li = link_to "Partidos", parties_path, class: "#{controller_name == 'parties' ? "active" : nil}"
+          li = link_to "Regiones", regions_path, class: "#{controller_name == 'regions' ? "active" : nil}"
+          li = link_to "Candidaturas", elections_path, class: "#{controller_name == 'elections' ? "active" : nil}"
+
+    - if user_signed_in? 
+      .ml-auto
+        span.mr-1 👋  
+        span<> Hola 
+        span.font-bold = link_to current_user, current_user

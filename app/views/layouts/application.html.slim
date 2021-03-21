@@ -12,70 +12,11 @@ html
     = javascript_packs_with_chunks_tag 'application', 'data-turbo-track': 'reload'
     = stylesheet_packs_with_chunks_tag "application", "data-turbo-track": "reload", media: 'all'
   body.flex.flex-col.min-h-screen.text-gray-800.leading-relaxed
-    header
-      .container.mx-auto.px-4.py-2.flex.items-center.lg:px-8
-        = link_to root_path, class:"w-6/12 flex items-center" do
-          .border-r.border-gray-800.pr-2.mr-2
-            = inline_svg_tag "vote.svg", width: 50, height: 50
-          .
-            p.title Votemos
-            p.text-2xl.title bien 🇵🇪
-
-        .w-6/12.flex.justify-end
-
-    nav.bg-green-700.flex
-      .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
-        .mr-4 = link_to "Ubícate", answer_path, class: controller_name == 'answers' ? "active" : nil
-        .mr-4 = link_to "Candidatos", candidates_path, class: controller_name == 'candidates' ? "active" : nil
-        .mr-4 = link_to "Partidos", parties_path, class: controller_name == 'parties' ? "active" : nil
-        .mr-4 = link_to "Regiones", regions_path, class: controller_name == 'regions' ? "active" : nil
-        .mr-4 = link_to "Puestos", elections_path, class: controller_name == 'elections' ? "active" : nil
-        - if user_signed_in? 
-          .ml-auto
-            span.mr-1 👋  
-            span<> Hola 
-            span.font-bold = link_to current_user, current_user
-    - if user_signed_in? && current_user.admin?
-      nav.bg-blue-700.flex
-        .container.mx-auto.px-4.py-1.flex.items-center.text-white.overflow-auto.lg:px-8
-          .mr-4 = link_to "Preguntas", questions_path, class: controller_name == 'question' ? "active" : nil
-          .mr-4 = link_to "Usuarios", users_path, class: controller_name == 'users' ? "active" : nil
+    = render "layouts/header"
+    = render "layouts/nav_user"
+    = render "layouts/nav_admin"
     main.flex-grow.bg-gray-50
       = render "shared/flashes"
       .container.mx-auto.p-4.lg:px-8
         = yield
-    footer.flex-grow-0.bg-black
-      .container.text-white.mx-auto.p-4.flex.items-center.lg:px-8
-        .w-8/12
-          .text-white.text-sm
-            p 
-              span<> Fuentes:
-              a href="https://plataformaelectoral.jne.gob.pe/" target="_blank" Plataforma Electoral JNE
-              span<>|
-              a href="https://otorongo.club/" target="_blank" Otorongo Club
-          .text-white.text-sm.text-gray-600
-            p 
-              span<> Basado en:
-              a href="http://testpolitico.com/" target="_blank" Test político
-          .text-xs.text-gray-600
-            | Icons made by 
-            a href="https://www.freepik.com/" title="Freepik" target="_blank" Freepik
-            | from 
-            a href="https://www.flaticon.com/" title="Flaticon" target="_blank" www.flaticon.com
-
-        .ml-auto.flex.items-center
-          - if user_signed_in?
-            = link_to edit_user_path(current_user),
-              class: "block btn btn--secondary btn--sm mr-1 #{controller_name == 'users' ? "active" : nil}" do
-              = inline_svg_tag "user.svg"
-            = button_to user_session_path(current_user),
-              method: :delete,
-              data: { confirm: "Cerraré la sesión. ¿Seguro?" },
-              class: "block btn btn--secondary btn--sm" do 
-              = inline_svg_tag "log-out.svg"
-          - else
-            = link_to new_user_session_path,
-              class: "btn block btn--primary btn--sm" do
-              .flex.items-center.justify-center
-                .= inline_svg_tag "user.svg"
-                . Ingresar
+    = render "layouts/footer"

@@ -1,0 +1,35 @@
+footer.flex-grow-0.bg-black
+  .container.text-white.mx-auto.p-4.flex.items-center.lg:px-8
+    .w-8/12
+      .text-white.text-sm
+        p 
+          span<> Fuentes:
+          a href="https://plataformaelectoral.jne.gob.pe/" target="_blank" Plataforma Electoral JNE
+          span<>|
+          a href="https://otorongo.club/" target="_blank" Otorongo Club
+      .text-white.text-sm.text-gray-600
+        p 
+          span<> Basado en:
+          a href="http://testpolitico.com/" target="_blank" Test político
+      .text-xs.text-gray-600
+        | Icons made by 
+        a href="https://www.freepik.com/" title="Freepik" target="_blank" Freepik
+        | from 
+        a href="https://www.flaticon.com/" title="Flaticon" target="_blank" www.flaticon.com
+
+    .ml-auto.flex.items-center
+      - if user_signed_in?
+        = link_to edit_user_path(current_user),
+          class: "block btn btn--secondary btn--sm mr-1 #{controller_name == 'users' ? "active" : nil}" do
+          = inline_svg_tag "user.svg"
+        = button_to user_session_path(current_user),
+          method: :delete,
+          data: { confirm: "Cerraré la sesión. ¿Seguro?" },
+          class: "block btn btn--secondary btn--sm" do 
+          = inline_svg_tag "log-out.svg"
+      - else
+        = link_to new_user_session_path,
+          class: "btn block btn--primary btn--sm" do
+          .flex.items-center.justify-center
+            .= inline_svg_tag "user.svg"
+            . Ingresar
