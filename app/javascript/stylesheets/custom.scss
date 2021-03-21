@@ -33,8 +33,7 @@ main {
 }
 
 nav {
-  a {
-
+  a, button {
     &:hover,
     &:active,
     &.active {

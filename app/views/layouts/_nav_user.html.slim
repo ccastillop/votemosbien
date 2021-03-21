@@ -2,14 +2,14 @@ nav.bg-green-700.flex
   .container.mx-auto.px-4.py-1.flex.items-center.text-white.lg:px-8
     .mr-4 = link_to "Ubícate", answer_path, class: controller_name == 'answers' ? "active" : nil
 
-    .relative.w-32 data-controller="showhide"
-      .cursor-pointer data-action="click->showhide#toggle click@window->gallery#hide"
+    .relative.w-32 data-controller="showhide" data-showhide-hidden-class="hidden" data-action=""
+      button type="button" data-action="click->showhide#toggle" class="#{controller_name.in?(%w[candidates parties regions elections]) ? "active" : nil}"
         | Ubícalos
-        span data-showhide-target="element"
+        span data-showhide-target="showed"
           = inline_svg_tag "chevron-down.svg", class: "inline fill-current text-white"
-        span.hidden data-showhide-target="element"
+        span.hidden data-showhide-target="hidden"
           = inline_svg_tag "chevron-up.svg", class: "inline fill-current text-white"
-      div.hidden data-showhide-target="element"
+      div.hidden data-showhide-target="hidden"
         ul.dropdown
           li = link_to "Candidatos", candidates_path, class: "#{controller_name == 'candidates' ? "active" : nil}"
           li = link_to "Partidos", parties_path, class: "#{controller_name == 'parties' ? "active" : nil}"
