@@ -1,5 +1,5 @@
 class PartiesController < ApplicationController
-  before_action :only_admin!
+  before_action :only_admin!, except: %i[ index show ]
   before_action :set_party, only: %i[ show edit update destroy ]
 
   # GET /parties or /parties.json

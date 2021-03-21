@@ -11,6 +11,9 @@
 @import "./graph";
 @import "./pagy";
 
+@import "./choices";
+@import "choices.js/src/styles/choices";
+
 main {
   a {
     @apply text-blue-800;

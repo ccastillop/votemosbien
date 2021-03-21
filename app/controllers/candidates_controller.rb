@@ -4,7 +4,12 @@ class CandidatesController < ApplicationController
 
   # GET /candidates or /candidates.json
   def index
-    @pagy, @candidates = pagy Candidate.all
+    session[:candidate_filter_params] = candidate_filter_params
+    @candidate_filter = CandidateFilter.new session[:candidate_filter_params]
+    @candidates = policy_scope(Candidate)
+    @candidates = @candidate_filter.filter(@candidates)
+    @candidates = @candidates.order(dni: :desc)
+    @pagy, @candidates = pagy @candidates
   end
 
   # GET /candidates/1 or /candidates/1.json
@@ -67,4 +72,20 @@ class CandidatesController < ApplicationController
     def candidate_params
       params.require(:candidate).permit(:dni, :names, :father_surname, :mother_surname, :number, :region_id, :party_id, :status, :election_id)
     end
+
+    def candidate_filter_params
+      prm = {}
+      prm.merge!( party_ids: [ params[:party_id] ] ) if params[:party_id].present?
+      prm.merge!( region_ids: [ params[:region_id] ] ) if params[:region_id].present?
+      prm.merge!( election_ids: [ params[:election_id] ] ) if params[:election_id].present?
+
+      prms = if params[:candidate_filter]
+        params.require(:candidate_filter).permit(:terms,
+          region_ids: [], party_ids: [], election_ids: [])
+      else
+        prm || session[:candidate_filter_params] || {}
+      end
+      prms
+    end
+  
 end

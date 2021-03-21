@@ -1,5 +1,5 @@
 class ElectionsController < ApplicationController
-  before_action :only_admin!
+  before_action :only_admin!, except: %i[ index show ]
   before_action :set_election, only: %i[ show edit update destroy ]
 
   # GET /elections or /elections.json

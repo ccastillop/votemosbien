@@ -1,5 +1,5 @@
 class RegionsController < ApplicationController
-  before_action :only_admin!
+  before_action :only_admin!, except: %i[ index show ]
   before_action :set_region, only: %i[ show edit update destroy ]
 
   # GET /regions or /regions.json

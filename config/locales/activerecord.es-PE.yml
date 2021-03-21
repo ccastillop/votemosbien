@@ -11,6 +11,10 @@ es-PE:
     email: E-mail
     company: "El nombre de tu empresa"
     user: Usuario
+    terms: "Palabras"
+    region_ids: "Regiones"
+    election_ids: "Cargos"
+    party_ids: "Partidos"
 
   activerecord:
     errors:
