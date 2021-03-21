@@ -9,22 +9,22 @@
   .grid.grid-cols-2.md:grid-cols-5.gap-2.items-center
     .mr-2.form
       = f.text_field :terms,
-        placeholder: "Palabras de búsqueda",
+        placeholder: "DNI, Nombres o Apellidos",
         class: "w-full h-12"
+    .mr-2
+      = f.select :party_ids,
+        Party.order(:name).map{|r| [r.name, r.id] },
+        {include_blank: "Partidos"},
+        {multiple: true , class: "js-choice w-full" }
     .mr-2
       = f.select :region_ids,
         Region.order(:name).map{|r| [r.name, r.id] },
-        {include_blank: "Región"},
+        {include_blank: "Regiones"},
         {multiple: true , class: "js-choice w-full" }
     .mr-2
       = f.select :election_ids,
         Election.order(:name).map{|r| [r.name, r.id] },
-        {include_blank: "Cargo"},
-        {multiple: true , class: "js-choice w-full" }
-    .mr-2
-      = f.select :party_ids,
-        Party.order(:name).map{|r| [r.name, r.id] },
-        {include_blank: "Partido"},
+        {include_blank: "Puestos"},
         {multiple: true , class: "js-choice w-full" }
     .
       button.btn.btn--primary.flex.items-center
@@ -47,7 +47,7 @@
           th Región
           th Partido
           th Estado
-          th Candidatura
+          th Puesto
           th
 
       tbody
