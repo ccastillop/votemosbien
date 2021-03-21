@@ -1,20 +1,20 @@
 .pagy-nav,
 .pagy-nav-js,
 .pagy-combo-nav-js {
-  @apply inline-flex shadow-md;
+  @apply inline-flex;
 }
 
 .pagy-nav.pagination,
 .pagy-nav-js.pagination,
 .pagy-combo-nav-js.pagination {
-  @apply border border-gray-600 rounded-sm;
+  //@apply border border-gray-600 rounded-sm;
 }
 
 .pagy-nav .page,
 .pagy-nav-js .page,
 .pagy-combo-nav-js .page,
 .pagy-combo-nav-js .pagy-combo-input {
-  @apply text-gray-700 border-r border-gray-600 px-3 py-2 text-sm leading-tight font-medium;
+  @apply text-gray-700 px-2 py-2 text-sm leading-tight font-medium;
 }
 
 .pagy-nav .page:hover,

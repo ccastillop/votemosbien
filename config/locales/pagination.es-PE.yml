@@ -4,8 +4,8 @@ es-PE:
       one: "ítem"
       other: "ítems"
     nav:
-      prev: "&lsaquo;&nbsp;Anterior"
-      next: "Siguiente&nbsp;&rsaquo;"
+      prev: "&lsaquo;"
+      next: "&rsaquo;"
       gap: "&hellip;"
     info:
       no_items: "Sin resultados"

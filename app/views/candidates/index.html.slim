@@ -6,7 +6,7 @@
 = form_with model: @candidate_filter,
   url: candidates_path, method: :get,
   class: "mb-8" do |f|
-  .grid.grid-cols-2.md:grid-cols-5.gap-2.items-center
+  .grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-5.gap-2.items-center
     .mr-2.form
       = f.text_field :terms,
         placeholder: "DNI, Nombres o Apellidos",
