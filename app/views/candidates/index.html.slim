@@ -41,26 +41,20 @@
         tr
           th DNI
           th Nombres
-          th Apellido paterno
-          th Apellido materno
-          th Número
+          th Nº
           th Región
           th Partido
-          th Estado
           th Candidatura
           th
 
       tbody
         - @candidates.each do |candidate|
           tr
-            td = link_to candidate.dni, "https://otorongo.club/2021/candidato/#{candidate.dni}", target: "_blank"
-            td = candidate.names
-            td = candidate.father_surname
-            td = candidate.mother_surname
+            td = link_to candidate.dni, candidate
+            td = candidate.full_name
             td = candidate.number
             td = candidate.region
-            td = candidate.party
-            td = candidate.status
+            td = link_to candidate.party, candidate.party
             td = candidate.election
             td = edit_buttons candidate
 

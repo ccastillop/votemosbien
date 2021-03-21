@@ -1,0 +1,13 @@
+- unless user_signed_in?
+  .mb-4.flex.inline-items
+    .= link_to new_user_session_path,
+      class: "btn block btn--secondary btn--sm" do
+      .flex.items-center.justify-center
+        .= inline_svg_tag "user.svg"
+        . Ingresar
+
+    .ml-4= link_to new_user_path,
+      class: "btn block btn--secondary btn--sm" do
+      .flex.items-center.justify-center
+        .= inline_svg_tag "user-plus.svg"
+        . Crear cuenta

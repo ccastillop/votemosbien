@@ -40,32 +40,10 @@ h2.title.mb-6.text-center= t(".title", resource: @user.model_name.human)
           = f.label :last_name
           = f.text_field :last_name,
             class: "w-full"
-        .input
-          = f.label :country_code
-          = f.country_select :country_code,
-            { priority_countries: ["PE", "US"] },
-            { class: "w-full" }
-        .input
-          = f.label :phone
-          = f.phone_field :phone,
-            class: "w-full"
-
-      fieldset 
-        legend Datos de la empresa
-        p En caso necesite una factura. 
-        .input
-          = f.label :company_name
-          = f.text_field :company_name,
-            class: "w-full"
-        .input
-          = f.label :company_tax_id
-          = f.text_field :company_tax_id,
-            class: "w-full"
 
       .form-actions
         = f.button t(".update") ,
           class:"btn btn--primary btn--md w-full"
-
 
     h3.font-bold.text-lg.mt-10= t(".cancel_my_account")
 

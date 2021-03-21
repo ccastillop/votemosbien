@@ -3,7 +3,8 @@
     class="#{alert_class_for(msg_type)}"
     role="alert"
     data-controller="showhide"
-    data-showhide-target="element")
+    data-showhide-hidden-class="hidden"
+    data-showhide-target="showed")
     span = message
     button.btn-cancel.ml-2 class="lg:ml-8" data-action="click->showhide#toggle"
       = inline_svg_tag "x.svg"

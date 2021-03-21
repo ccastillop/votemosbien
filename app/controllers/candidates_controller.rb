@@ -8,7 +8,7 @@ class CandidatesController < ApplicationController
     @candidate_filter = CandidateFilter.new session[:candidate_filter_params]
     @candidates = policy_scope(Candidate)
     @candidates = @candidate_filter.filter(@candidates)
-    @candidates = @candidates.order(dni: :desc)
+    @candidates = @candidates.order(:number, :father_surname)
     @pagy, @candidates = pagy @candidates
   end
 

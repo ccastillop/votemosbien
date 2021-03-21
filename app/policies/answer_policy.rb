@@ -1,7 +1,7 @@
 class AnswerPolicy < ApplicationPolicy
   
   def can_modify?
-    true
+    user.admin? || record.user == user
   end
 
   def can_view?

@@ -1,7 +1,17 @@
+h2.title.mb-4 ¡Bienvenido!
 
-= inline_svg_tag "confirm-registration_desktop.svg", class: "mx-auto block"
+p.mb-4
+  span.font-bold<> #{@user},
+  | ya formas parte de las primeras personas que probarán Votemos Bien. 
 
-h2.title.text-center.-mt-8.mb-4 ¡Bienvenido!
-
-p.text-center.font-bold.mb-2 #{@user},
-p.text-center ya formas parte de las primeras personas que probarán Votemos Bien. 
+.flex.items-center
+  = link_to edit_user_path(current_user),
+    class: "block btn btn--secondary btn--sm mr-2 flex items-center" do
+    = inline_svg_tag "user.svg"
+    .ml-1 Mi usuario
+  = button_to user_session_path(current_user),
+    method: :delete,
+    data: { confirm: "Cerraré la sesión. ¿Seguro?" },
+    class: "block btn btn--secondary btn--sm flex items-center" do 
+    = inline_svg_tag "log-out.svg"
+    .ml-1 Salir

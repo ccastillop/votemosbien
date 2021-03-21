@@ -14,12 +14,12 @@
 .pagy-nav-js .page,
 .pagy-combo-nav-js .page,
 .pagy-combo-nav-js .pagy-combo-input {
-  @apply text-gray-700 px-2 py-2 text-sm leading-tight font-medium;
+  @apply text-gray-700 p-2 leading-tight font-medium;
 }
 
 .pagy-nav .page:hover,
 .pagy-nav-js .page:hover {
-  @apply text-gray-900;
+  @apply text-gray-600;
 }
 
 .pagy-nav .disabled,
@@ -30,7 +30,7 @@
 
 .pagy-nav .active,
 .pagy-nav-js .active {
-  @apply text-blue-500;
+  @apply text-gray-900;
 }
 
 .pagy-nav .prev,
@@ -42,5 +42,5 @@
 .pagy-nav .next,
 .pagy-nav-js .next,
 .pagy-combo-nav-js .next {
-  @apply text-gray-900 border-r border-transparent;
+  @apply text-gray-900;
 }

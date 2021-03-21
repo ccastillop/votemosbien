@@ -1,4 +1,7 @@
-= form_with model: answer, url: answer_path(question_id: question.id), class: "form mb-6" do |f|
+- url = @answerer.present? ? polymorphic_path([@answerer, :answer], question_id: question.id) : answer_path(question_id: question.id)
+= form_with model: answer,
+  url: url,
+  class: "form mb-6" do |f|
   - answer_line = answer.answer_lines.select{ |al| al.question_id == question.id }.first || answer.answer_lines.build(question_id: question.id)
   = f.fields_for :answer_lines, answer_line do |ff|
     .field.border-b-2.border-gray-600.pb-6

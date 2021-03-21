@@ -1,5 +1,10 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: %i[ create show edit update destroy ]
+  before_action :set_answerer
+  before_action :set_answer
+
+  def new
+    render :edit
+  end
 
   def show
   end
@@ -47,10 +52,23 @@ class AnswersController < ApplicationController
       else
         policy_scope(Answer).find_or_initialize_by(session_id: session[:session_id])
       end
+      @answer.answerer ||= @answerer
     end
 
     # Only allow a list of trusted parameters through.
     def answer_params
-      params.require(:answer).permit(answer_lines_attributes: [:question_id, :option_id, :id])
+      params.require(:answer)
+        .permit(answer_lines_attributes: [:question_id, :option_id, :id])
+    end
+
+    def set_answerer
+      @answerer = if params[:candidate_id]
+        Candidate.find params[:candidate_id]
+      elsif params[:party_id]
+        Party.find params[:candidate_id]
+      else
+        nil
+      end
+      authorize(@answerer) if @answerer.present?
     end
 end

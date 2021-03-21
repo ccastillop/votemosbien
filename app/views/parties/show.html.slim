@@ -1,9 +1,39 @@
-p#notice = notice
+h1.title.mb-4= @party.name
 
-p
-  strong Name:
-  = @party.name
+= edit_buttons @party
 
-=> link_to 'Edit', edit_party_path(@party)
-'|
-=< link_to 'Back', parties_path
+h3.title.mb-2 Posición política. 
+.mb-4
+  - if @party.answer.present? && @party.answer.completed?
+    = render "shared/graph", x: @party.answer.value_x * 5, y: @party.answer.value_y * 5
+  - else
+    p.text-red-800 ¡Aún no han contestado su cuestionario!
+
+.mb-4
+  - if policy(@party).can_modify?
+    = link_to "Cuestionario",
+      edit_candidate_answer_path(@party),
+      class: "btn btn--primary"
+  - else
+    p.mb-2.title ¿Eres representante de #{@party}?
+    p.mb-2 
+      = link_to "Regístrate, ", new_user_path
+      span<> y luego de autenticar tus datos podrás contestar el cuestionario.
+
+h3.title.mb-2 Candidatos a la presidencia
+
+ol.mb-8
+  - @party.candidates.joins(:election).merge(Election.presidencia).order(:number).each do |candidate|
+    li.mb-2
+      p= link_to candidate.full_name, candidate
+      p.sm= candidate.election
+
+h3.title.mb-2 Candidatos al Congreso
+
+ol.mb-8
+  - Region.order(:name).each do |region|
+    li.mb-2
+      p
+        = link_to candidates_path(region_id: region.id, party_id: @party.id) do 
+          = region
+        span<>= "(#{region.candidates.joins(:election).merge(Election.congreso).where(party_id: @party.id).count})" 

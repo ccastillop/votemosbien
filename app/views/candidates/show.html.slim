@@ -1,33 +1,54 @@
-p#notice = notice
+.mb-4
+  h1.title= @candidate.full_name
+  p.text-sm<> DNI #{@candidate.dni}
+
+= edit_buttons @candidate
 
 p
-  strong Dni:
-  = @candidate.dni
-p
-  strong Names:
-  = @candidate.names
-p
-  strong Father surname:
-  = @candidate.father_surname
-p
-  strong Mother surname:
-  = @candidate.mother_surname
-p
-  strong Number:
-  = @candidate.number
-p
-  strong Region:
-  = @candidate.region
-p
-  strong Party:
-  = @candidate.party
-p
-  strong Status:
-  = @candidate.status
-p
-  strong Election:
-  = @candidate.election
+  | Candidato a 
+  strong<>
+    = link_to @candidate.election,
+      candidates_path(election_id: @candidate.election_id)
+  - if @candidate.number 
+    | con Nº 
+    strong<>#{@candidate.number}
+  - if @candidate.region
+    | en la región 
+    strong<>
+      = link_to @candidate.region,
+        candidates_path(region_id: @candidate.region_id)
+  | por el partido:
+  strong<>
+    = link_to @candidate.party,
+      candidates_path(party_id: @candidate.party_id)
 
-=> link_to 'Edit', edit_candidate_path(@candidate)
-'|
-=< link_to 'Back', candidates_path
+.mb-8
+  = link_to "https://otorongo.club/2021/candidato/#{@candidate.dni}", target: "_blank" do
+    .flex.items-center
+      .= inline_svg_tag "clipboard.svg", class: "block"
+      .ml-1= "Ficha de #{@candidate.names} en Otorongo.club"
+
+h3.title.mb-2 Posición política de #{@candidate.names}. 
+.mb-8
+  - if @candidate.answer.present? && @candidate.answer.completed?
+    = render "shared/graph", x: @candidate.answer.value_x * 5, y: @candidate.answer.value_y * 5
+  - else
+    p.text-red-800 ¡Aún no ha contestado su cuestionario!
+
+.mb-8
+  - if policy(@candidate).can_modify?
+    = link_to "Cuestionario",
+      edit_candidate_answer_path(@candidate),
+      class: "btn btn--primary"
+  - else
+    p.mb-2.title ¿Eres #{@candidate.full_name}?
+    p.mb-2 
+      = link_to "Regístrate, ", new_user_path
+      span<> y luego de autenticar tus datos podrás contestar el cuestionario.
+
+.mb-4
+  = link_to candidates_path(region_id: @candidate.region_id, party_id: @candidate.party_id, election_id: @candidate.election_id),
+    class: "" do
+    .flex.items-center
+      .= inline_svg_tag "users.svg", class: "block"
+      .ml-1 Ver candidatos similares 

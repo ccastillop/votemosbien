@@ -1,6 +1,6 @@
 - short ||= false
 - if object.errors.any?
-  .flash.flex.error role="alert" data-controller="showhide" data-showhide-target="element"
+  .flash.flex.error role="alert" data-controller="showhide" data-showhide-hidden-class="hidden" data-showhide-target="showed"
     .message.flex-grow
       - unless short
         | Por favor revisar:

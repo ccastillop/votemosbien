@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :candidates
+  resources :candidates do
+    resource :answer
+  end
   resources :regions
   resources :elections
-  resources :parties
+  resources :parties do
+    resource :answer
+  end
   resources :questions do
     resources :options, shallow: true
   end
@@ -15,7 +19,7 @@ Rails.application.routes.draw do
   resources :user_recover_passwords, only: %i(new create edit update)
   resources :user_confirmations, only: %i(new create show)
   
-  resource :answer, except: :new
+  resource :answer
   
   get "/:page", to: "home#show", as: :home
   root 'answers#show'
