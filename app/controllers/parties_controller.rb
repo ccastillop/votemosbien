@@ -26,7 +26,7 @@ class PartiesController < ApplicationController
 
     respond_to do |format|
       if @party.save
-        format.html { redirect_to @party, notice: "Party was successfully created." }
+        format.html { redirect_to @party, notice: "Partido creado." }
         format.json { render :show, status: :created, location: @party }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PartiesController < ApplicationController
   def update
     respond_to do |format|
       if @party.update(party_params)
-        format.html { redirect_to @party, notice: "Party was successfully updated." }
+        format.html { redirect_to @party, notice: "Partido actualizado." }
         format.json { render :show, status: :ok, location: @party }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class PartiesController < ApplicationController
   def destroy
     @party.destroy
     respond_to do |format|
-      format.html { redirect_to parties_url, notice: "Party was successfully destroyed." }
+      format.html { redirect_to parties_url, notice: "Partido eliminado." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class PartiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def party_params
-      params.require(:party).permit(:name)
+      params.require(:party).permit(:name, :logo)
     end
 end

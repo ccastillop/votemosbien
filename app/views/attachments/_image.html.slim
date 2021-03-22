@@ -1,0 +1,15 @@
+.relative.pr-4.pb-4
+  = image_tag image.preview(resize_to_fill: [100, 100]), class: "border border-gray-500 shadow-md" if image.previewable?
+  = image_tag image.variant(resize_to_fill: [100, 100]), class: "border border-gray-500 shadow-md" if image.variable?
+  - unless image.representable?
+    = inline_svg_tag "file.svg", width: 100, height: 100, stroke:'gray', "stroke-width": 1, class: "border border-gray-500 shadow-md"
+
+  .absolute.top-0.left-0.p-2.mr-3
+    = button_to attachment_path(id: image.signed_id),
+      class: "btn btn--secondary btn--small inline-block shadow opacity-75",
+      alt: "Eliminar archivo", title: "Eliminar archivo",
+      method: :delete,
+      data: { confirm: "Eliminaré el archivo ¿Segur@?",
+              disable_with: '...' } do
+        span
+          = inline_svg_tag "trash-2.svg", class:"inline stroke-current", width: 22, height: 22

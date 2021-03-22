@@ -32,6 +32,9 @@ es-PE:
       option: Opción
       answer: Respuesta
       answer_line: Línea
+      party: Partido
+      candidate: Candidato
+      election: Candidatura
     attributes:
       user:
         first_name: Nombre

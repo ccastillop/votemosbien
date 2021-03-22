@@ -1,11 +1,16 @@
 h1.title.mb-4= @party.name
 
+= image_tag(@party.logo.variant(resize_to_fill: [150, 150])) if @party.logo.variable?
+
 = edit_buttons @party
 
 h3.title.mb-2 Posición política. 
 .mb-4
   - if @party.answer.present? && @party.answer.completed?
-    = render "shared/graph", x: @party.answer.value_x * 5, y: @party.answer.value_y * 5
+    = render "shared/graph",
+      x: @party.answer.value_x * 5,
+      y: @party.answer.value_y * 5,
+      logo_path: (url_for(@party.logo.variant(resize_to_fill: [64, 64])) if @party.logo.variable?)
   - else
     p.text-red-800 ¡Aún no han contestado su cuestionario!
 

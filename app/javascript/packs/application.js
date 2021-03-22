@@ -20,4 +20,5 @@ require("@rails/actiontext")
 
 import '../src/submit_on_click_or_input.js'
 import '../src/chartist.js'
-import "../src/choices.js";
+import "../src/choices.js"
+import '../src/direct_uploads.js'

@@ -1,4 +1,4 @@
-= form_for @election, class: "form" do |f|
+= form_with model: @election, class: "form" do |f|
   = render "shared/form_errors", object: @election
 
   .field
