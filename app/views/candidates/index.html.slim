@@ -54,7 +54,10 @@
             td = candidate.full_name
             td = candidate.number
             td = candidate.region
-            td = link_to candidate.party, candidate.party
+            td
+              = link_to candidate.party do 
+                = logo(candidate.party)
+                = candidate.party
             td = candidate.election
             td = edit_buttons candidate
 

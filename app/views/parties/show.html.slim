@@ -1,6 +1,7 @@
-h1.title.mb-4= @party.name
-
-= image_tag(@party.logo.variant(resize_to_fill: [150, 150])) if @party.logo.variable?
+.mb-4.flex.items-center.justify-between
+  .
+    h1.title= @party.name
+  .= logo(@party)
 
 = edit_buttons @party
 
@@ -14,7 +15,7 @@ h3.title.mb-2 Posición política.
   - else
     p.text-red-800 ¡Aún no han contestado su cuestionario!
 
-.mb-4
+.mb-6
   - if policy(@party).can_modify?
     = link_to "Cuestionario",
       edit_party_answer_path(@party),
@@ -33,22 +34,29 @@ ol.mb-8
       p= link_to candidate.full_name, candidate
       p.sm= candidate.election
 
-h3.title.mb-2 Candidatos al Congreso
+- election_id = Election.congreso.first.id
+h3.title.mb-2 
+  = link_to "Candidatos al Congreso", candidates_path(election_id: election_id, party_id: @party.id)
 
 ol.mb-8
   - Region.order(:name).each do |region|
     li.mb-2
       p
-        = link_to candidates_path(region_id: region.id, party_id: @party.id) do 
+        = link_to candidates_path(election_id: election_id, region_id: region.id, party_id: @party.id) do 
           = region
         span<>= "(#{region.candidates.joins(:election).merge(Election.congreso).where(party_id: @party.id).count})" 
 
-h3.title.mb-2 Candidatos al Parlamento Andino
+- election_id = Election.parlamento_andino.first.id
+h3.title.mb-2
+  = link_to "Candidatos al Parlamento Andino", candidates_path(election_id: election_id, party_id: @party.id)
 
-ol.mb-8
-  - Region.order(:name).each do |region|
-    li.mb-2
-      p
-        = link_to candidates_path(region_id: region.id, party_id: @party.id) do 
-          = region
-        span<>= "(#{region.candidates.joins(:election).merge(Election.parlamento_andino).where(party_id: @party.id).count})" 
+.form
+  fieldset
+    legend Datos de contacto
+    - %i[enrollment_date address phones web email agents].each do |field|
+      p 
+        strong #{t "attributes.#{field}" }:
+        span<>=@party.read_attribute(field)
+    p.text-sm.mt-4.text-right
+      = link_to "Fuente: JNE", "https://aplicaciones007.jne.gob.pe/srop_publico/Consulta/OrganizacionPolitica", target: "_blank"
+

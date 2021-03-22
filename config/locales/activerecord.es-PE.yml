@@ -15,6 +15,11 @@ es-PE:
     region_ids: "Regiones"
     election_ids: "Cargos"
     party_ids: "Partidos"
+    enrollment_date: Fecha de inscripción
+    address: Dirección
+    phones: Teléfonos
+    web: Website
+    agents: Representantes
 
   activerecord:
     errors:
@@ -49,16 +54,6 @@ es-PE:
       address:
         line1: Dirección
         line2: Dirección (referencia)
-      order:
-        shipping_address_id: Dirección de Entrega
-        billing_address_id: Dirección de Facturación
-        shipping_address: Dirección de Entrega
-        billing_address: Dirección de Facturación
-        company_name: Razón social
-        company_tax_id: RUC
-        event: Eventos disponibles
-        note_document: Documento (boleta, factura, guía)
-        note_body: Anotación (llegará al ordenante por email)
 
   enums:
     order:

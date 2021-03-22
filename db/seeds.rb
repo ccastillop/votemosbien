@@ -49,4 +49,6 @@ csv.each do |row|
   }.merge(row)
   candidate = Candidate.create! attributes
 end
-puts "Fin"
+puts "Fin candidatos"
+
+Party.import 
