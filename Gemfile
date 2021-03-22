@@ -92,6 +92,7 @@ gem 'bcrypt'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection' #https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
+gem 'omniauth-twitter'
 
 gem 'hotwire-rails'
 gem 'enum_help'

@@ -24,6 +24,17 @@
     }
   }
 
+  &--twitter {
+    @apply text-white;
+    background-color: #1da1f2;
+    &:hover,
+    &:disabled,
+    &:active,
+    &.active {
+      @apply text-white bg-blue-300;
+    }
+  }
+
   &--primary {
     @apply bg-gray-800 text-white;
     &:hover,

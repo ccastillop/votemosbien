@@ -16,8 +16,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         UserMailer.with(id: @user.id).confirmation_instructions.deliver_later
-        format.html { redirect_to home_path(page: "after_registering") }
-          # notice: "Enviamos un email de confirmación a tu bandeja de correo electrónico."
+        format.html { redirect_to root_path, notice: "Enviamos un email de confirmación a tu bandeja de correo electrónico." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

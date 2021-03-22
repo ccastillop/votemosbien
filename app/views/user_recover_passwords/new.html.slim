@@ -18,6 +18,15 @@ h2.title.text-center = t(".forgot_your_password")
           = f.submit t(".send_me_reset_password_instructions"),
           class: "btn btn--primary btn--md w-full"
 
-      .flex.justify-between.my-6
-        = link_to t(".sign_in"), new_user_session_path, class:"blue"
-        = link_to t(".sign_up"), new_user_path
+      .flex.justify-between.my-12
+        = link_to new_user_session_path,
+          class: "btn block btn--secondary" do
+          .flex.items-center
+            .= inline_svg_tag "user.svg", class: "inline-block"
+            .ml-1= t('.sign_in')
+
+        = link_to new_user_path,
+          class: "btn block btn--secondary" do
+          .flex.items-center.justify-center
+            .= inline_svg_tag "user-plus.svg"
+            .ml-1= t(".sign_up")

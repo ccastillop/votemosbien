@@ -3,12 +3,20 @@ h2.title.my-6.text-center= t(".sign_up")
   = button_to "/auth/google_oauth2/", class: "btn btn--google btn--lg inline-block" do
     .flex.items-center.justify-center
       .= inline_svg_tag "google.svg", class: "block w-6 fill-current text-white mr-2"
-      . Regístrate con Google
+      .ml-1 Regístrate con Google
+
 .text-center data-turbo="false"
   = button_to "/auth/facebook/", class: "btn btn--facebook btn--lg inline-block" do
     .flex.items-center.justify-center
       .= inline_svg_tag "facebook.svg"
-      . Regístrate con Facebook
+      .ml-1 Regístrate con Facebook
+
+.text-center data-turbo="false"
+  = button_to "/auth/twitter/", class: "btn btn--twitter btn--lg inline-block" do
+    .flex.items-center.justify-center
+      .= inline_svg_tag "twitter.svg"
+      .ml-1 Regístrate con Twitter
+
 
 .flex.items-center.flex-col
 
@@ -38,7 +46,12 @@ h2.title.my-6.text-center= t(".sign_up")
         class:"btn btn--primary w-full",
         data: { disable_with: 'Enviando...' }
 
-      .flex.justify-between.my-6
-        = link_to t('.sign_in'), new_user_session_path, class:"blue"
+      .flex.justify-between.my-12
         = link_to t(".forgot_your_password"),
           new_user_recover_password_path
+        
+        = link_to new_user_session_path,
+          class: "btn block btn--secondary" do
+          .flex.items-center
+            .= inline_svg_tag "user.svg", class: "inline"
+            .ml-1= t('.sign_in')
