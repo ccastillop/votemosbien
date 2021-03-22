@@ -1,10 +1,13 @@
 h1.title.mb-4.flex.items-center Ubícate 
 
+- if @answerer 
+  h2.title.mb-4= link_to @answerer, @answerer
+
 p.mb-4 Conoce tu posición política para poder decidir mejor. 
 
 .mb-4
   = link_to "Cuestionario",
-    edit_answer_path,
+    @answerer ? [:edit, @answerer, :answer] : edit_answer_path,
     class: "btn btn--primary"
 
 - if @answer.completed?
