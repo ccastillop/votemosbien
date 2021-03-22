@@ -1,4 +1,7 @@
-h2.title.mb-4 Preguntas
+.mb-4
+  h2.title.mb-2 Preguntas
+  - if @answerer.present?
+    h4.title= @answerer
 
 .mb-4.py-1.flex.items-center.sticky.top-0.p-1.bg-gray-100.shadow.z-10
   = turbo_frame_tag "top_nav", target: "_top", class: "ml-auto" do

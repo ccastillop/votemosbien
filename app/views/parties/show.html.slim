@@ -12,7 +12,7 @@ h3.title.mb-2 Posición política.
 .mb-4
   - if policy(@party).can_modify?
     = link_to "Cuestionario",
-      edit_candidate_answer_path(@party),
+      edit_party_answer_path(@party),
       class: "btn btn--primary"
   - else
     p.mb-2.title ¿Eres representante de #{@party}?
@@ -37,3 +37,13 @@ ol.mb-8
         = link_to candidates_path(region_id: region.id, party_id: @party.id) do 
           = region
         span<>= "(#{region.candidates.joins(:election).merge(Election.congreso).where(party_id: @party.id).count})" 
+
+h3.title.mb-2 Candidatos al Parlamento Andino
+
+ol.mb-8
+  - Region.order(:name).each do |region|
+    li.mb-2
+      p
+        = link_to candidates_path(region_id: region.id, party_id: @party.id) do 
+          = region
+        span<>= "(#{region.candidates.joins(:election).merge(Election.parlamento_andino).where(party_id: @party.id).count})" 

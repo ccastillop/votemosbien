@@ -9,6 +9,9 @@ p
   strong<>
     = link_to @candidate.election,
       candidates_path(election_id: @candidate.election_id)
+  | por el partido:
+  strong<>
+    = link_to @candidate.party, @candidate.party
   - if @candidate.number 
     | con Nº 
     strong<>#{@candidate.number}
@@ -17,10 +20,6 @@ p
     strong<>
       = link_to @candidate.region,
         candidates_path(region_id: @candidate.region_id)
-  | por el partido:
-  strong<>
-    = link_to @candidate.party,
-      candidates_path(party_id: @candidate.party_id)
 
 .mb-8
   = link_to "https://otorongo.club/2021/candidato/#{@candidate.dni}", target: "_blank" do
