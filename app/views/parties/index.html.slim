@@ -5,13 +5,20 @@
 .overflow-x-auto
   table.table
     tbody
+      tr
+        th Logo
+        th Nombre / Web
+        th Candidatos
+        th 
+
       - @parties.each do |party|
         tr
           td 
-            = link_to party do 
+            .w-12= link_to party do 
               = logo(party)
           td 
-            = link_to party do 
+            p.mb-2= link_to party do 
               = party.name
+            p= link_to party.web, "http://#{party.web}", target: :_blank
           td = link_to party.candidates.count, candidates_path(party_id: party.id)
           td = edit_buttons party

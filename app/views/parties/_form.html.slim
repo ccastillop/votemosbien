@@ -1,14 +1,17 @@
 = form_with model: @party, class: "form" do |f|
   = render "shared/form_errors", object: @party
-
   .field
     = f.label :name
     = f.text_field :name
-
   .field
     = f.label :logo
     = f.file_field :logo, direct_upload: true
-
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :web
+    = f.text_field :web
   .actions
     = f.submit class: "btn btn--primary"
 

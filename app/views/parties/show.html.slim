@@ -1,9 +1,17 @@
 .mb-4.flex.items-center.justify-between
-  .
+  .mr-auto
     h1.title= @party.name
-  .= logo(@party)
+  .w-24=logo(@party, options: { class: "ml-auto" })
 
-= edit_buttons @party
+.form
+  fieldset
+    legend Datos de contacto
+    - %i[enrollment_date address phones web email agents].each do |field|
+      p 
+        strong #{t "attributes.#{field}" }:
+        span<>=party_attribute @party, field
+    p.text-sm.mt-4.text-right
+      = link_to "Fuente: JNE", "https://aplicaciones007.jne.gob.pe/srop_publico/Consulta/OrganizacionPolitica", target: "_blank"
 
 h3.title.mb-2 Posición política. 
 .mb-4
@@ -15,19 +23,7 @@ h3.title.mb-2 Posición política.
   - else
     p.text-red-800 ¡Aún no han contestado su cuestionario!
 
-.mb-6
-  - if policy(@party).can_modify?
-    = link_to "Cuestionario",
-      edit_party_answer_path(@party),
-      class: "btn btn--primary"
-  - else
-    p.mb-2.title ¿Eres representante de #{@party}?
-    p.mb-2 
-      = link_to "Regístrate, ", new_user_path
-      span<> y luego de autenticar tus datos podrás contestar el cuestionario.
-
 h3.title.mb-2 Candidatos a la presidencia
-
 ol.mb-8
   - @party.candidates.joins(:election).merge(Election.presidencia).order(:number).each do |candidate|
     li.mb-2
@@ -38,7 +34,7 @@ ol.mb-8
 h3.title.mb-2 
   = link_to "Candidatos al Congreso", candidates_path(election_id: election_id, party_id: @party.id)
 
-ol.mb-8
+ol.mb-2
   - Region.order(:name).each do |region|
     li.mb-2
       p
@@ -47,16 +43,19 @@ ol.mb-8
         span<>= "(#{region.candidates.joins(:election).merge(Election.congreso).where(party_id: @party.id).count})" 
 
 - election_id = Election.parlamento_andino.first.id
-h3.title.mb-2
+p.title.mb-4
   = link_to "Candidatos al Parlamento Andino", candidates_path(election_id: election_id, party_id: @party.id)
 
 .form
-  fieldset
-    legend Datos de contacto
-    - %i[enrollment_date address phones web email agents].each do |field|
-      p 
-        strong #{t "attributes.#{field}" }:
-        span<>=@party.read_attribute(field)
-    p.text-sm.mt-4.text-right
-      = link_to "Fuente: JNE", "https://aplicaciones007.jne.gob.pe/srop_publico/Consulta/OrganizacionPolitica", target: "_blank"
-
+  fieldset 
+    legend Zona admin
+    - if policy(@party).can_modify?
+      = link_to "Contestar cuestionario",
+        edit_party_answer_path(@party),
+        class: "btn btn--primary"
+    - else
+      p.mb-2.title ¿Eres representante de #{@party}?
+      p.mb-2 
+        = link_to "Regístrate, ", new_user_path
+        span<> y luego de autenticar tus datos podrás contestar el cuestionario o modificar tu perfil. 
+    .mt-4= edit_buttons @party

@@ -12,7 +12,7 @@
 
   - if @answer.answer_lines.any?
     .ml-3
-      = button_to (answer.answerer || answer_path),
+      = button_to (answer.answerer ? [answer.answerer, :answer] : answer_path),
         method: :delete,
         data: { confirm: "Borraré todas las respuestas. ¿Segur@?",
           disable_with: 'borrando...' },

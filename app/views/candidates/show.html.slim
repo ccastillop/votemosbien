@@ -1,10 +1,10 @@
-.mb-4
-  h1.title= @candidate.full_name
-  p.text-sm<> DNI #{@candidate.dni}
+.mb-4.flex.items-center.justify-between
+  .mr-auto
+    h1.title= @candidate.full_name
+    p.text-sm<> DNI #{@candidate.dni}
+  .w-24=logo(@candidate.party, options: { class: "ml-auto" })
 
-= edit_buttons @candidate
-
-p
+p.mb-4
   | Candidato a 
   strong<>
     = link_to @candidate.election,
@@ -13,37 +13,26 @@ p
   strong<>
     = link_to @candidate.party, @candidate.party
   - if @candidate.number 
-    | con Nº 
-    strong<>#{@candidate.number}
+    span.text-lg con Nº 
+    strong.text-xl<>#{@candidate.number}
   - if @candidate.region
     | en la región 
     strong<>
       = link_to @candidate.region,
         candidates_path(region_id: @candidate.region_id)
 
-.mb-8
+.mb-4
   = link_to "https://otorongo.club/2021/candidato/#{@candidate.dni}", target: "_blank" do
     .flex.items-center
       .= inline_svg_tag "clipboard.svg", class: "block"
       .ml-1= "Ficha de #{@candidate.names} en Otorongo.club"
 
 h3.title.mb-2 Posición política de #{@candidate.names}. 
-.mb-8
+.mb-4
   - if @candidate.answer.present? && @candidate.answer.completed?
     = render "shared/graph", x: @candidate.answer.value_x * 5, y: @candidate.answer.value_y * 5
   - else
     p.text-red-800 ¡Aún no ha contestado su cuestionario!
-
-.mb-8
-  - if policy(@candidate).can_modify?
-    = link_to "Cuestionario",
-      edit_candidate_answer_path(@candidate),
-      class: "btn btn--primary"
-  - else
-    p.mb-2.title ¿Eres #{@candidate.full_name}?
-    p.mb-2 
-      = link_to "Regístrate, ", new_user_path
-      span<> y luego de autenticar tus datos podrás contestar el cuestionario.
 
 .mb-4
   = link_to candidates_path(region_id: @candidate.region_id, party_id: @candidate.party_id, election_id: @candidate.election_id),
@@ -51,3 +40,17 @@ h3.title.mb-2 Posición política de #{@candidate.names}.
     .flex.items-center
       .= inline_svg_tag "users.svg", class: "block"
       .ml-1 Ver candidatos similares 
+
+.mb-4.form
+  fieldset
+    legend Zona admin
+    - if policy(@candidate).can_modify?
+      = link_to "Cuestionario",
+        edit_candidate_answer_path(@candidate),
+        class: "btn btn--primary"
+    - else
+      p.mb-2.title ¿Eres #{@candidate.full_name}?
+      p.mb-2 
+        = link_to "Regístrate, ", new_user_path
+        span<> y luego de autenticar tus datos podrás contestar el cuestionario.
+    .mt-4= edit_buttons @candidate

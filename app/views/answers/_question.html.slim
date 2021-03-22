@@ -6,10 +6,10 @@
   = f.fields_for :answer_lines, answer_line do |ff|
     .field.border-b-2.border-gray-600.pb-6
       .mb-3
-        p.title.text-lg.mb-1.flex.items-inline
+        h3.title.mb-1.flex.items-inline
           = "#{question.id}: "
           = question
-          = inline_svg_tag "check.svg", class: "ml-1 text-green-800" if ff.object.option.present?
+          = inline_svg_tag "check_step.svg", width: 24, height: 24, class: "ml-1 text-green-800" if ff.object.option.present?
 
         .text-lg= simple_format question.description
 
