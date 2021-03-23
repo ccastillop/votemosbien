@@ -2,6 +2,8 @@ class User < ApplicationRecord
   PASSWORD_MIN_LEN = 6
   has_secure_password
   has_one_attached :auth_photo
+  has_many :candidates
+  has_many :parties
 
   validates :auth_photo,
     content_type: [:png, :jpg, :jpeg],
@@ -28,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def to_s
-    first_name || email
+    [first_name, last_name].join(" ") || email
   end
   
   def self.find_for_oauth(auth, signed_in_resource = nil)

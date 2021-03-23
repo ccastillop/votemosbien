@@ -16,16 +16,12 @@
   .field
     = f.label :number
     = f.text_field :number
-  .field
-    = f.label :region
-    = f.text_field :region
-  .field
-    = f.label :party
-    = f.text_field :party
-  .field
-    = f.label :status
-    = f.text_field :status
-  .field
-    = f.label :election
-    = f.text_field :election
+  
+  - if current_user.admin?
+    .field
+      = f.label :user_id
+      = f.select :user_id,
+        User.candidate.order(:first_name, :last_name).map{|u| [u.to_s, u.id]},
+        include_blank: "- Usuario modificador -"
+  
   .actions = f.submit

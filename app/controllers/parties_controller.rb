@@ -22,7 +22,7 @@ class PartiesController < ApplicationController
 
   # POST /parties or /parties.json
   def create
-    @party = Party.new(party_params)
+    @party = Party.new(permitted_attributes Party.new)
 
     respond_to do |format|
       if @party.save
@@ -38,7 +38,7 @@ class PartiesController < ApplicationController
   # PATCH/PUT /parties/1 or /parties/1.json
   def update
     respond_to do |format|
-      if @party.update(party_params)
+      if @party.update(permitted_attributes @party)
         format.html { redirect_to @party, notice: "Partido actualizado." }
         format.json { render :show, status: :ok, location: @party }
       else
@@ -61,10 +61,5 @@ class PartiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_party
       @party = Party.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def party_params
-      params.require(:party).permit(:name, :logo, :web, :email)
     end
 end

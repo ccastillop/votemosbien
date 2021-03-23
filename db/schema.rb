@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_040649) do
+ActiveRecord::Schema.define(version: 2021_03_23_024418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,9 +91,11 @@ ActiveRecord::Schema.define(version: 2021_03_22_040649) do
     t.bigint "election_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["election_id"], name: "index_candidates_on_election_id"
     t.index ["party_id"], name: "index_candidates_on_party_id"
     t.index ["region_id"], name: "index_candidates_on_region_id"
+    t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
   create_table "elections", force: :cascade do |t|
@@ -133,6 +135,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_040649) do
     t.string "web"
     t.string "email"
     t.string "agents", default: [], array: true
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_parties_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -170,6 +174,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_040649) do
   add_foreign_key "candidates", "elections"
   add_foreign_key "candidates", "parties"
   add_foreign_key "candidates", "regions"
+  add_foreign_key "candidates", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "options", "questions"
+  add_foreign_key "parties", "users"
 end

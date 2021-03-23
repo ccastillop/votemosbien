@@ -1,4 +1,7 @@
 es-PE:
+  attributes:
+    sign_in: Ingresar
+    sign_up: Crear cuenta
   activerecord:
     attributes:
       user:

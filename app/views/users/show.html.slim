@@ -6,6 +6,20 @@ p.mb-4
 
 = thumb(@user.auth_photo, size: [500,300])
 
+- if @user.candidates.any?
+  .mb-4 
+    p Con acceso a estos candidatos: 
+    ul
+      - @user.candidates.each do |candidate|
+        li= link_to candidate, candidate 
+
+- if @user.parties.any?
+  .mb-4 
+    p Con acceso a estos partidos: 
+    ul
+      - @user.parties.each do |candidate|
+        li= link_to candidate, candidate 
+
 .flex.items-center
   = link_to edit_user_path(current_user),
     class: "block btn btn--secondary btn--sm mr-2 flex items-center" do

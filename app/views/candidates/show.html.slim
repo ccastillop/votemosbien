@@ -48,6 +48,10 @@ h3.title.mb-2 Posición política de #{@candidate.names}.
       = link_to "Cuestionario",
         edit_candidate_answer_path(@candidate),
         class: "btn btn--primary"
+      - if @candidate.user
+        p.my-4 
+          strong Autorizado edición a: 
+          span<>= link_to @candidate.user, @candidate.user
     - else
       p.mb-2.title ¿Eres #{@candidate.full_name}?
       p.mb-2 

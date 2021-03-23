@@ -53,6 +53,10 @@ p.title.mb-4
       = link_to "Contestar cuestionario",
         edit_party_answer_path(@party),
         class: "btn btn--primary"
+      - if @party.user
+        p.my-4 
+          strong Autorizado edición a: 
+          span<>= link_to @party.user, @party.user
     - else
       p.mb-2.title ¿Eres representante de #{@party}?
       p.mb-2 

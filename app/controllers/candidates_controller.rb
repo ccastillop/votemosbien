@@ -27,7 +27,7 @@ class CandidatesController < ApplicationController
 
   # POST /candidates or /candidates.json
   def create
-    @candidate = Candidate.new(candidate_params)
+    @candidate = Candidate.new(permitted_attributes Candidate.new)
 
     respond_to do |format|
       if @candidate.save
@@ -43,7 +43,7 @@ class CandidatesController < ApplicationController
   # PATCH/PUT /candidates/1 or /candidates/1.json
   def update
     respond_to do |format|
-      if @candidate.update(candidate_params)
+      if @candidate.update(permitted_attributes @candidate)
         format.html { redirect_to @candidate, notice: "Candidate was successfully updated." }
         format.json { render :show, status: :ok, location: @candidate }
       else
@@ -66,11 +66,6 @@ class CandidatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_candidate
       @candidate = Candidate.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def candidate_params
-      params.require(:candidate).permit(:dni, :names, :father_surname, :mother_surname, :number, :region_id, :party_id, :status, :election_id)
     end
 
     def candidate_filter_params

@@ -12,6 +12,12 @@
   .field
     = f.label :web
     = f.text_field :web
+  - if current_user.admin?
+    .field
+      = f.label :user_id
+      = f.select :user_id,
+        User.candidate.order(:first_name, :last_name).map{|u| [u.to_s, u.id]},
+        include_blank: "- Usuario modificador -"
   .actions
     = f.submit class: "btn btn--primary"
 

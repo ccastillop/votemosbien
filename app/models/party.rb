@@ -3,6 +3,7 @@ class Party < ApplicationRecord
   has_one :answer, as: :answerer
   validates :name, presence: true
   has_one_attached :logo
+  belongs_to :user, optional: true
 
   def to_s
     name
