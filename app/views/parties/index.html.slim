@@ -1,3 +1,6 @@
+- content_for :meta_title, "Partidos políticos (#{@parties.count}) | #{DEFAULT_META["meta_title"]}"
+- content_for :meta_description, "Para estas eleccones se han inscrito #{@parties.count} partidos políticos"
+
 .flex.items-center.mb-8
   h1.title Partidos (#{@parties.count})
   .ml-auto = new_button Party

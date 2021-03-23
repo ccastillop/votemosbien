@@ -9,6 +9,15 @@ class Party < ApplicationRecord
     name
   end
 
+  def description
+    text = "#{name} está postulando con #{candidates.count} candidatos."  
+    text << " Postula para presidente: #{presidente}" if presidente.present?
+  end
+
+  def presidente
+    candidates.joins(:election).merge(Election.presidencia).where(number: 1).first
+  end
+  
   def self.import
     require 'open-uri'
     puts "Cargando datos de Partido"

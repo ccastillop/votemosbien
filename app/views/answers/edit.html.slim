@@ -1,3 +1,6 @@
+- content_for :meta_title, "Cuestionario de posición política | #{DEFAULT_META["meta_title"]}"
+- content_for :meta_description, "Contesta estas #{Question.count} preguntas para decidir mejor"
+
 .mb-4
   h2.title.mb-2 Preguntas
   - if @answerer.present?
@@ -9,7 +12,7 @@
 
 p.mb-6.italic
   | Contesta estas #{Question.count} preguntas. 
-  | Te tomará aproximadamente 5 minutos. 
+  | Te tomará aproximadamente 10 minutos. 
 
 - Question.all.each do |question|
   = turbo_frame_tag question do 

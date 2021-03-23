@@ -1,7 +1,12 @@
+- content_for :meta_title, "#{@party} | #{DEFAULT_META["meta_title"]}"
+- content_for :meta_description, @party.description
+
 .mb-4.flex.items-center.justify-between
   .mr-auto
     h1.title= @party.name
   .w-24=thumb(@party.logo, options: { class: "ml-auto" })
+
+p.mb-2= @party.description
 
 .form
   fieldset

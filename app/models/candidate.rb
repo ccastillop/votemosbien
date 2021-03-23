@@ -10,7 +10,13 @@ class Candidate < ApplicationRecord
   def full_name
     [names, father_surname, mother_surname].join(" ")
   end
+
   def to_s
     full_name
   end
+
+  def description
+    "#{self} postula a #{election} Nº#{number} por #{party} #{ "en #{region}" if region.present? }"
+  end
+  
 end

@@ -1,12 +1,18 @@
-.flex.items-center.mb-8
+- description = "Listado de puestos o candidaturas y sus candidatos por puesto."
+- content_for :meta_title, "Puestos políticos (#{@elections.count}) y sus candidatos | #{DEFAULT_META["meta_title"]}"
+- content_for :meta_description, description
+
+.flex.items-center.mb-4
   h1.title Candidaturas (#{@elections.count})
   .ml-auto = new_button Election
+
+p.mb-4= description
 
 .overflow-x-auto
   table.table
     thead
       tr
-        th Name
+        th Candidatura o Puesto
         th Candidatos
         th
 

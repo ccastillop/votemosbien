@@ -25,5 +25,13 @@ class CandidateFilter
     end
     candidates
   end
-  
+
+  def to_s
+    text = []
+    text << "en #{@region_ids.map{ |id| Region.find_by(id: id).to_s}.compact.join(", ")}" if @region_ids.any?
+    text << "de #{@party_ids.map{ |id| Party.find_by(id: id).to_s}.compact.join(", ")}" if @party_ids.any?
+    text << "para #{@election_ids.map{ |id| Election.find_by(id: id).to_s}.compact.join(", ")}" if @election_ids.any?
+    text << "contiene: #{terms}" if terms.present?
+    text.join(' | ')
+  end
 end
