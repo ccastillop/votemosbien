@@ -99,3 +99,7 @@ gem 'enum_select_rails'
 gem "hashid-rails"
 gem "active_storage_validations", "~> 0.9.2"
 gem 'newrelic_rpm'
+
+gem "connection_pool", "~> 2.2"
+
+gem "dalli", "~> 2.7"

@@ -128,4 +128,6 @@ Rails.application.configure do
     exception_recipients: %w{ ccastillop+vb@gmail.com }
   }
   config.active_job.queue_adapter = :backburner
+
+  config.cache_store = :mem_cache_store, nil, {pool_size: 5, pool_timeout: 5}
 end

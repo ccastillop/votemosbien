@@ -16,12 +16,13 @@
 
       - @parties.each do |party|
         tr
-          td 
-            .w-12= link_to party do
-              = thumb(party.logo)
-          td 
-            p.mb-2= link_to party do 
-              = party.name
-            p= link_to party.web, "http://#{party.web}", target: :_blank
-          td = link_to party.candidates.count, candidates_path(party_id: party.id)
-          td = edit_buttons party
+          - cache party do
+            td 
+              .w-12= link_to party do
+                = thumb(party.logo)
+            td 
+              p.mb-2= link_to party do 
+                = party.name
+              p= link_to party.web, "http://#{party.web}", target: :_blank
+            td = link_to party.candidates.count, candidates_path(party_id: party.id)
+            td = edit_buttons party

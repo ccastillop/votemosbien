@@ -58,16 +58,17 @@
 
       tbody
         - @candidates.each do |candidate|
-          tr
-            td = link_to candidate.dni, candidate
-            td = candidate.full_name
-            td = candidate.number
-            td = candidate.region
-            td
-              = link_to candidate.party do 
-                = thumb(candidate.party.logo)
-                = candidate.party
-            td = candidate.election
-            td = edit_buttons candidate
+          - cache candidate do 
+            tr
+              td = link_to candidate.dni, candidate
+              td = candidate.full_name
+              td = candidate.number
+              td = candidate.region
+              td
+                = link_to candidate.party do 
+                  = thumb(candidate.party.logo)
+                  = candidate.party
+              td = candidate.election
+              td = edit_buttons candidate
 
   == pagy_nav(@pagy)

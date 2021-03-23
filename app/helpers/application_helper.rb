@@ -15,9 +15,8 @@ module ApplicationHelper
 
   def google_analytics_tag
     <<~HEREDOC
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BR8DWGL2RL"></script>
-    <script data-turbo-track="reload">
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());

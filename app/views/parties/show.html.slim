@@ -1,55 +1,55 @@
 - content_for :meta_title, "#{@party} | #{DEFAULT_META["meta_title"]}"
 - content_for :meta_description, @party.description
+- cache @party do 
+  .mb-4.flex.items-center.justify-between
+    .mr-auto
+      h1.title= @party.name
+    .w-24=thumb(@party.logo, options: { class: "ml-auto" })
 
-.mb-4.flex.items-center.justify-between
-  .mr-auto
-    h1.title= @party.name
-  .w-24=thumb(@party.logo, options: { class: "ml-auto" })
+  p.mb-2= @party.description
 
-p.mb-2= @party.description
+  .form
+    fieldset
+      legend Datos de contacto
+      - %i[enrollment_date address phones web email agents].each do |field|
+        p 
+          strong #{t "attributes.#{field}" }:
+          span<>=party_attribute @party, field
+      p.text-sm.mt-4.text-right
+        = link_to "Fuente: JNE", "https://aplicaciones007.jne.gob.pe/srop_publico/Consulta/OrganizacionPolitica", target: "_blank"
 
-.form
-  fieldset
-    legend Datos de contacto
-    - %i[enrollment_date address phones web email agents].each do |field|
-      p 
-        strong #{t "attributes.#{field}" }:
-        span<>=party_attribute @party, field
-    p.text-sm.mt-4.text-right
-      = link_to "Fuente: JNE", "https://aplicaciones007.jne.gob.pe/srop_publico/Consulta/OrganizacionPolitica", target: "_blank"
+  h3.title.mb-2 Posición política. 
+  .mb-4
+    - if @party.answer.present? && @party.answer.completed?
+      = render "shared/graph",
+        x: @party.answer.value_x * 5,
+        y: @party.answer.value_y * 5,
+        logo_path: (url_for(@party.logo.variant(resize_to_fill: [64, 64])) if @party.logo.variable?)
+    - else
+      p.text-red-800 ¡Aún no han contestado su cuestionario!
 
-h3.title.mb-2 Posición política. 
-.mb-4
-  - if @party.answer.present? && @party.answer.completed?
-    = render "shared/graph",
-      x: @party.answer.value_x * 5,
-      y: @party.answer.value_y * 5,
-      logo_path: (url_for(@party.logo.variant(resize_to_fill: [64, 64])) if @party.logo.variable?)
-  - else
-    p.text-red-800 ¡Aún no han contestado su cuestionario!
+  h3.title.mb-2 Candidatos a la presidencia
+  ol.mb-8
+    - @party.candidates.joins(:election).merge(Election.presidencia).order(:number).each do |candidate|
+      li.mb-2
+        p= link_to candidate.full_name, candidate
+        p.sm= candidate.election
 
-h3.title.mb-2 Candidatos a la presidencia
-ol.mb-8
-  - @party.candidates.joins(:election).merge(Election.presidencia).order(:number).each do |candidate|
-    li.mb-2
-      p= link_to candidate.full_name, candidate
-      p.sm= candidate.election
+  - election_id = Election.congreso.first.id
+  h3.title.mb-2 
+    = link_to "Candidatos al Congreso", candidates_path(election_id: election_id, party_id: @party.id)
 
-- election_id = Election.congreso.first.id
-h3.title.mb-2 
-  = link_to "Candidatos al Congreso", candidates_path(election_id: election_id, party_id: @party.id)
+  ol.mb-2
+    - Region.order(:name).each do |region|
+      li.mb-2
+        p
+          = link_to candidates_path(election_id: election_id, region_id: region.id, party_id: @party.id) do 
+            = region
+          span<>= "(#{region.candidates.joins(:election).merge(Election.congreso).where(party_id: @party.id).count})" 
 
-ol.mb-2
-  - Region.order(:name).each do |region|
-    li.mb-2
-      p
-        = link_to candidates_path(election_id: election_id, region_id: region.id, party_id: @party.id) do 
-          = region
-        span<>= "(#{region.candidates.joins(:election).merge(Election.congreso).where(party_id: @party.id).count})" 
-
-- election_id = Election.parlamento_andino.first.id
-p.title.mb-4
-  = link_to "Candidatos al Parlamento Andino", candidates_path(election_id: election_id, party_id: @party.id)
+  - election_id = Election.parlamento_andino.first.id
+  p.title.mb-4
+    = link_to "Candidatos al Parlamento Andino", candidates_path(election_id: election_id, party_id: @party.id)
 
 .form
   fieldset 

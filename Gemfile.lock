@@ -153,6 +153,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     concurrent-ruby (1.1.8)
+    connection_pool (2.2.3)
     countries (3.0.1)
       i18n_data (~> 0.10.0)
       sixarm_ruby_unaccent (~> 1.1)
@@ -163,6 +164,7 @@ GEM
     crass (1.0.6)
     css_parser (1.9.0)
       addressable
+    dalli (2.7.11)
     dante (0.2.0)
     e2mmap (0.1.0)
     enum_help (0.0.17)
@@ -467,7 +469,9 @@ DEPENDENCIES
   capistrano-ssh-doctor!
   capistrano3-puma
   capybara (>= 3.26)
+  connection_pool (~> 2.2)
   country_select
+  dalli (~> 2.7)
   enum_help
   enum_select_rails
   exception_notification
