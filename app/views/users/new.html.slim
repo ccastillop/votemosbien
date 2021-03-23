@@ -1,4 +1,8 @@
-h2.title.my-6.text-center= t(".sign_up")
+h2.title.my-2.text-center= t(".sign_up")
+
+p.mb-2 El registro es opcional. Te permite guardar tus respuestas.
+p.mb-4 Si eres candidato o representante de un partido, debes además subir una foto de verificación. 
+
 .text-center data-turbo="false"
   = button_to "/auth/google_oauth2/", class: "btn btn--google btn--lg inline-block" do
     .flex.items-center.justify-center

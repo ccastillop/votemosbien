@@ -98,3 +98,5 @@ gem 'hotwire-rails'
 gem 'enum_help'
 gem 'enum_select_rails'
 gem "hashid-rails"
+
+gem "active_storage_validations", "~> 0.9.2"

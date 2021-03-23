@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, 
         :first_name, :last_name, :phone, :country_code,
         :password, :password_confirmation,
-        :company_name, :company_tax_id
+        :auth_photo
       )
   end
 

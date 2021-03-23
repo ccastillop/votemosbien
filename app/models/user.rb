@@ -1,12 +1,21 @@
 class User < ApplicationRecord
   PASSWORD_MIN_LEN = 6
   has_secure_password
+  has_one_attached :auth_photo
+
+  validates :auth_photo,
+    content_type: [:png, :jpg, :jpeg],
+    size: { less_than: 20.megabytes }
 
   validates :email, presence: true,
     uniqueness: true, email: true
+
   validates :password,
     length: { minimum: PASSWORD_MIN_LEN },
     on: :create
+  
+  validates :first_name, :last_name,
+    presence: true, on: :update
 
   enum level: {
     admin: "admin",

@@ -41,11 +41,32 @@ h2.title.mb-6.text-center= t(".title", resource: @user.model_name.human)
           = f.text_field :last_name,
             class: "w-full"
 
-      .form-actions
+      fieldset
+        legend Sólo para Candidatos o Partidos
+        p.mb-2
+          | Para validar tu identidad, por favor sube una foto de frente con tu DNI (selfie ID).
+        p.mb-2
+          | Intenta que tu rostro se vea completo, junto con tu DNI. 
+          | Debes tomarla con tu teléfono celular o tu webcam. 
+        p.mb-2 
+          = link_to "Un ejemplo de Selfie ID", image_path("selfie_id3.jpg"), target: :_blank
+          span<> y 
+          = link_to "Otro ejemplo de Selfie ID", image_path("selfie_id2.jpg"), target: :_blank
+
+        .field.mt-4= f.file_field :auth_photo, direct_upload: true
+
+
+      .actions
         = f.button t(".update") ,
           class:"btn btn--primary btn--md w-full"
 
-    h3.font-bold.text-lg.mt-10= t(".cancel_my_account")
+    - if @user.auth_photo.present?
+      .my-8
+        p.title.mb-2 Foto de validación de identidad
+        = turbo_frame_tag "image-#{@user.auth_photo.signed_id}" do
+          = render "attachments/image", image: @user.auth_photo
+
+    h3.font-bold.text-lg.mt-12= t(".cancel_my_account")
 
     p.mb-4
       = t(".unhappy") 

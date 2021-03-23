@@ -4,6 +4,7 @@ es-PE:
     phone: Teléfono celular
     password: Contraseña
     password_confirmation: Confirmar contraseña
+    first_name: Nombre
     name: Nombre
     last_name: Apellido
     description: Descripción
@@ -29,6 +30,7 @@ es-PE:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
         content_type_invalid: Tipo de contenido inválido
+        file_size_out_of_range: "Archivo %{file_size} muy grande"
 
     models:
       person: Persona
@@ -43,9 +45,7 @@ es-PE:
     attributes:
       user:
         first_name: Nombre
-        country_code: País (celular)
-        company_name: Razón social
-        company_tax_id: RUC
+        auth_photo: Foto de autorización
       answer:
         answer_lines:
           option: Opción
