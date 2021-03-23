@@ -12,4 +12,18 @@ module ApplicationHelper
   def new_button(klass, options = {})
     render "shared/new_button", klass: klass
   end
+
+  def google_analytics_tag
+    <<~HEREDOC
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BR8DWGL2RL"></script>
+    <script data-turbo-track="reload">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BR8DWGL2RL');
+    </script>
+    HEREDOC
+  end
 end

@@ -93,10 +93,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection' #https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
 gem 'omniauth-twitter'
-
 gem 'hotwire-rails'
 gem 'enum_help'
 gem 'enum_select_rails'
 gem "hashid-rails"
-
 gem "active_storage_validations", "~> 0.9.2"
+gem 'newrelic_rpm'
