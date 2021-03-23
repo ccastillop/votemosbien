@@ -20,7 +20,7 @@ p.mb-4= description
     tbody
       - @regions.each do |region|
         tr
-          - cache region do 
+          - cache_if administrable?, region do 
             td = region.name
             td = link_to region.candidates.count, candidates_path(region_id: region.id)
             td = edit_buttons region

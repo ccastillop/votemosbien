@@ -1,6 +1,6 @@
 - content_for :meta_title, "#{@candidate} | #{DEFAULT_META["meta_title"]}"
 - content_for :meta_description, @candidate.description
-- cache @candidate do 
+- cache_if administrable?, @candidate do 
   .mb-4.flex.items-center.justify-between
     .mr-auto
       h1.title= @candidate.full_name

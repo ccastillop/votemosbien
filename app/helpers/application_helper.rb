@@ -13,6 +13,10 @@ module ApplicationHelper
     render "shared/new_button", klass: klass
   end
 
+  def administrable?
+    user_signed_in? && (current_user.admin? || current_user.candidate?)
+  end
+
   def google_analytics_tag
     <<~HEREDOC
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BR8DWGL2RL"></script>

@@ -16,7 +16,7 @@
 
       - @parties.each do |party|
         tr
-          - cache party do
+          - cache_if administrable?, party do
             td 
               .w-12= link_to party do
                 = thumb(party.logo)

@@ -1,6 +1,6 @@
 - content_for :meta_title, "#{@party} | #{DEFAULT_META["meta_title"]}"
 - content_for :meta_description, @party.description
-- cache @party do 
+- cache_if administrable?, @party do 
   .mb-4.flex.items-center.justify-between
     .mr-auto
       h1.title= @party.name

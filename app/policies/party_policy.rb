@@ -1,7 +1,7 @@
 class PartyPolicy < ApplicationPolicy
 
   def can_modify?
-    user.admin? || (user.candidate? && record.user == user)
+    user.admin? || (user.candidate? && record.respond_to?(:user) && record.user == user)
   end
 
   def permitted_attributes

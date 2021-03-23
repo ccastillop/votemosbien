@@ -58,7 +58,7 @@
 
       tbody
         - @candidates.each do |candidate|
-          - cache candidate do 
+          - cache_if administrable?, candidate do 
             tr
               td = link_to candidate.dni, candidate
               td = candidate.full_name
