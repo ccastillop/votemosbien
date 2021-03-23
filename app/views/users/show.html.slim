@@ -4,6 +4,8 @@ p.mb-4
   span.font-bold<> #{@user},
   | ya formas parte de las primeras personas que probarán Votemos Bien. 
 
+= thumb(@user.auth_photo, size: [500,300])
+
 .flex.items-center
   = link_to edit_user_path(current_user),
     class: "block btn btn--secondary btn--sm mr-2 flex items-center" do

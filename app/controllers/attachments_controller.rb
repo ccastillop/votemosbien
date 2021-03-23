@@ -5,7 +5,11 @@ class AttachmentsController < ApplicationController
   def destroy
     @image = ActiveStorage::Blob.find_signed(params[:id])
     @dom_id = "image-#{params[:id]}"
-    @image.purge
+    if @image.attachments.first.present?
+      @image.attachments.first.purge
+    else
+      @image.purge
+    end
     respond_to do |format|
       format.js
       format.turbo_stream

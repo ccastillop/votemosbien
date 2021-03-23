@@ -18,7 +18,9 @@
           td= user.email
           td= user.first_name
           td= user.last_name
-          td= link_to thumb(user.auth_photo), url_for(user.auth_photo), target: :_blank
+          td
+            - if user.auth_photo.present?
+              = link_to thumb(user.auth_photo), url_for(user.auth_photo), target: :_blank
           td= user.level
           td
             .flex

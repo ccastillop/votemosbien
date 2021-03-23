@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :user_confirmations, only: %i(new create show)
   
   resource :answer
-  resources :attachment, only: %i(destroy)
+  resources :attachments, only: %i(destroy)
 
   get "/:page", to: "home#show", as: :home
   root 'answers#show'
