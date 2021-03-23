@@ -1,6 +1,6 @@
 module PartyHelper
-  def logo(party, size: [64, 64], options: {} )
-    image_tag(party.logo.variant(resize_and_pad: size ), options) if party.logo.variable?
+  def thumb(image, size: [64, 64], options: {} )
+    image_tag(image.variant(resize_and_pad: size ), options) if image.variable?
   end
 
   def party_attribute(party, field)

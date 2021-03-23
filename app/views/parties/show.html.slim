@@ -1,7 +1,7 @@
 .mb-4.flex.items-center.justify-between
   .mr-auto
     h1.title= @party.name
-  .w-24=logo(@party, options: { class: "ml-auto" })
+  .w-24=thumb(@party.logo, options: { class: "ml-auto" })
 
 .form
   fieldset

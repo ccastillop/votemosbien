@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(permitted_attributes(User.new))
     respond_to do |format|
       if @user.save
         UserMailer.with(id: @user.id).confirmation_instructions.deliver_later
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(permitted_attributes(@user))
         format.html { redirect_to @user, notice: "Usuario actualizado" }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,14 +48,6 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:email, 
-        :first_name, :last_name, :phone, :country_code,
-        :password, :password_confirmation,
-        :auth_photo
-      )
-  end
-
   def set_user
     @user = User.find(params[:id])
     authorize @user

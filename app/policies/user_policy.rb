@@ -8,6 +8,20 @@ class UserPolicy < ApplicationPolicy
     can_modify?  
   end
   
+  def permitted_attributes
+    attrs = [
+      :email, 
+      :first_name, :last_name, 
+      :phone, :country_code,
+      :password, :password_confirmation,
+      :auth_photo
+    ]
+    if user.admin? 
+      attrs << :level
+    end
+    attrs
+  end
+
   class Scope < Scope
     def resolve
       if user.admin? 

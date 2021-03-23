@@ -55,6 +55,10 @@ h2.title.mb-6.text-center= t(".title", resource: @user.model_name.human)
 
         .field.mt-4= f.file_field :auth_photo, direct_upload: true
 
+      - if current_user.admin?
+        .input
+          = f.label :level
+          = f.select :level, User.levels, include_blank: "---"
 
       .actions
         = f.button t(".update") ,

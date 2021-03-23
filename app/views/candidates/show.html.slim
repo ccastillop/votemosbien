@@ -2,7 +2,7 @@
   .mr-auto
     h1.title= @candidate.full_name
     p.text-sm<> DNI #{@candidate.dni}
-  .w-24=logo(@candidate.party, options: { class: "ml-auto" })
+  .w-24=thumb(@candidate.party.logo, options: { class: "ml-auto" })
 
 p.mb-4
   | Candidato a 
