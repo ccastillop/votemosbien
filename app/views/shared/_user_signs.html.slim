@@ -1,13 +1,13 @@
 - unless user_signed_in?
-  .mb-4.flex.inline-items
+  .flex.inline-items
     .= link_to new_user_session_path,
       class: "btn block btn--secondary" do
       .flex.items-center.justify-center
         .= inline_svg_tag "user.svg"
-        .ml-1= t('.sign_in')
+        //.ml-1.md:block.hidden= t('attributes.sign_in')
 
-    .ml-4= link_to new_user_path,
+    .ml-2= link_to new_user_path,
       class: "btn block btn--secondary" do
       .flex.items-center.justify-center
         .= inline_svg_tag "user-plus.svg"
-        .ml-1= t('.sign_up')
+        //.ml-1.md:block.hidden= t('attributes.sign_up')

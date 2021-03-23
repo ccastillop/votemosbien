@@ -1,0 +1,11 @@
+- if user_signed_in?
+  = link_to edit_user_path(current_user),
+    class: "block btn btn--secondary btn--sm mr-1 #{controller_name == 'users' ? "active" : nil}" do
+    = inline_svg_tag "user.svg"
+  = button_to user_session_path(current_user),
+    method: :delete,
+    data: { confirm: "Cerraré la sesión. ¿Seguro?" },
+    class: "block btn btn--secondary btn--sm" do 
+    = inline_svg_tag "log-out.svg"
+- else
+  = render "shared/user_signs"
