@@ -19,6 +19,7 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
+        @answer.answerer&.touch
         format.html { redirect_to [@answerer, @answer], notice: "Tus respuestas han sido actualizadas" }
         format.json { render :show, status: :ok, location: @answer }
         format.turbo_stream do
