@@ -21,9 +21,10 @@ Rails.application.routes.draw do
   
   resource :answer
   resources :attachments, only: %i(destroy)
+  resource :map, only: %i[show]
 
   get "/:page", to: "home#show", as: :home
-  root 'answers#show'
+  root 'maps#show'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
 end

@@ -1,0 +1,21 @@
+- content_for :meta_title, "Ubicación política | #{DEFAULT_META["meta_title"]}"
+- content_for :meta_description, "Conoce tu posición política para decidir mejor (X:#{@value_x}, Y:#{@value_y})"
+
+h1.title.mb-4.flex.items-center Mapa político 
+
+p.mb-4 
+  | Posición basada en el  
+  = link_to "cuestionario", answer_path
+  |. 
+
+p.mb-4 
+  strong Nota: 
+  span<> Toda posición es correcta. No hay posición buena o mala. 👀
+  br
+  span.text-sm<> 🙃  Quizá lo malo es no tener posición  💪 . 
+
+= render "shared/social"
+
+= render "shared/graph", x: @value_x * 5, y: @value_y * 5
+
+p.text-sm.mb-4= "Coordenadas X:#{@value_x}, Y:#{@value_y}"

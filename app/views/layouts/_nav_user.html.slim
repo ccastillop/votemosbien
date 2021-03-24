@@ -1,6 +1,6 @@
 nav.bg-green-700.flex
   .container.mx-auto.px-4.py-1.flex.items-center.text-white.lg:px-8
-    .mr-4 = link_to "Ubícate", answer_path, class: controller_name == 'answers' ? "active" : nil
+    .mr-4= link_to "Ubícate", answer_path, class: controller_name == 'answers' ? "active" : nil
 
     .relative.w-32 data-controller="showhide" data-showhide-hidden-class="hidden"
       button type="button" data-action="click->showhide#toggle" class="#{controller_name.in?(%w[candidates parties regions elections]) ? "active" : nil}"
@@ -19,5 +19,4 @@ nav.bg-green-700.flex
     - if user_signed_in? 
       .ml-auto.text-right
         span.mr-1 👋  
-        span<> Hola 
-        span.font-bold = link_to current_user, current_user
+        span.font-bold.title = link_to current_user.first_name, current_user

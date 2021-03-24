@@ -1,0 +1,21 @@
+ul.flex.items-inline.justify-end
+  li.mr-2 
+    strong.title Compartir: 
+  li.mr-2 
+    a[target="_blank"
+      rel="noreferrer"
+      href="https://www.facebook.com/sharer/sharer.php?u=#{request.url}"]
+      = inline_svg_tag "facebook.svg", with: "24", height: "24"
+  li.mr-2
+    a[target="_blank"
+      rel="noreferrer"
+      href="https://twitter.com/intent/tweet?url=#{url_encode(request.url)}&text=#{url_encode([strip_tags(meta_title), "#VotemosBien"].join(" "))}"]
+      = inline_svg_tag "twitter.svg", with: "24", height: "24"
+  li.mr-2
+    a[target="_blank"
+      rel="noreferrer"
+      href="https://wa.me/?text=#{url_encode(truncate([strip_tags(meta_title), truncate(strip_tags(meta_description), length: 80), request.url].join(" "), length: 200))}"]
+      = inline_svg_tag "whatsapp.svg", with: "24", height: "24"
+  li
+    a[href="mailto:?subject=#{meta_title}&body=Votemos bien: #{url_encode(request.url)}"]
+      = inline_svg_tag "mail.svg", with: "24", height: "24"

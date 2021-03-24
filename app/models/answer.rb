@@ -1,6 +1,6 @@
 class Answer < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :answerer, polymorphic: true, optional: true
+  belongs_to :answerer, polymorphic: true, optional: true, touch: true
   has_many :answer_lines, dependent: :destroy
   accepts_nested_attributes_for :answer_lines
 

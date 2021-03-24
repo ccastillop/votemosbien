@@ -10,9 +10,13 @@
   = turbo_frame_tag "top_nav", target: "_top", class: "ml-auto" do
     = render "nav", answer: @answer 
 
-p.mb-6.italic
+p.mb-2
   | Contesta estas #{Question.count} preguntas. 
   | Te tomará aproximadamente 10 minutos. 
+
+p.mb-4.italic
+  | Todas tus respuestas son Correctas.  
+  | No hay respuestas buenas o malas
 
 - Question.all.each do |question|
   = turbo_frame_tag question do 
