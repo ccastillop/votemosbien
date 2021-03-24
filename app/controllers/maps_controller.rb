@@ -7,8 +7,8 @@ class MapsController < ApplicationController
       if (answer = party.answer) && answer.completed?
         @parties << OpenStruct.new(
             thumb_url: helpers.thumb_url(party.logo),
-            x: answer.value_x,
-            y: answer.value_y,
+            x: answer.value_x * 5,
+            y: answer.value_y * 5,
             party_url: helpers.url_for(party)
           )
       end
