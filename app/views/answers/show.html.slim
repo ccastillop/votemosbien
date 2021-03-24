@@ -6,18 +6,20 @@ h1.title.mb-4.flex.items-center Ubícate
 - if @answerer 
   h2.title.mb-4= link_to @answerer, @answerer
 
-p.mb-4 Conoce tu posición política para poder decidir mejor. 
+p.mb-4 Conoce tu posición política para poder decidir mejor. Contesta un breve cuestionario.
 
 .mb-4.flex.item-center
-  = link_to "Contestar cuestionario",
-    @answerer ? [:edit, @answerer, :answer] : edit_answer_path,
-    class: "btn btn--primary block"
+  = link_to @answerer ? [:edit, @answerer, :answer] : edit_answer_path,
+    class: "btn btn--primary block flex items-center" do 
+    .= inline_svg_tag "clipboard.svg"
+    .ml-1 Cuestionario
+
   .ml-4
     - if @answer.completed?
       = link_to map_path(x: @answer.value_x, y: @answer.value_y),
         class: "block flex items-center" do
           .= inline_svg_tag "share.svg"
-          .ml-1= "Comparar con Partidos"
+          .ml-1= "Ubica tus respuestas con los Partidos"
     - else
       p.mb-4.text-green-900
         | Contesta el breve cuestionario y podrás conocer tu posición política. 
