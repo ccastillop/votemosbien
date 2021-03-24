@@ -48,7 +48,7 @@
   fieldset
     legend Zona admin
     - if policy(@candidate).can_modify?
-      = link_to "Cuestionario",
+      = link_to "Contestar cuestionario",
         edit_candidate_answer_path(@candidate),
         class: "btn btn--primary"
       - if @candidate.user
