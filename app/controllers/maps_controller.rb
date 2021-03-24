@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
   def show
-    @value_x = params[:x] || Random.new.rand(20)
-    @value_y = params[:y] || Random.new.rand(20)
+    @value_x = params[:x]&.to_i || Random.new.rand(20)
+    @value_y = params[:y]&.to_i || Random.new.rand(20)
     @parties = []
     Party.all.each do |party|
       if (answer = party.answer) && answer.completed?
