@@ -3,6 +3,7 @@
 - parties ||= []
 - logo_path ||= image_path("crosshair.svg")
 
+<?xml version="1.0" encoding="UTF-8"?>
 scss:
   .graph {
     width: 100%;
@@ -25,8 +26,7 @@ scss:
       color: blue;
     }
   }
-
-svg.graph width="100%" height="420" viewBox="0 0 120 120"
+svg.graph width="100%" height="420" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 
   defs
     marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth" viewBox="0 0 20 20"
@@ -51,7 +51,7 @@ svg.graph width="100%" height="420" viewBox="0 0 120 120"
 
   - parties.each do |p|
     a xlink:href="#{p.party_url}"
-      image x="#{p.x + 5}" y="#{100 - p.y - 5}" width="10" height="10" xlink:href="#{p.thumb_url}"
+      image x="#{p.x + 5}" y="#{100 - p.y - 5}" width="10" height="10" href="#{p.thumb_url}"
 
   g
     image.pointer x="#{x + 5}" y="#{100 - y - 5}" width="10" height="10" href="#{logo_path}"

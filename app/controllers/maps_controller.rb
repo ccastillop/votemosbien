@@ -13,5 +13,25 @@ class MapsController < ApplicationController
           )
       end
     end
+
+    @svg = ApplicationController.new.render_to_string partial:"maps/graph", 
+          locals: {x: @value_x * 5, y: @value_y * 5, parties: @parties}
+
+    respond_to do |format|
+      format.html
+      format.png do
+        # file = Rails.root.join('public', 'maps', "map_#{@value_x}_#{@value_y}.png")
+        # unless File.exist?(file)
+        #   require "mini_magick"
+        #   image = MiniMagick::Image.read @svg
+        #   image.combine_options do |b|
+        #     b.resize "480x480"
+        #   end
+        #   image.format("png", 1)
+        #   image.write(file)
+        # end
+        # send_file file, disposition: 'inline'
+      end
+    end
   end
 end
