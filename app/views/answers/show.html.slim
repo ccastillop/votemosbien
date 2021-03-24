@@ -23,4 +23,4 @@ p.mb-4 Conoce tu posición política para poder decidir mejor.
         | Contesta el breve cuestionario y podrás conocer tu posición política. 
 
 - if @answer.completed?
-  = render "shared/graph", x: @answer.value_x * 5, y: @answer.value_y * 5
+  = render "maps/graph", x: @answer.value_x * 5, y: @answer.value_y * 5

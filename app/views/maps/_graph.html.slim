@@ -1,5 +1,6 @@
 - x ||= 0
 - y ||= 0
+- parties ||= []
 - logo_path ||= image_path("map-pin.svg")
 
 scss:
@@ -60,3 +61,7 @@ svg.graph width="100%" height="420" viewBox="0 0 120 120"
     text.label transform="translate(84, 15) rotate(45)" Liberal
 
   image x="#{x + 5}" y="#{100 - y - 5}" width="10" height="10" xlink:href="#{logo_path}"
+
+  - parties.each do |p|
+    a xlink:href="#{p.party_url}" target="_blank"
+      image x="#{p.x + 5}" y="#{100 - p.y - 5}" width="10" height="10" xlink:href="#{p.thumb_url}"

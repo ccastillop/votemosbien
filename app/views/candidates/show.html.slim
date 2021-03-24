@@ -33,7 +33,7 @@
   h3.title.mb-2 Posición política de #{@candidate.names}. 
   .mb-4
     - if @candidate.answer.present? && @candidate.answer.completed?
-      = render "shared/graph", x: @candidate.answer.value_x * 5, y: @candidate.answer.value_y * 5
+      = render "maps/graph", x: @candidate.answer.value_x * 5, y: @candidate.answer.value_y * 5
     - else
       p.text-red-800 ¡Aún no ha contestado su cuestionario!
 

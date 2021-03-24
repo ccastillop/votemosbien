@@ -3,6 +3,10 @@ module PartyHelper
     image_tag(image.variant(resize_and_pad: size ), options) if image && image.variable?
   end
 
+  def thumb_url(image, size: [64, 64], options: {} )
+    url_for(image.variant(resize_and_pad: size )) if image && image.variable?
+  end
+
   def party_attribute(party, field)
     case field
     when :web

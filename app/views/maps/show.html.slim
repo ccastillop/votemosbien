@@ -16,6 +16,6 @@ p.mb-4
 
 = render "shared/social"
 
-= render "shared/graph", x: @value_x * 5, y: @value_y * 5
+= render "maps/graph", x: @value_x * 5, y: @value_y * 5, parties: @parties
 
 p.text-sm.mb-4= "Coordenadas X:#{@value_x}, Y:#{@value_y}"
