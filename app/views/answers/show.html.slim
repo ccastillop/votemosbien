@@ -17,7 +17,7 @@ p.mb-4 Conoce tu posición política para poder decidir mejor. Contesta un breve
   .ml-4
     - if @answer.completed?
       = link_to map_path(x: @answer.value_x, y: @answer.value_y),
-        class: "block flex items-center" do
+        class: "block btn bg-green-800 text-white flex items-center" do
           .= inline_svg_tag "share.svg"
           .ml-1= "Ubica tus respuestas con los Partidos"
     - else
