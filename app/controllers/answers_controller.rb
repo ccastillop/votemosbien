@@ -36,7 +36,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to [@answerer, @answer], notice: "He borrado tus respuestas" }
+      format.html { redirect_to [@answerer, :answer], notice: "He borrado tus respuestas" }
       format.json { head :no_content }
     end
   end
