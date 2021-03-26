@@ -16,6 +16,9 @@ scss:
       font-size: 6px;
       fill: #666666;
     }
+    .label-small {
+      font-size: 4px;
+    }
     .data {
       fill: red;
       stroke-width: 1;
@@ -65,12 +68,12 @@ scss:
     g#line-x
       line.grid x1="5" y1="105" x2="105" y2="105" marker-end="url(#arrow)"
       text.label x="35" y="111" Libertad personal
-      text.label x="105" y="111" 20
+      text.label.label-small x="105" y="111" 20
 
     g#line-y
       line.grid x2="5" y2="5" x1="5" y1="105" marker-end="url(#arrow)"
-      text.label transform="translate(4.5, 80) rotate(-90)" Libertad económica
-      text.label transform="translate(4.5, 8) rotate(-90)" 20
+      text.label transform="translate(3.8, 80) rotate(-90)" Libertad económica
+      text.label.label-small transform="translate(3.8, 8) rotate(-90)" 20
 
     g.areas
       path stroke-dasharray="3,3" stroke-width="1" stroke="#999999" d="M 5 55 L 105 55"
@@ -84,21 +87,21 @@ scss:
         a xlink:href="#{p.party_url}"
           image x="#{p.x + 5}" y="#{100 - p.y - 5}" width="10" height="10" href="#{p.thumb_url}"
 
-    g.rollo.label
+    g.rollo
       a xlink:href="https://es.wikipedia.org/wiki/Conservadurismo" target="_blank"
-        text transform="translate(11, 37) rotate(-45)" Conservador 
+        text.label transform="translate(11, 37) rotate(-45)" Conservador 
     
       a xlink:href="https://es.wikipedia.org/wiki/Centro_pol%C3%ADtico" target="_blank"
-        text x="42" y="57.5" Moderado
+        text.label x="42" y="57.5" Moderado
 
       a xlink:href="https://es.wikipedia.org/wiki/Progresismo" target="_blank"
-        text transform="translate(79, 100) rotate(-45)" Progresista
+        text.label transform="translate(79, 100) rotate(-45)" Progresista
 
       a xlink:href="https://es.wikipedia.org/wiki/Autoritarismo" target="_blank"
-        text transform="translate(10, 80) rotate(45)" Autoritario  
+        text.label transform="translate(10, 80) rotate(45)" Autoritario  
       
       a xlink:href="https://es.wikipedia.org/wiki/Liberalismo" target="_blank"
-        text transform="translate(84, 15) rotate(45)" Liberal
+        text.label transform="translate(84, 15) rotate(45)" Liberal
 
     g.marker
       - if logo_path.present?
