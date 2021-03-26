@@ -49,12 +49,12 @@ svg.graph width="100%" height="420" viewBox="0 0 120 120" version="1.1" xmlns="h
 
   circle cx="55" cy="55" r="25" stroke-dasharray="3,3" stroke-width="1" stroke="#999999" fill="#F9FAFB"
 
+  g
+    image.pointer x="#{x + 5}" y="#{100 - y - 5}" width="18" height="18" href="#{logo_path}"
+
   - parties.each do |p|
     a xlink:href="#{p.party_url}"
       image x="#{p.x + 5}" y="#{100 - p.y - 5}" width="10" height="10" href="#{p.thumb_url}"
-
-  g
-    image.pointer x="#{x + 5}" y="#{100 - y - 5}" width="18" height="18" href="#{logo_path}"
 
   g
     a xlink:href="https://es.wikipedia.org/wiki/Conservadurismo" target="_blank"
