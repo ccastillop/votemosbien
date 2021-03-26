@@ -1,5 +1,5 @@
 - content_for :meta_title, "Ubicación política | #{DEFAULT_META["meta_title"]}"
-- content_for :meta_description, "Conoce tu posición política para decidir mejor (X:#{@value_x}, Y:#{@value_y})"
+- content_for :meta_description, "Coordenadas políticas (X:#{@value_x}, Y:#{@value_y})"
 
 h1.title.mb-6.flex.items-center Mapa político 
 
@@ -10,13 +10,10 @@ h1.title.mb-6.flex.items-center Mapa político
     .ml-1 Encuentra tu ubicación
 
 p.mb-6
-  span<> La posición se basa en las respuestas a este  
+  span<> Tus coordenadas políticas se basan en las respuestas al  
   span<>= link_to "cuestionario", answer_path
-  |. 
-  span<> Toda posición es correcta. No hay posición buena o mala.
 
 = render "shared/social"
 
 = @svg
-
-p.text-sm.mb-4= "Coordenadas X:#{@value_x}, Y:#{@value_y}"
+p.mb-4.text-center= "Coordenadas X:#{@value_x}, Y:#{@value_y}"
