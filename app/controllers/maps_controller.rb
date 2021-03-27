@@ -4,12 +4,13 @@ class MapsController < ApplicationController
 
   def show
     if params[:x].blank? && params[:y].blank? && @answer.present? && @answer.persisted? && @answer.completed?
-      return redirect_to(map_path(x: @answer.value_x, y: @answer.value_y))
+      return redirect_to(map_path(x: @answer.value_x, y: @answer.value_y, parties: "1"))
     end
     @value_x = params[:x]&.to_i || Random.new.rand(20)
     @value_y = params[:y]&.to_i || Random.new.rand(20)
     @parties = []
-    if params[:parties].present?
+    params[:parties] ||= "1"
+    if params[:parties] == "1"
       Party.all.each do |party|
         if (answer = party.answer) && answer.completed?
           @parties << OpenStruct.new(

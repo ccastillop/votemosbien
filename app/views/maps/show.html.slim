@@ -8,7 +8,9 @@
   = link_to @answerer ? [:edit, @answerer, :answer] : edit_answer_path,
     class: "btn btn--primary block flex items-center" do 
     .= inline_svg_tag "map-pin.svg"
-    .ml-1 Encuentra tu ubicación
+    .ml-1 
+      .hidden.md:block Encuentra tu ubicación
+      .md:hidden.block Tu ubicación
 
 = turbo_frame_tag "map" do
   = render "map", value_x: @value_x, value_y: @value_y, parties: @parties

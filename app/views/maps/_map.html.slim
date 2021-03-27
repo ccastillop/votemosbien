@@ -1,11 +1,13 @@
 .flex.items-center.justify-between.max-w-xl.mx-auto
-  - unless params[:parties].present?
-    = link_to map_path(x: value_x, y: value_y, parties: true), class:"flex items-center block btn btn--secondary" do
+  - if params[:parties] == "0"
+    = link_to map_path(x: value_x, y: value_y, parties: "1"),
+      class:"flex items-center block btn btn--secondary" do
       = inline_svg_tag "file-plus.svg"
       .ml-1 Ver partidos
 
   - else 
-    = link_to map_path(x: value_x, y: value_y), class:"flex items-center block btn btn--secondary" do
+    = link_to map_path(x: value_x, y: value_y, parties: "0"),
+      class:"flex items-center block btn btn--secondary" do
       = inline_svg_tag "file-minus.svg"
       .ml-1 Quitar partidos
 
