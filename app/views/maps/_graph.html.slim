@@ -35,7 +35,7 @@ scss:
     }
     .dot {
       stroke-width: 1;
-      animation: dot 0.5s linear alternate infinite;
+      animation: dot 1s linear alternate infinite;
       fill: #AA001F;
       fill-opacity: 0.3;
       stroke: #AA001F;
@@ -50,7 +50,7 @@ scss:
     }
     @keyframes dot {
       from {
-        r: 8;
+        r: 6;
       }
       to {
         r: 0;
@@ -107,5 +107,5 @@ scss:
       - if logo_path.present?
         image.pointer x="#{x + 5}" y="#{100 - y - 5}" width="18" height="18" href="#{logo_path}"
       - else
-        svg id="cross" x="#{x + 4}" y="#{100 - y - 4}"
-          circle.dot r="8" cx="8" cy="8"
+        svg id="cross" x="#{x + 1}" y="#{100 - y - 2}"
+          circle.dot r="6" cx="7" cy="7"
