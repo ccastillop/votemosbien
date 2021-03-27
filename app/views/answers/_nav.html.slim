@@ -1,7 +1,7 @@
 .flex.items-center
   .
     - if answer.completed?
-      = link_to (answer.answerer || answer_path),
+      = link_to (answer.answerer || map_path),
         class: "btn btn--primary btn--sm inline-block flex items-center" do
           .mr-1= inline_svg_tag "check-circle.svg"
           = "Ver resultado"

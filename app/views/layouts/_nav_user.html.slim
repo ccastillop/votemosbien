@@ -1,9 +1,6 @@
 nav.bg-green-700.flex
   .container.mx-auto.px-4.py-1.flex.items-center.text-white.lg:px-8
-    .mr-4= link_to "Mapa", map_path, class: controller_name == 'maps' ? "active" : nil
-
-    .mr-4= link_to "Ubícate", answer_path, class: controller_name == 'answers' ? "active" : nil
-
+    .mr-4= link_to "Ubícate", map_path, class: controller_name == 'maps' ? "active" : nil
     .relative.w-32 data-controller="showhide" data-showhide-hidden-class="hidden"
       button type="button" data-action="click->showhide#toggle" class="#{controller_name.in?(%w[candidates parties regions elections]) ? "active" : nil}"
         | Ubícalos

@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  include Answereable
   before_action :set_answerer
   before_action :set_answer
 
@@ -36,28 +37,12 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to [@answerer, :answer], notice: "He borrado tus respuestas" }
+      format.html { redirect_to (@answerer.present? ? [@answerer, :answer] : map_path), notice: "He borrado tus respuestas" }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_answer
-      unless @answerer.present?
-        if user_signed_in?
-          Answer.where(user_id: nil, session_id: session[:session_id])
-            .update_all(user_id: current_user.id)
-        end
-        @answer = if user_signed_in? && policy_scope(Answer).any?
-          policy_scope(Answer).last
-        else
-          policy_scope(Answer).find_or_initialize_by(session_id: session[:session_id])
-        end
-      else
-        @answer = @answerer.answer || @answerer.build_answer
-      end
-    end
 
     # Only allow a list of trusted parameters through.
     def answer_params

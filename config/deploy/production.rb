@@ -24,8 +24,8 @@ server "#{fetch(:server_name)}",
   user: "#{fetch(:deploy_user)}",
   roles: %w{app db web}
 
-set :puma_threads, [0, 2]
-set :puma_workers, 1
+set :puma_threads, [0, 4]
+set :puma_workers, 2
 set :puma_init_active_record, true
 set :puma_preload_app, false
 
