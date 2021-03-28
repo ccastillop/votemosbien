@@ -13,7 +13,7 @@
 
         .text-lg= simple_format question.description
 
-      - question.options.each do |option|
+      - question.options.order(:id).each do |option|
         = ff.label :option_id, value: option.id do 
           = ff.radio_button :option_id, option.id, class: "js-submit-on-click"
           = ff.hidden_field :question_id
