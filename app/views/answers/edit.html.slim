@@ -18,7 +18,7 @@ p.mb-4.italic
   | Todas tus respuestas son Correctas.  
   | No hay respuestas buenas o malas
 
-- Question.all.each do |question|
+- Question.order(:id).all.each do |question|
   = turbo_frame_tag question do 
     = render "question", answer: @answer, question: question
 
