@@ -313,6 +313,11 @@ GEM
       actionmailer (>= 3)
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
+    propshaft (0.9.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
@@ -515,6 +520,7 @@ DEPENDENCIES
   pg (~> 1.1)
   phonelib
   premailer-rails
+  propshaft (~> 0.9.0)
   puma (~> 6.4)
   pundit
   rack-mini-profiler (~> 3.3)
@@ -536,4 +542,4 @@ RUBY VERSION
    ruby 3.3.1p55
 
 BUNDLED WITH
-   2.2.3
+   2.5.11

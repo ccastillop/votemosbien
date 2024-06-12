@@ -82,3 +82,5 @@ gem "hashid-rails"
 gem "active_storage_validations", "~> 1.1.4"
 gem 'newrelic_rpm'
 gem "dalli", "~> 3.2.8"
+
+gem "propshaft", "~> 0.9.0"
