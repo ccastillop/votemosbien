@@ -52,20 +52,22 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 ## added gems start here ##
-gem "tailwindcss-rails"
 gem 'exception_notification'
 gem 'pagy'
 gem 'valid_email'
 gem 'pundit'
 gem 'country_select'
 gem 'phonelib'
-gem 'inline_svg'
 gem "strip_attributes"
 gem "backburner"
 gem 'aws-sdk-rails'
 gem 'aws-sdk-ses'
 gem 'slim-rails'
-
+gem "propshaft", "~> 0.9.0"
+gem "jsbundling-rails", "~> 1.3"
+gem "tailwindcss-rails"
+gem 'hotwire-rails'
+gem 'inline_svg'
 #add stylesheet in mailer layout
 gem 'premailer-rails'
 
@@ -75,7 +77,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection' #https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
 gem 'omniauth-twitter'
-gem 'hotwire-rails'
 gem 'enum_help'
 gem 'enum_select_rails'
 gem "hashid-rails"
@@ -83,4 +84,3 @@ gem "active_storage_validations", "~> 1.1.4"
 gem 'newrelic_rpm'
 gem "dalli", "~> 3.2.8"
 
-gem "propshaft", "~> 0.9.0"

@@ -7,10 +7,9 @@ html
     = csp_meta_tag
     link rel="preconnect" href="https://fonts.gstatic.com/"
     link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"
-    = stylesheet_link_tag "application" 
+    = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
+    = stylesheet_link_tag "tailwind", "application", "data-turbo-track": "reload", media: 'all' 
     == google_analytics_tag
-    = javascript_packs_with_chunks_tag 'application', 'data-turbo-track': 'reload'
-    = stylesheet_packs_with_chunks_tag "application", "data-turbo-track": "reload", media: 'all'
   body.flex.flex-col.min-h-screen.text-gray-800.leading-relaxed
     = render "layouts/header"
     = render "layouts/nav_user"

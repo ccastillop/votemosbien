@@ -26,9 +26,9 @@ class Party < ApplicationRecord
       if party = Party.where('lower(name) = ?', batch[0].downcase).first 
         enrollment_date = batch[2].split("/")
 
-        filename = File.basename(URI.parse(batch[1]).path)
-        file = URI.open(batch[1])
-        party.logo.attach(io: file, filename: filename)
+        #filename = File.basename(URI.parse(batch[1]).path)
+        #file = URI.open(batch[1])
+        #party.logo.attach(io: file, filename: filename)
 
         party.update(
           enrollment_date: "#{enrollment_date[2]}/#{enrollment_date[1]}/#{enrollment_date[0]}",
