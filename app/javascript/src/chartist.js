@@ -1,4 +1,4 @@
-import Chartist from 'chartist/dist/chartist'
+import { LineChart } from 'chartist';
 
 const data = {
   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
@@ -9,7 +9,7 @@ const data = {
 
 document.addEventListener('turbo:load', function() {
   document.querySelectorAll('.ct-chart').forEach(function(element){
-    new Chartist.Line(element, data)
+    new LineChart(element, data)
   })
 })
 

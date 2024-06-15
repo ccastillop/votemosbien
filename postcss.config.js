@@ -1,3 +1,4 @@
+// I think this file is not used anymore 
 module.exports = {
   plugins: [
     require('tailwindcss')("./app/javascript/stylesheets/tailwind.config.js"),

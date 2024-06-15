@@ -65,7 +65,6 @@ gem 'aws-sdk-ses'
 gem 'slim-rails'
 gem "propshaft", "~> 0.9.0"
 gem "jsbundling-rails", "~> 1.3"
-gem "tailwindcss-rails"
 gem 'hotwire-rails'
 gem 'inline_svg'
 #add stylesheet in mailer layout
@@ -81,6 +80,4 @@ gem 'enum_help'
 gem 'enum_select_rails'
 gem "hashid-rails"
 gem "active_storage_validations", "~> 1.1.4"
-gem 'newrelic_rpm'
 gem "dalli", "~> 3.2.8"
-
