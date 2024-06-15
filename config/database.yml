@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  host: host.docker.internal
   database: votemosbien_production
   username: votemosbien
   password: <%= Rails.application.credentials.dig(:postgres, :password) %>
