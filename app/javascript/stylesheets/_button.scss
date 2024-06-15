@@ -1,7 +1,6 @@
 //buttons
 .btn {
   @apply cursor-pointer shadow rounded p-2 font-bold;
-  // @apply flex items-center justify-center;
   @extend .title;
 
   &--facebook {

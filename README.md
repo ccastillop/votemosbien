@@ -2,6 +2,8 @@
 
 Votemos Bien is a project aimed at improving the quality of voting for Peruvians. The goal is to provide a platform that ensures transparency, accessibility, and fairness in the voting process. This web application is built with Ruby on Rails and is open for contributions from the developer community.
 
+Look at the [demo](https://votemosbien.softwarebajodemanda.com)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -38,9 +40,13 @@ To get a local copy up and running, follow these steps:
    ```
 
 2. **Install dependencies:**
-   Make sure you have Ruby and Bundler installed. Then run:
+   Make sure you have Ruby and Bundler installed. 
+   Also Yarn classic (1.22) and node v20 are required. 
+
+   Then run:
    ```bash
    bundle install
+   yarn install
    ```
 
 3. **Setup the database:**

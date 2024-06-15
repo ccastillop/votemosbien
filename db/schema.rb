@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_024418) do
-
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_223823) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -21,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
     t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
     t.text "metadata"
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
+    t.string "checksum"
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -60,8 +59,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
     t.bigint "question_id", null: false
     t.integer "value_x"
     t.integer "value_y"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_answer_lines_on_answer_id"
     t.index ["option_id"], name: "index_answer_lines_on_option_id"
     t.index ["question_id"], name: "index_answer_lines_on_question_id"
@@ -70,8 +69,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
   create_table "answers", force: :cascade do |t|
     t.string "session_id"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "answerer_type"
     t.bigint "answerer_id"
     t.index ["answerer_type", "answerer_id"], name: "index_answers_on_answerer", unique: true
@@ -89,8 +88,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
     t.bigint "party_id", null: false
     t.string "status"
     t.bigint "election_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["election_id"], name: "index_candidates_on_election_id"
     t.index ["party_id"], name: "index_candidates_on_party_id"
@@ -101,16 +100,16 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
   create_table "elections", force: :cascade do |t|
     t.string "name"
     t.string "due_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "identities", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "provider"
     t.string "uid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
@@ -120,15 +119,15 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
     t.string "description"
     t.integer "value_x"
     t.integer "value_y"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_options_on_question_id"
   end
 
   create_table "parties", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.date "enrollment_date"
     t.string "address"
     t.string "phones", default: [], array: true
@@ -142,14 +141,14 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
   create_table "questions", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "regions", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -160,8 +159,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_024418) do
     t.string "recover_token"
     t.string "level", default: "no_access"
     t.datetime "email_confirmed_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"
   end
 
