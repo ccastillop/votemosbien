@@ -96,6 +96,7 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   ## added config ##
+  config.assume_ssl = true
   config.action_mailer.default_url_options = { host: 'votemosbien.com', port: 80 }
   config.active_storage.service = :local
   config.action_mailer.delivery_method = :ses
