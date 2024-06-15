@@ -38,6 +38,8 @@ group :development do
   gem 'letter_opener_web', '~> 1.0'
   gem 'yard'
   gem 'solargraph'
+  gem "hotwire-livereload", "~> 1.4"
+  gem "kamal", "~> 1.6"
 end
 
 group :test do
@@ -81,3 +83,5 @@ gem 'enum_select_rails'
 gem "hashid-rails"
 gem "active_storage_validations", "~> 1.1.4"
 gem "dalli", "~> 3.2.8"
+
+
