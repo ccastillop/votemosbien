@@ -12,7 +12,7 @@ servers:
     options:
       "add-host": host.docker.internal:host-gateway
     labels:
-      traefik.http.routers.veci.rule: Host(`votemosbien.softwarebajodemanda.com`)
+      traefik.http.routers.votemosbien.rule: Host(`votemosbien.softwarebajodemanda.com`)
   jobs:
     hosts:
       - 192.168.0.10
