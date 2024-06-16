@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:JamesChevalier/omniauth-oauth.git
+  revision: a5d2b753d0a0db139a19ff4068d34fa572d2f079
+  branch: master
+  specs:
+    omniauth-oauth (1.2.0)
+      oauth
+      omniauth (>= 1.0, < 3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -315,9 +324,6 @@ GEM
       oauth2 (~> 2.0)
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.8)
-    omniauth-oauth (1.2.0)
-      oauth
-      omniauth (>= 1.0, < 3)
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
@@ -546,6 +552,7 @@ DEPENDENCIES
   listen (~> 3.9)
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-oauth!
   omniauth-rails_csrf_protection
   omniauth-twitter
   pagy
