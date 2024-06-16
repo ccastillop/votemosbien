@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:JamesChevalier/omniauth-oauth.git
+  remote: https://github.com/JamesChevalier/omniauth-oauth.git
   revision: a5d2b753d0a0db139a19ff4068d34fa572d2f079
   branch: master
   specs:

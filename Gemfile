@@ -74,7 +74,7 @@ gem 'premailer-rails'
 
 #authentication from scratch
 gem 'bcrypt'
-gem 'omniauth-oauth', git: 'git@github.com:JamesChevalier/omniauth-oauth.git', branch: 'master'
+gem 'omniauth-oauth', git: 'https://github.com/JamesChevalier/omniauth-oauth.git', branch: 'master'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection' #https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
