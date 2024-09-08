@@ -1,5 +1,5 @@
 # Name of your application. Used to uniquely configure containers.
-service: votemosbien 
+service: votemosbien
 
 # Name of the container image.
 image: ccastillop/votemosbien
@@ -11,13 +11,16 @@ servers:
       - 192.168.0.10
     options:
       "add-host": host.docker.internal:host-gateway
+      network: private
     labels:
       traefik.http.routers.votemosbien.rule: Host(`votemosbien.softwarebajodemanda.com`)
+
   jobs:
     hosts:
       - 192.168.0.10
     options:
       "add-host": host.docker.internal:host-gateway
+      network: private
     cmd: bundle exec backburner -q default:2,mailers:1
 
 # Credentials for your image host.
@@ -89,8 +92,8 @@ builder:
 #   args:
 #     accesslog: true
 #     accesslog.format: json
-traefik:
-  host_port: 8080
+# traefik:
+#  host_port: 8080
 # Configure a custom healthcheck (default is /up on port 3000)
 # healthcheck:
 #   port: 3001
@@ -99,4 +102,3 @@ asset_path: /rails/public/assets
 
 volumes:
   - "storage_votemosbien:/rails/storage/"
-
