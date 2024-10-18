@@ -79,9 +79,10 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
   <<: *default
-  host: host.docker.internal
   database: votemosbien_production
   username: votemosbien
-  password: <%= Rails.application.credentials.dig(:postgres, :password) %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
