@@ -9,32 +9,64 @@ servers:
   web:
     hosts:
       - 192.168.0.10
-    options:
-      "add-host": host.docker.internal:host-gateway
-      network: private
-    labels:
-      traefik.http.routers.votemosbien.rule: Host(`votemosbien.softwarebajodemanda.com`)
-
   jobs:
     hosts:
       - 192.168.0.10
-    options:
-      "add-host": host.docker.internal:host-gateway
-      network: private
     cmd: bundle exec backburner -q default:2,mailers:1
 
 # Credentials for your image host.
 registry:
-  # Specify the registry server, if you're not using Docker Hub
-  # server: registry.digitalocean.com / ghcr.io / ...
   server: ghcr.io
   username: ccastillop
-
-  # Always use an access token rather than real password when possible.
   password:
     - KAMAL_REGISTRY_PASSWORD
 
-# Inject ENV variables into containers (secrets come from .env).
+# Use accessory services.
+accessories:
+  db:
+    image: postgres:14
+    host: 192.168.0.10
+    env:
+      clear:
+        POSTGRES_USER: votemosbien
+        POSTGRES_DB: votemosbien_production
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0
+    host: 192.168.0.10
+    directories:
+      - data:/data
+
+  memcached:
+    image: memcached:1.6.24
+    host: 192.168.0.10
+    directories:
+      - data:/data
+
+  beanstalkd:
+    image: rayyounghong/beanstalkd
+    host: 192.168.0.10
+    directories:
+      - data:/data
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
+  clear:
+    RAILS_LOG_LEVEL: info
+    RAILS_SERVE_STATIC_FILES: true
+    POSTGRES_HOST: votemosbien-db
+    REDIS_URL: redis://votemosbien-redis:6379/1
+    BEANSTALK_URL: votemosbien-beanstalkd
+    MEMCACHE_SERVERS: votemosbien-memcached
+    TZ: America/Lima
+
+# Inject ENV variables into containers .
 env:
   secret:
     - RAILS_MASTER_KEY
@@ -43,60 +75,15 @@ env:
     REDIS_URL: redis://host.docker.internal:6379/1
     RAILS_LOG_LEVEL: info
     BEANSTALK_URL: beanstalk://host.docker.internal:11300
-#   clear:
-#     DB_HOST: 192.168.0.2
 
-# Use a different ssh user than root
-# ssh:
-#   user: ccastillo
-
-# Configure builder setup.
-# builder:
-#   args:
-#     RUBY_VERSION: 3.2.0
-#   secrets:
-#     - GITHUB_TOKEN
-#   remote:
-#     arch: amd64
-#     host: ssh://app@192.168.0.1
 builder:
-  remote:
-    arch: arm64
-    host: ssh://root@192.168.0.10
+  arch: arm64
+  remote: ssh://root@192.168.0.10
 
-# Use accessory services (secrets come from .env).
-# accessories:
-#   db:
-#     image: mysql:8.0
-#     host: 192.168.0.2
-#     port: 3306
-#     env:
-#       clear:
-#         MYSQL_ROOT_HOST: '%'
-#       secret:
-#         - MYSQL_ROOT_PASSWORD
-#     files:
-#       - config/mysql/production.cnf:/etc/mysql/my.cnf
-#       - db/production.sql.erb:/docker-entrypoint-initdb.d/setup.sql
-#     directories:
-#       - data:/var/lib/mysql
-#   redis:
-#     image: redis:7.0
-#     host: 192.168.0.2
-#     port: 6379
-#     directories:
-#       - data:/data
-
-# Configure custom arguments for Traefik
-# traefik:
-#   args:
-#     accesslog: true
-#     accesslog.format: json
-# traefik:
-#  host_port: 8080
-# Configure a custom healthcheck (default is /up on port 3000)
-# healthcheck:
-#   port: 3001
+proxy:
+  ssl: false
+  host: votemosbien.softwarebajodemanda.com
+  app_port: 3000
 
 asset_path: /rails/public/assets
 

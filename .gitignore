@@ -40,4 +40,6 @@ yarn-debug.log*
 
 **/.DS_Store
 .env
+/.kamal/secrets*
+
 
